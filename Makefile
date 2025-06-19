@@ -7,7 +7,6 @@ CXXFLAGS		= -Wall -Wextra -Werror
 all				: $(NAME)
 
 $(NAME)			: $(OBJS)
-					echo $(FILES) $(OBJS)
 					$(call create_executable, $^, $@)
 
 clean			:
