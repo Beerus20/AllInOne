@@ -35,6 +35,8 @@ class Box
 
 };
 
-# define _b(box) (box.getX()), (box.getY()), (box.getW()), (box.getH())
+# define _BOX(box) (box.getX()), (box.getY()), (box.getW()), (box.getH())
+# define _COOR(coor) (coor.x), (coor.y)
+# define _DIM(dim) (dim.w), (dim.h)
 
 #endif

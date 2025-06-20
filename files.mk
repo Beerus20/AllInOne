@@ -1,4 +1,5 @@
 FILES				= \
+						Draw.cpp			\
 						Box.accessors.cpp	\
 						Box.cpp				\
 						Utilities.cpp		\

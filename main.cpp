@@ -1,17 +1,7 @@
 #include <iostream>
 #include <ostream>
+#include "Utilities/Utilities.typedef.hpp"
 #include "Window/Window.hpp"
-
-void	test(int x, int y, int w, int h, string mess)
-{
-	std::cout
-		<< mess << " : "
-		<< x << " " 
-		<< y << " " 
-		<< w << " " 
-		<< h << " "
-		<< std::endl; 
-}
 
 int	main(int argc, char *argv[])
 {
