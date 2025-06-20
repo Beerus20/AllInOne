@@ -1,4 +1,6 @@
 FILES				= \
+						Box.accessors.cpp	\
+						Box.cpp				\
 						Utilities.cpp		\
 						Window.cpp			\
 						main.cpp

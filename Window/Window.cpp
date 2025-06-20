@@ -1,22 +1,36 @@
 #include "Window.hpp"
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_video.h>
+# include <SDL2/SDL.h>
 #include <cstdlib>
 #include <iostream>
 
-Window::Window(void) : _flags(SDL_INIT_AUDIO | SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_EVENTS)
+Window::Window(void) :
+	_title("Window"),
+	_box(WINDOW_POS_CENTER, WINDOW_WIDTH, WINDOW_HEIGHT),
+	_iflags(INIT_FLAGS),
+	_wflags(WINDOW_FLAGS)
 {
 	std::cout << "Creation of window" << std::endl;
-	if (SDL_Init(this->_flags) != 0)
+	if (SDL_Init(this->_iflags) != 0)
 		this->Error("Error SDL_init");
-	// SDL_CreateWindow("Window", 0, 0, 800, 500, this->_flags);
+	SDL_CreateWindow("Window", _b(this->_box), this->_iflags);
 }
 
-Window::Window(Uint32 flags)
+Window::Window(cstring &title, int x, int y, int w, int h, int iflags, int wflags) :
+	_title(title),
+	_box(x, y, w, h),
+	_iflags(iflags),
+	_wflags(wflags)
 {
-	if (SDL_Init(flags) != 0)
-		this->Error("Error SDL_init");
+	// if ()
 }
+
+// Window::Window(Uint32 flags)
+// {
+// 	if (SDL_Init(flags) != 0)
+// 		this->Error("Error SDL_init");
+// }
 
 Window::Window(Window const &to_copy)
 {
@@ -34,6 +48,11 @@ Window	&Window::operator=(Window const &to_assign)
 {
 	(void)to_assign;
 	return (*this);
+}
+
+void	Window::create(cstring &title, int x, int y, int w, int h, Uint32 wflags)
+{
+	SDL_CreateWindow(title.c_str(), x, y, w, h, wflags);
 }
 
 void	Window::Error(string const &message, bool quit, int exit_status)

@@ -9,7 +9,7 @@ class Box
 		t_coor		_coor;
 		t_dimension	_dimension;
 	
-	private:
+	public:
 		Box(void);
 		Box(Box const &);
 		Box(t_coor, t_dimension);
@@ -18,6 +18,23 @@ class Box
 
 		Box	&operator=(Box const &);
 
+		void				setX(int);
+		void				setY(int);
+		void				setW(int);
+		void				setH(int);
+		void				setCoor(int x, int y);
+		void				setCoor(t_coor);
+		void				setDimension(int w, int h);
+		void				setDimension(t_dimension);
+		int const			&getX(void) const;
+		int const			&getY(void) const;
+		int const			&getW(void) const;
+		int const			&getH(void) const;
+		t_coor const		&getCoor(void) const;
+		t_dimension const	&getDimension(void) const;
+
 };
+
+# define _b(box) (box.getX()), (box.getY()), (box.getW()), (box.getH())
 
 #endif

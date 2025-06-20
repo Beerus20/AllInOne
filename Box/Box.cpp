@@ -20,6 +20,8 @@ Box::Box(int x, int y, int w, int h) :
 	_dimension(w, h)
 {}
 
+Box::~Box() {}
+
 Box	&Box::operator=(Box const &assign)
 {
 	if (this != &assign)
@@ -29,4 +31,3 @@ Box	&Box::operator=(Box const &assign)
 	}
 	return (*this);
 }
-
