@@ -15,8 +15,7 @@ Window::Window(void) :
 	_box(WINDOW_POS_CENTER, WINDOW_WIDTH, WINDOW_HEIGHT),
 	_iflags(INIT_FLAGS),
 	_wflags(WINDOW_FLAGS),
-	_addr(NULL),
-	_renderer(NULL)
+	_addr(NULL)
 {
 	std::cout << "Creation of window" << std::endl;
 	this->create("Window", _BOX(this->_box), this->_wflags);
@@ -27,8 +26,7 @@ Window::Window(cstring &title, int x, int y, int w, int h, int iflags, int wflag
 	_box(x, y, w, h),
 	_iflags(iflags),
 	_wflags(wflags),
-	_addr(NULL),
-	_renderer(NULL)
+	_addr(NULL)
 {
 	this->create(title, x, y, w, h, this->_wflags);
 }
@@ -69,17 +67,9 @@ void	Window::create(cstring &title, int x, int y, int w, int h, Uint32 wflags)
 	this->_addr = SDL_CreateWindow(title.c_str(), x, y, w, h, wflags);
 	if (this->_addr == NULL)
 		this->Error("Window initialisation error");
-	this->_renderer = SDL_CreateRenderer(this->_addr, -1, SDL_RENDERER_ACCELERATED);
-	if (this->_renderer == NULL)
-		this->Error("Renderer initialisation error");
-
-	if (SDL_SetRenderDrawColor(this->_renderer, DARKVIOLET) != 0)
-		this->Error("Draw color error", false);
-	if (SDL_RenderClear(this->_renderer))
-		this->Error("Clear renderer error", false);
-
-	this->delay(500);
-	SDL_RenderPresent(this->_renderer);
+	this->_draw.setRenderer(SDL_CreateRenderer(this->_addr, -1, SDL_RENDERER_ACCELERATED));
+	if (!this->_draw)
+		this->Error("Draw initialisation error");
 }
 
 void	Window::delay(Uint32 ms)
@@ -89,8 +79,6 @@ void	Window::delay(Uint32 ms)
 
 void	Window::destroy(void)
 {
-	if (this->_renderer)
-		SDL_DestroyRenderer(this->_renderer);
 	if (this->_addr)
 		SDL_DestroyWindow(this->_addr);
 	SDL_Quit();
@@ -115,4 +103,12 @@ void	Window::setFullScreen(Uint32 mode)
 {
 	if (SDL_SetWindowFullscreen(this->_addr, mode) != 0)
 		this->Error("FullScreen mode error", false);
+}
+
+void	Window::setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	if (!this->_draw)
+		this->Error("Colored Window error", false);
+	this->_draw.color(r, g, b, a);
+	this->_draw.clear();
 }

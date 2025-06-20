@@ -3,6 +3,7 @@
 
 # define _COLOR(color) (color.r), (color.g), (color.b), (color.a)
 
+// COLORS =====================================
 # define ALICEBLUE				240,248,255,255
 # define ANTIQUEWHITE			250,235,215,255
 # define AQUA					0,255,255,255
@@ -151,5 +152,65 @@
 # define WHITESMOKE				245,245,245,255
 # define YELLOW					255,255,0,255
 # define YELLOWGREEN			154,205,50,255
+
+// ANSI COLORS =================================
+# define T_RESET				"\033[0m"
+# define T_BOLD					"\033[1m"
+# define T_DIM					"\033[2m"
+# define T_ITALIC				"\033[3m"
+# define T_UNDERLINE			"\033[4m"
+# define T_BLINK				"\033[5m"
+# define T_BLINK_FAST			"\033[6m"
+# define T_INVERSE				"\033[7m"
+# define T_HIDDEN				"\033[8m"
+# define T_STRIKETHROUGH		"\033[9m"
+
+# define T_BLACK				"\033[30m"
+# define T_RED					"\033[31m"
+# define T_GREEN				"\033[32m"
+# define T_YELLOW				"\033[33m"
+# define T_BLUE					"\033[34m"
+# define T_MAGENTA				"\033[35m"
+# define T_CYAN					"\033[36m"
+# define T_WHITE				"\033[37m"
+# define T_DEFAULT				"\033[39m"
+
+# define T_BRIGHT_BLACK			"\033[90m"
+# define T_BRIGHT_RED			"\033[91m"
+# define T_BRIGHT_GREEN			"\033[92m"
+# define T_BRIGHT_YELLOW		"\033[93m"
+# define T_BRIGHT_BLUE			"\033[94m"
+# define T_BRIGHT_MAGENTA		"\033[95m"
+# define T_BRIGHT_CYAN			"\033[96m"
+# define T_BRIGHT_WHITE			"\033[97m"
+
+# define T_BG_BLACK				"\033[40m"
+# define T_BG_RED				"\033[41m"
+# define T_BG_GREEN				"\033[42m"
+# define T_BG_YELLOW			"\033[43m"
+# define T_BG_BLUE				"\033[44m"
+# define T_BG_MAGENTA			"\033[45m"
+# define T_BG_CYAN				"\033[46m"
+# define T_BG_WHITE				"\033[47m"
+# define T_BG_DEFAULT			"\033[49m"
+
+# define T_BG_BRIGHT_BLACK		"\033[100m"
+# define T_BG_BRIGHT_RED		"\033[101m"
+# define T_BG_BRIGHT_GREEN		"\033[102m"
+# define T_BG_BRIGHT_YELLOW		"\033[103m"
+# define T_BG_BRIGHT_BLUE		"\033[104m"
+# define T_BG_BRIGHT_MAGENTA	"\033[105m"
+# define T_BG_BRIGHT_CYAN		"\033[106m"
+# define T_BG_BRIGHT_WHITE		"\033[107m"
+
+# define T_BOLD_RED				"\033[1;31m"
+# define T_BOLD_GREEN			"\033[1;32m"
+# define T_BOLD_YELLOW			"\033[1;33m"
+# define T_BOLD_BLUE			"\033[1;34m"
+# define T_BOLD_MAGENTA			"\033[1;35m"
+# define T_BOLD_CYAN			"\033[1;36m"
+# define T_BOLD_WHITE			"\033[1;37m"
+
+# define T_END					"\033[0m"
 
 #endif

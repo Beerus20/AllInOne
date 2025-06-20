@@ -1,9 +1,12 @@
 FILES				= \
-						Draw.cpp			\
-						Box.accessors.cpp	\
-						Box.cpp				\
-						Utilities.cpp		\
-						Window.cpp			\
+						Error.cpp				\
+						Draw.cpp				\
+						Box.accessors.cpp		\
+						Box.cpp					\
+						Utilities.cpp			\
+						Window.accessors.cpp	\
+						Window.info.cpp				\
+						Window.cpp				\
 						main.cpp
 
 OBJS				= \

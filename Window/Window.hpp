@@ -1,16 +1,16 @@
 #ifndef WINDOW_HPP
 # define WINDOW_HPP
 
-#include <SDL2/SDL_render.h>
+# include <SDL2/SDL_render.h>
 # include <SDL2/SDL_stdinc.h>
 # include <SDL2/SDL.h>
-#include <SDL2/SDL_video.h>
+# include <SDL2/SDL_video.h>
 # include <cstdlib>
 # include "Window.utils.hpp"
 # include "../Utilities/Utilities.hpp"
 # include "../Utilities/Utilities.typedef.hpp"
 # include "../Box/Box.hpp"
-
+# include "../Draw/Draw.hpp"
 
 class Window
 {
@@ -20,7 +20,7 @@ class Window
 		int				_iflags;
 		int				_wflags;
 		SDL_Window		*_addr;
-		SDL_Renderer	*_renderer;
+		Draw			_draw;
 
 		void	Error(string const &, bool = true, int = EXIT_FAILURE);
 
@@ -47,6 +47,7 @@ class Window
 		void				show(void);
 		void				raise(void);
 		void				setFullScreen(Uint32 mode = WINDOW_FULLSCREEN);
+		void				setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
 		void				setTitle(cstring &);
 		void				setPosition(int x, int y);
@@ -56,7 +57,8 @@ class Window
 		cstring				&getTitle(void) const;
 		t_coor const		&getPosition(void) const;
 		t_dimension const	&getSize(void) const;
-		Uint32 const		&getWFlags(void) const;
+		int const			&getWFlags(void) const;
+		Draw const			&getDraw(void) const;
 };
 
 #endif

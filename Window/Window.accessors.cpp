@@ -50,8 +50,12 @@ t_dimension const	&Window::getSize(void) const
 	return (this->_box.getDimension());
 }
 
-Uint32 const	&Window::getWFlags(void) const
+int const	&Window::getWFlags(void) const
 {
 	return (this->_wflags);
 }
 
+Draw const	&Window::getDraw(void) const
+{
+	return (this->_draw);
+}
