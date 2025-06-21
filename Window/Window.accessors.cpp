@@ -55,7 +55,7 @@ int const	&Window::getWFlags(void) const
 	return (this->_wflags);
 }
 
-Draw const	&Window::getDraw(void) const
+Draw	*Window::getDraw(void)
 {
-	return (this->_draw);
+	return (&(this->_draw));
 }

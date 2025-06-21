@@ -13,5 +13,7 @@ typedef SDL_Rect		Rect;
 typedef Rect const		cRect;
 typedef SDL_Texture		Texture;
 typedef Texture const	cTexture;
+typedef SDL_Renderer	Renderer;
+typedef Renderer const	cRenderer;
 
 #endif

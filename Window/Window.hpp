@@ -48,6 +48,7 @@ class Window
 		void				raise(void);
 		void				setFullScreen(Uint32 mode = WINDOW_FULLSCREEN);
 		void				setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+		void				reload(void) const;
 
 		void				setTitle(cstring &);
 		void				setPosition(int x, int y);
@@ -58,7 +59,7 @@ class Window
 		t_coor const		&getPosition(void) const;
 		t_dimension const	&getSize(void) const;
 		int const			&getWFlags(void) const;
-		Draw const			&getDraw(void) const;
+		Draw 				*getDraw(void);
 };
 
 #endif

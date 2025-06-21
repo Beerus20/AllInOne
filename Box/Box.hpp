@@ -2,6 +2,7 @@
 # define BOX_HPP
 
 # include "../Utilities/Utilities.hpp"
+# include "../Utilities/Utilities.typedef.hpp"
 
 class Box
 {
@@ -32,6 +33,7 @@ class Box
 		int const			&getH(void) const;
 		t_coor const		&getCoor(void) const;
 		t_dimension const	&getDimension(void) const;
+		Rect				toRect(void);
 
 };
 

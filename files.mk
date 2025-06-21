@@ -1,5 +1,7 @@
 FILES				= \
+						Container.cpp			\
 						Error.cpp				\
+						Draw.basics.cpp			\
 						Draw.cpp				\
 						Box.accessors.cpp		\
 						Box.cpp					\
