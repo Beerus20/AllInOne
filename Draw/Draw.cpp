@@ -58,7 +58,7 @@ void	Draw::color(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const
 			<< a << ")." << std::endl;
 }
 
-void	Draw::destroy(void) const
+void	Draw::destroy(void)
 {
 	if (this->_renderer)
 		SDL_DestroyRenderer(this->_renderer);

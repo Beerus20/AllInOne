@@ -35,7 +35,7 @@ class Draw
 		void			fillRect(cRect *r) const;
 		void			fillRects(cRect *r, Uint32 nb) const;
 		
-		void			destroy(void) const;
+		void			destroy(void);
 	};
 
 #endif

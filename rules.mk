@@ -12,8 +12,12 @@ run			: $(NAME)
 
 rerun		: re run
 
+revrun		: re vrun
+
+revsrun		: re vsrun
+
 vrun		: $(NAME)
 				valgrind ./$(NAME)
 
-vrun_strict	: $(NAME)
-				valgrind --leak-check=full -s ./$(NAME)
+vsrun		: $(NAME)
+				valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --log-file=valgrind.log ./$(NAME)

@@ -40,6 +40,7 @@ Window::~Window(void)
 {
 	this->delay(DELAY);
 	std::cout << "Window destroyed" << std::endl;
+	this->_draw.destroy();
 	this->destroy();
 }
 

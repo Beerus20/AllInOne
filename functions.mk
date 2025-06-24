@@ -3,5 +3,5 @@ define create_object
 endef
 
 define create_executable
-	$(CXX) `sdl2-config --cflags --libs` $(1) -o $(2) $(sdl2-config --cflags --libs)
+	$(CXX) $(1) -o $(2) `sdl2-config --cflags --libs`
 endef
