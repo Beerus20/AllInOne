@@ -12,6 +12,7 @@ Draw	&Draw::operator=(Draw const &) { return (*this); }
 
 void	Draw::apply(void)
 {
+	Draw::removeTarget();
 	SDL_RenderPresent(Data::getRenderer());
 }
 
@@ -44,15 +45,15 @@ bool	Draw::addTarget(Texture *texture)
 
 bool	Draw::removeTarget(void)
 {
-	return (SDL_SetRenderTarget(Data::getRenderer(), NULL));
+	return (SDL_SetRenderTarget(Data::getRenderer(), NULL) == 0);
 }
 
 bool	Draw::in(Texture *texture)
 {
 	if (Data::isNull())
 		return (false);
-	if (Data::islocked() && texture != Draw::target())
-		Draw::removeTarget();
+	// if (Data::islocked() && texture != Draw::target())
+	Draw::removeTarget();
 	return (Draw::addTarget(texture));
 }
 

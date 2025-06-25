@@ -9,6 +9,7 @@ class Box
 	private:
 		t_coor		_coor;
 		t_dimension	_dimension;
+		Rect		_rect;
 	
 	public:
 		Box(void);
@@ -33,7 +34,7 @@ class Box
 		int const			&getH(void) const;
 		t_coor const		&getCoor(void) const;
 		t_dimension const	&getDimension(void) const;
-		Rect				toRect(void);
+		cRect				*toRect(void);
 };
 
 # define _BOX(box) (box.getX()), (box.getY()), (box.getW()), (box.getH())

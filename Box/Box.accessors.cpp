@@ -73,7 +73,8 @@ t_dimension const	&Box::getDimension(void) const
 	return (this->_dimension);
 }
 
-Rect	Box::toRect(void)
+cRect	*Box::toRect(void)
 {
-	return ((Rect){_COOR(this->_coor), _DIM(this->_dimension)});
+	this->_rect = (Rect){_COOR(this->_coor), _DIM(this->_dimension)};
+	return (&this->_rect);
 }

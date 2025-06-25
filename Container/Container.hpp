@@ -2,6 +2,7 @@
 # define CONTAINER_HPP
 
 # include <SDL2/SDL_render.h>
+#include <cstddef>
 # include "../Utilities/Utilities.typedef.hpp"
 # include "../Box/Box.hpp"
 # include "../Draw/Draw.hpp"
@@ -32,7 +33,9 @@ class Container : public Box
 			int = TEXTURE_DEFAULT_ACCESS);
 		virtual ~Container(void);
 
-		void		initTexture(
+		void		destroy(void);
+
+		void		init(
 			Renderer *renderer,
 			int w = TEXTURE_DEFAULT_WIDTH,
 			int h = TEXTURE_DEFAULT_HEIGHT,
@@ -40,7 +43,7 @@ class Container : public Box
 			int access = TEXTURE_DEFAULT_ACCESS);
 		
 		Texture		*getTexture(void) const;
-		bool		addAt(cRect *dst);
+		bool		addAt(cRect *src = NULL, cRect *dst = NULL);
 };
 
 #endif

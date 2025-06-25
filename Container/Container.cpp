@@ -22,7 +22,7 @@ Container::Container(int w, int h, Uint32 format, int access) :
 	_format(format),
 	_access(access)
 {
-	this->initTexture(
+	this->init(
 		Data::getRenderer(),
 		w,
 		h,
@@ -31,6 +31,11 @@ Container::Container(int w, int h, Uint32 format, int access) :
 }
 
 Container::~Container(void)
+{
+	this->destroy();
+}
+
+void	Container::destroy(void)
 {
 	if (this->_texture)
 		SDL_DestroyTexture(this->_texture);
@@ -41,8 +46,9 @@ Container	&Container::operator=(Container const &)
 	return (*this);
 }
 
-void	Container::initTexture(Renderer *renderer, int w, int h, Uint32 format, int access)
+void	Container::init(Renderer *renderer, int w, int h, Uint32 format, int access)
 {
+	this->destroy();		
 	this->_texture = SDL_CreateTexture(renderer, format, access, w, h);
 	if (this->_texture == NULL)
 		std::cerr << "Failed initialisation of container" << std::endl;
@@ -53,18 +59,16 @@ Texture	*Container::getTexture(void) const
 	return (this->_texture);
 }
 
-bool	Container::addAt(cRect *dst)
+bool	Container::addAt(cRect *src, cRect *dst)
 {
-	Rect	tmp;
 
-	if (this->_texture != Draw::target())
-		Draw::removeTarget();
-	if (!Draw::addTarget(this->_texture))
-		return (false);
-	tmp = this->toRect();
+	// if (this->_texture != Draw::target())
+	// 	Draw::removeTarget();
+	// if (!Draw::addTarget(this->_texture))
+	// 	return (false);
 	return (SDL_RenderCopy(
 		Data::getRenderer(),
 		this->_texture,
-		&tmp,
-		dst));
+		src,
+		dst) == 0);
 }
