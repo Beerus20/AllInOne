@@ -48,7 +48,7 @@ Container	&Container::operator=(Container const &)
 
 void	Container::init(Renderer *renderer, int w, int h, Uint32 format, int access)
 {
-	this->destroy();		
+	this->destroy();
 	this->_texture = SDL_CreateTexture(renderer, format, access, w, h);
 	if (this->_texture == NULL)
 		std::cerr << "Failed initialisation of container" << std::endl;
@@ -61,11 +61,7 @@ Texture	*Container::getTexture(void) const
 
 bool	Container::addAt(cRect *src, cRect *dst)
 {
-
-	// if (this->_texture != Draw::target())
-	// 	Draw::removeTarget();
-	// if (!Draw::addTarget(this->_texture))
-	// 	return (false);
+	Draw::removeTarget();
 	return (SDL_RenderCopy(
 		Data::getRenderer(),
 		this->_texture,

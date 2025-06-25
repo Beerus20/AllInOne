@@ -20,10 +20,6 @@
 CREATE_STRUCT_2D(coor, x, y);
 CREATE_STRUCT_2D(dimension, w, h);
 
-class Use
-{
-	private:
-	public:
-};
+
 
 #endif

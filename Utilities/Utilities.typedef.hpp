@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_surface.h>
 # include <string>
 
 typedef std::string		string;
@@ -16,5 +17,7 @@ typedef Texture const	cTexture;
 typedef SDL_Renderer	Renderer;
 typedef Renderer const	cRenderer;
 typedef Texture const 	cTexture;
+typedef SDL_Surface		Surface;
+typedef Surface const	cSurface;
 
 #endif

@@ -6,7 +6,11 @@
 # include "../Utilities/Utilities.typedef.hpp"
 # include "../Data/Data.hpp"
 
+# define _DEFAULT_COLOR_	int r = 245, int g = 245, int b = 245, int a =255 //<== __WHITESMOKE__
+# define _COLOR_			int r, int g, int b, int a
+
 class Container;
+
 class Draw
 {
 	private:
@@ -27,15 +31,15 @@ class Draw
 		static void			clear(void);
 		static void			color(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
-		static void			point(int x, int y);
+		static void			point(int x, int y, _DEFAULT_COLOR_);
 		static void			points(cPoint *points, Uint32 nb);
-		static void			line(int x1, int y1, int x2, int y2);
+		static void			line(int x1, int y1, int x2, int y2, _DEFAULT_COLOR_);
 		static void			lines(cPoint *points, Uint32 nb);
-		static void			rect(cRect *r);
-		static void			rects(cRect *r, Uint32 nb);
-		static void			fillRect(cRect *r);
-		static void			fillRects(cRect *r, Uint32 nb);
+		static void			rect(cRect *rect, _DEFAULT_COLOR_);
+		static void			rects(cRect *rect, Uint32 nb);
+		static void			fillRect(cRect *rect, _DEFAULT_COLOR_);
+		static void			fillRects(cRect *rect, Uint32 nb);
 		
-	};
+};
 
 #endif

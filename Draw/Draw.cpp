@@ -52,8 +52,8 @@ bool	Draw::in(Texture *texture)
 {
 	if (Data::isNull())
 		return (false);
-	// if (Data::islocked() && texture != Draw::target())
-	Draw::removeTarget();
+	if (texture != Draw::target())
+		Draw::removeTarget();
 	return (Draw::addTarget(texture));
 }
 
