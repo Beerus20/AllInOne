@@ -12,17 +12,12 @@ int	main(int argc, char *argv[])
 	(void)argv;
 	std::cout << "Hello world" << std::endl;
 	Window		window;
-	// Draw		*draw;
-	// Draw		*draw2;
-	// Point		point[640];
-	// cRect	rect = {10, 10, 80, 40};
+	cRect	rect = {10, 10, 80, 40};
 
-	// window.setColor(WHITESMOKE);
-	// draw = window.getDraw();
-	// draw2 = draw;
-	// draw->color(255, 0, 0, 50);
-	// draw->fillRect(&rect);
-	// draw->apply();
+	window.setBackgroundColor(WHITESMOKE);
+	Draw::color(RED);
+	Draw::fillRect(&rect);
+	Draw::apply();
 	(void)window;
 	return (0);
 }

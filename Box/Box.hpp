@@ -34,7 +34,6 @@ class Box
 		t_coor const		&getCoor(void) const;
 		t_dimension const	&getDimension(void) const;
 		Rect				toRect(void);
-
 };
 
 # define _BOX(box) (box.getX()), (box.getY()), (box.getW()), (box.getH())

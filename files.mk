@@ -1,4 +1,5 @@
 FILES				= \
+						Data.cpp				\
 						Container.cpp			\
 						Error.cpp				\
 						Draw.basics.cpp			\
@@ -7,7 +8,7 @@ FILES				= \
 						Box.cpp					\
 						Utilities.cpp			\
 						Window.accessors.cpp	\
-						Window.info.cpp				\
+						Window.info.cpp			\
 						Window.cpp				\
 						main.cpp
 

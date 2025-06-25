@@ -17,7 +17,6 @@ class Container : public Box
 {
 	private:
 		Texture		*_texture;
-		Draw		*_draw;
 		int			_format;
 		int			_access;
 
@@ -27,16 +26,21 @@ class Container : public Box
 	public:
 		Container(void);
 		Container(
-			Draw *draw,
+			int w,
+			int h,
 			Uint32 = TEXTURE_DEFAULT_FORMAT,
-			int = TEXTURE_DEFAULT_ACCESS,
-			int = TEXTURE_DEFAULT_WIDTH,
-			int = TEXTURE_DEFAULT_HEIGHT);
+			int = TEXTURE_DEFAULT_ACCESS);
 		virtual ~Container(void);
 
-		void		test(void);
-
-		void	initTexture(void);
+		void		initTexture(
+			Renderer *renderer,
+			int w = TEXTURE_DEFAULT_WIDTH,
+			int h = TEXTURE_DEFAULT_HEIGHT,
+			Uint32 format = TEXTURE_DEFAULT_FORMAT,
+			int access = TEXTURE_DEFAULT_ACCESS);
+		
+		Texture		*getTexture(void) const;
+		bool		addAt(cRect *dst);
 };
 
 #endif

@@ -3,53 +3,27 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_timer.h>
 #include <iostream>
+#include "../Container/Container.hpp"
 
-Draw::Draw(void) : _renderer(NULL) {}
-Draw::Draw(Renderer *) : _renderer(NULL) {}
-Draw::~Draw(void)
-{
-	this->destroy();
-}
-
+Draw::Draw(void) {}
 Draw::Draw(Draw const &) {}
+Draw::~Draw(void){}
+Draw	&Draw::operator=(Draw const &) { return (*this); }
 
-Draw	&Draw::operator=(Draw const &assign)
+void	Draw::apply(void)
 {
-	if (this != &assign)
-		this->_renderer = assign._renderer;
-	return (*this);
+	SDL_RenderPresent(Data::getRenderer());
 }
 
-Draw::operator bool() const
+void	Draw::clear(void)
 {
-	return (this->_renderer != NULL);
-}
-
-void	Draw::setRenderer(Renderer *renderer)
-{
-	if (this->_renderer != renderer)
-		this->_renderer = renderer;
-}
-
-Renderer	*Draw::getRenderer(void) const
-{
-	return (this->_renderer);
-}
-
-void	Draw::apply(void) const
-{
-	SDL_RenderPresent(this->_renderer);
-}
-
-void	Draw::clear(void) const
-{
-	if (SDL_RenderClear(this->_renderer))
+	if (SDL_RenderClear(Data::getRenderer()))
 		std::cerr << "Clear renderer error" << std::endl;
 }
 
-void	Draw::color(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const
+void	Draw::color(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
-	if (SDL_SetRenderDrawColor(this->_renderer, r, g, b, a) != 0)
+	if (SDL_SetRenderDrawColor(Data::getRenderer(), r, g, b, a) != 0)
 		std::cerr
 			<< "Can't apply color : ("
 			<< r << ", "
@@ -58,9 +32,32 @@ void	Draw::color(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const
 			<< a << ")." << std::endl;
 }
 
-void	Draw::destroy(void)
+cTexture	*Draw::target(void)
 {
-	if (this->_renderer)
-		SDL_DestroyRenderer(this->_renderer);
+	return (SDL_GetRenderTarget(Data::getRenderer()));
+}
+
+bool	Draw::addTarget(Texture *texture)
+{
+	return (SDL_SetRenderTarget(Data::getRenderer(), texture) == 0); 
+}
+
+bool	Draw::removeTarget(void)
+{
+	return (SDL_SetRenderTarget(Data::getRenderer(), NULL));
+}
+
+bool	Draw::in(Texture *texture)
+{
+	if (Data::isNull())
+		return (false);
+	if (Data::islocked() && texture != Draw::target())
+		Draw::removeTarget();
+	return (Draw::addTarget(texture));
+}
+
+bool	Draw::in(Container *container)
+{
+	return (Draw::in(container->getTexture()));
 }
 

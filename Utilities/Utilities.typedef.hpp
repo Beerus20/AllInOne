@@ -15,5 +15,6 @@ typedef SDL_Texture		Texture;
 typedef Texture const	cTexture;
 typedef SDL_Renderer	Renderer;
 typedef Renderer const	cRenderer;
+typedef Texture const 	cTexture;
 
 #endif

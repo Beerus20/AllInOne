@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include <iostream>
 #include "../Utilities/Utilities.color.hpp"
+#include "../Data/Data.hpp"
+#include "../Draw/Draw.hpp"
 
 Window::Window(void) :
 	_title("Window"),
@@ -40,7 +42,6 @@ Window::~Window(void)
 {
 	this->delay(DELAY);
 	std::cout << "Window destroyed" << std::endl;
-	this->_draw.destroy();
 	this->destroy();
 }
 
@@ -68,8 +69,8 @@ void	Window::create(cstring &title, int x, int y, int w, int h, Uint32 wflags)
 	this->_addr = SDL_CreateWindow(title.c_str(), x, y, w, h, wflags);
 	if (this->_addr == NULL)
 		this->Error("Window initialisation error");
-	this->_draw.setRenderer(SDL_CreateRenderer(this->_addr, -1, SDL_RENDERER_ACCELERATED));
-	if (!this->_draw)
+	Data::setRenderer(SDL_CreateRenderer(this->_addr, -1, SDL_RENDERER_ACCELERATED));
+	if (Data::isNull())
 		this->Error("Draw initialisation error");
 }
 
@@ -80,6 +81,7 @@ void	Window::delay(Uint32 ms)
 
 void	Window::destroy(void)
 {
+	Data::destroy();
 	if (this->_addr)
 		SDL_DestroyWindow(this->_addr);
 	SDL_Quit();
@@ -106,10 +108,9 @@ void	Window::setFullScreen(Uint32 mode)
 		this->Error("FullScreen mode error", false);
 }
 
-void	Window::setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+void	Window::setBackgroundColor(int r, int g, int b, int a)
 {
-	if (!this->_draw)
-		this->Error("Colored Window error", false);
-	this->_draw.color(r, g, b, a);
-	this->_draw.clear();
+	Draw::removeTarget();
+	Draw::color(r, g, b, a);
+	Draw::clear();
 }

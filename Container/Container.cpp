@@ -1,10 +1,10 @@
 #include "Container.hpp"
 #include <SDL2/SDL_render.h>
+#include <iostream>
 
 Container::Container(void) :
 	Box(0, 0, TEXTURE_DEFAULT_SIZE),
 	_texture(NULL),
-	_draw(NULL),
 	_format(TEXTURE_DEFAULT_FORMAT),
 	_access(TEXTURE_DEFAULT_ACCESS)
 {}
@@ -12,19 +12,22 @@ Container::Container(void) :
 Container::Container(Container const &) :
 	Box(0, 0, TEXTURE_DEFAULT_SIZE),
 	_texture(NULL),
-	_draw(NULL),
 	_format(TEXTURE_DEFAULT_FORMAT),
 	_access(TEXTURE_DEFAULT_ACCESS)
 {}
 
-Container::Container(Draw *draw, Uint32 format, int access, int w, int h) :
+Container::Container(int w, int h, Uint32 format, int access) :
 	Box(0, 0, w, h),
 	_texture(NULL),
-	_draw(draw),
 	_format(format),
 	_access(access)
 {
-	this->initTexture();
+	this->initTexture(
+		Data::getRenderer(),
+		w,
+		h,
+		this->_format,
+		this->_access);
 }
 
 Container::~Container(void)
@@ -38,19 +41,30 @@ Container	&Container::operator=(Container const &)
 	return (*this);
 }
 
-void	Container::initTexture(void)
+void	Container::initTexture(Renderer *renderer, int w, int h, Uint32 format, int access)
 {
-	this->_texture = SDL_CreateTexture(
-		this->_draw->getRenderer(),
-		this->_format,
-		this->_access,
-		this->getW(),
-		this->getH()
-	);
+	this->_texture = SDL_CreateTexture(renderer, format, access, w, h);
+	if (this->_texture == NULL)
+		std::cerr << "Failed initialisation of container" << std::endl;
 }
 
-void	Container::test(void)
+Texture	*Container::getTexture(void) const
 {
-	(void)_texture;
+	return (this->_texture);
 }
 
+bool	Container::addAt(cRect *dst)
+{
+	Rect	tmp;
+
+	if (this->_texture != Draw::target())
+		Draw::removeTarget();
+	if (!Draw::addTarget(this->_texture))
+		return (false);
+	tmp = this->toRect();
+	return (SDL_RenderCopy(
+		Data::getRenderer(),
+		this->_texture,
+		&tmp,
+		dst));
+}

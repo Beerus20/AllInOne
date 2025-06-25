@@ -10,7 +10,6 @@
 # include "../Utilities/Utilities.hpp"
 # include "../Utilities/Utilities.typedef.hpp"
 # include "../Box/Box.hpp"
-# include "../Draw/Draw.hpp"
 
 class Window
 {
@@ -20,7 +19,6 @@ class Window
 		int				_iflags;
 		int				_wflags;
 		SDL_Window		*_addr;
-		Draw			_draw;
 
 		void	Error(string const &, bool = true, int = EXIT_FAILURE);
 
@@ -47,8 +45,8 @@ class Window
 		void				show(void);
 		void				raise(void);
 		void				setFullScreen(Uint32 mode = WINDOW_FULLSCREEN);
-		void				setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 		void				reload(void) const;
+		void				setBackgroundColor(int r, int g, int b, int a);
 
 		void				setTitle(cstring &);
 		void				setPosition(int x, int y);
@@ -59,7 +57,6 @@ class Window
 		t_coor const		&getPosition(void) const;
 		t_dimension const	&getSize(void) const;
 		int const			&getWFlags(void) const;
-		Draw 				*getDraw(void);
 };
 
 #endif
