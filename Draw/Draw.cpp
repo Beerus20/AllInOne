@@ -62,3 +62,11 @@ bool	Draw::in(Container *container)
 	return (Draw::in(container->getTexture()));
 }
 
+bool	Draw::texture(Texture *__restrict__ texture, cRect *__restrict__ src, cRect *__restrict__ dst)
+{
+	return (SDL_RenderCopy(
+		Data::getRenderer(),
+		texture,
+		src,
+		dst) == 0);
+}

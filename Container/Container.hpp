@@ -16,22 +16,22 @@
 
 class Container : public Box
 {
-	private:
+	protected:
 		Texture		*_texture;
 		int			_format;
 		int			_access;
-
-		Container(Container const &);
-		Container	&operator=(Container const &);
-
+		
 	public:
 		Container(void);
+		Container(Container const &);
+		Container(Texture *texture);
 		Container(
 			int w,
 			int h,
 			Uint32 = TEXTURE_DEFAULT_FORMAT,
 			int = TEXTURE_DEFAULT_ACCESS);
 		virtual ~Container(void);
+		Container	&operator=(Container const &);
 
 		void		destroy(void);
 
@@ -43,6 +43,7 @@ class Container : public Box
 			int access = TEXTURE_DEFAULT_ACCESS);
 		
 		Texture		*getTexture(void) const;
+		void		setTexture(Texture *texture);
 		bool		addAt(cRect *src = NULL, cRect *dst = NULL);
 };
 

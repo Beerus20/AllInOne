@@ -40,6 +40,10 @@ class Draw
 		static void			fillRect(cRect *rect, _DEFAULT_COLOR_);
 		static void			fillRects(cRect *rect, Uint32 nb);
 		
+		static bool			texture(
+			Texture *__restrict__ texture,
+			cRect *__restrict__ src,
+			cRect *__restrict__ dst);
 };
 
 #endif

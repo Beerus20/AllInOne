@@ -1,4 +1,5 @@
 FILES				= \
+						Image.cpp				\
 						Load.cpp				\
 						Data.cpp				\
 						Container.cpp			\

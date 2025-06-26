@@ -3,9 +3,12 @@
 
 # include "../Utilities/Utilities.typedef.hpp"
 
+
 class Load
 {
 	private:
+		static Surface	*_surface;
+
 		Load(void);
 		Load(Load const &);
 		
@@ -13,7 +16,7 @@ class Load
 
 	public:
 		virtual ~Load(void);
-		Texture	*image(cstring &image_path);
+		static Texture	*image(cstring &image_path);
 
 };
 

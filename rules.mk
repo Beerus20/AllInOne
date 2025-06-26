@@ -7,6 +7,9 @@ output/%.o	: %.cpp | output
 output/%.o	: */%.cpp | output
 				$(call create_object, $<, $@)
 
+output/%.o	: */*/%.cpp | output
+				$(call create_object, $<, $@)
+
 run			: $(NAME)
 				./$(NAME)
 

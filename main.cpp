@@ -19,8 +19,7 @@ int	main(int argc, char *argv[])
 
 	window.setBackgroundColor(WHITESMOKE);
 	nav.init(Data::getRenderer());
-	if (!Draw::in(&nav))
-		std::cout << "Target changement error" << std::endl;
+	Draw::in(&nav);
 	Draw::color(BURLYWOOD);
 	Draw::clear();
 	Draw::fillRect(&test, VIOLET);
