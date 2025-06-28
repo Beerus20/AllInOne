@@ -81,6 +81,7 @@ void	Window::delay(Uint32 ms)
 
 void	Window::destroy(void)
 {
+	Data::destroyPixelFormat();
 	Data::destroy();
 	if (this->_addr)
 		SDL_DestroyWindow(this->_addr);

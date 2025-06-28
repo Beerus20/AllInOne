@@ -6,6 +6,7 @@
 #include "Window/Window.hpp"
 #include "Utilities/Utilities.color.hpp"
 #include "Container/Container.hpp"
+#include "Model/Image/Image.hpp"
 
 int	main(int argc, char *argv[])
 {
@@ -24,7 +25,7 @@ int	main(int argc, char *argv[])
 	Draw::clear();
 	Draw::fillRect(&test, VIOLET);
 	if (!nav.addAt(NULL, &rect))
-		std::cout << "Error adding container" << std::endl;	
+		std::cout << "Error adding container" << std::endl;
 	Draw::apply();
 	return (0);
 }

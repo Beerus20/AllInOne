@@ -3,7 +3,7 @@
 
 # include "../../Container/Container.hpp"
 
-class Image : Container
+class Image : public Container
 {
 	private:
 		string	_path;

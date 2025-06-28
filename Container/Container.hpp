@@ -20,7 +20,7 @@ class Container : public Box
 		Texture		*_texture;
 		int			_format;
 		int			_access;
-		
+
 	public:
 		Container(void);
 		Container(Container const &);
@@ -31,9 +31,8 @@ class Container : public Box
 			Uint32 = TEXTURE_DEFAULT_FORMAT,
 			int = TEXTURE_DEFAULT_ACCESS);
 		virtual ~Container(void);
-		Container	&operator=(Container const &);
 
-		void		destroy(void);
+		Container	&operator=(Container const &);
 
 		void		init(
 			Renderer *renderer,
@@ -41,10 +40,18 @@ class Container : public Box
 			int h = TEXTURE_DEFAULT_HEIGHT,
 			Uint32 format = TEXTURE_DEFAULT_FORMAT,
 			int access = TEXTURE_DEFAULT_ACCESS);
-		
+		void		destroy(void);
+
 		Texture		*getTexture(void) const;
 		void		setTexture(Texture *texture);
-		bool		addAt(cRect *src = NULL, cRect *dst = NULL);
+
+		bool		addAt(
+			cRect *__restrict__ src = NULL,
+			cRect *__restrict__ dst = NULL);
+		bool		addTo(
+			Container *__restrict__ container,
+			cRect *__restrict__ src = NULL,
+			cRect *__restrict__ dst = NULL);
 };
 
 #endif

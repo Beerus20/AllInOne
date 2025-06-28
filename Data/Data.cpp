@@ -1,22 +1,18 @@
 #include "Data.hpp"
+#include <SDL2/SDL_pixels.h>
 
 Data::Data(void) {}
 Data::Data(Data const &) {}
-Data::~Data(void) {}
+Data::~Data(void)
+{
+	Data::destroyPixelFormat();
+}
+
 Data	&Data::operator=(Data const &) { return (*this); }
 
 Renderer	*Data::renderer = NULL;
 bool		Data::status = false;
-
-void	Data::setRenderer(Renderer *__restrict__ renderer)
-{
-	Data::renderer = renderer;
-}
-
-Renderer	*Data::getRenderer(void)
-{
-	return (Data::renderer);
-}
+PixelFormat	*Data::pixel_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
 
 void	Data::lock(void)
 {
@@ -43,3 +39,11 @@ void	Data::destroy(void)
 	if (Data::renderer)
 		SDL_DestroyRenderer(Data::renderer);
 }
+
+void	Data::destroyPixelFormat(void)
+{
+	if (Data::pixel_format)
+		SDL_FreeFormat(Data::pixel_format);
+}
+
+

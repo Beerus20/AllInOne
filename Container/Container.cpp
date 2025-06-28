@@ -71,34 +71,10 @@ void	Container::init(Renderer *renderer, int w, int h, Uint32 format, int access
 		std::cerr << "Failed initialisation of container" << std::endl;
 }
 
-Texture	*Container::getTexture(void) const
-{
-	return (this->_texture);
-}
 
-void	Container::setTexture(Texture *texture)
-{
-	Uint32		format(0);
-	int			w(0);
-	int			h(0);
-	cTexture	*render_target;
-
-	if (this->_texture && this->_texture == texture)
-		return ;
-	render_target = Draw::target();
-	if (SDL_QueryTexture(texture, &format, NULL, &w, &h))
-		std::cerr << "Error copy Texture" << std::endl;
-	else
-	{
-		this->init(Data::getRenderer(), w, h, format);
-		Draw::in(this);
-		Draw::texture(texture, NULL, NULL);
-		if (render_target)
-			Draw::in(const_cast<Texture *>(render_target));
-	}
-}
-
-bool	Container::addAt(cRect *src, cRect *dst)
+bool	Container::addAt(
+	cRect *__restrict__ src,
+	cRect *__restrict__ dst)
 {
 	cTexture	*render_target(Draw::target());
 
@@ -108,5 +84,22 @@ bool	Container::addAt(cRect *src, cRect *dst)
 		return (false);
 	if (render_target)
 		Draw::in(const_cast<Texture *>(render_target));
+	return (true);
+}
+
+bool	Container::addTo(
+	Container *__restrict__ container,
+	cRect *__restrict__ src,
+	cRect *__restrict__ dst)
+{
+	cTexture	*render_target(Draw::target());
+
+	if (this == container)
+		return (false);
+	if (!Draw::in(container))
+		return (false);
+	if (!Draw::texture(this->_texture, src, dst))
+		return (false);
+	Draw::in(const_cast<Texture *>(render_target));
 	return (true);
 }

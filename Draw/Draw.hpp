@@ -16,12 +16,12 @@ class Draw
 	private:
 		Draw(void);
 		Draw(Draw const &);
-		
+
 		Draw			&operator=(Draw const &);
 
 	public:
 		virtual ~Draw(void);
-		
+
 		static bool			in(Texture *texture);
 		static bool			in(Container *container);
 		static cTexture		*target(void);
@@ -39,11 +39,11 @@ class Draw
 		static void			rects(cRect *rect, Uint32 nb);
 		static void			fillRect(cRect *rect, _DEFAULT_COLOR_);
 		static void			fillRects(cRect *rect, Uint32 nb);
-		
+
 		static bool			texture(
 			Texture *__restrict__ texture,
-			cRect *__restrict__ src,
-			cRect *__restrict__ dst);
+			cRect *__restrict__ src = NULL,
+			cRect *__restrict__ dst = NULL);
 };
 
 #endif

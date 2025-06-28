@@ -5,7 +5,8 @@ Image::Image(void) :
 	_path("")
 {}
 
-Image::Image(Image const &copy)
+Image::Image(Image const &copy) :
+	Container()
 {
 	*this = copy;
 }
@@ -15,16 +16,14 @@ Image::Image(cstring &path)
 	this->setPath(path);
 }
 
-Image::~Image(void)
-{
-	this->destroy();
-}
+Image::~Image(void) {}
 
 Image	&Image::operator=(Image const &assign)
 {
 	if (this != &assign)
 	{
 		Container::operator=(assign);
+		this->_path = assign._path;
 	}
 	return (*this);
 }

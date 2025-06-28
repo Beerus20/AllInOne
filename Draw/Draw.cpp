@@ -40,7 +40,7 @@ cTexture	*Draw::target(void)
 
 bool	Draw::addTarget(Texture *texture)
 {
-	return (SDL_SetRenderTarget(Data::getRenderer(), texture) == 0); 
+	return (SDL_SetRenderTarget(Data::getRenderer(), texture) == 0);
 }
 
 bool	Draw::removeTarget(void)
@@ -52,8 +52,7 @@ bool	Draw::in(Texture *texture)
 {
 	if (Data::isNull())
 		return (false);
-	if (texture != Draw::target())
-		Draw::removeTarget();
+	Draw::removeTarget();
 	return (Draw::addTarget(texture));
 }
 
