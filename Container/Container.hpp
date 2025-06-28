@@ -2,6 +2,7 @@
 # define CONTAINER_HPP
 
 # include <SDL2/SDL_render.h>
+#include <SDL2/SDL_stdinc.h>
 #include <cstddef>
 # include "../Utilities/Utilities.typedef.hpp"
 # include "../Box/Box.hpp"
@@ -18,6 +19,7 @@ class Container : public Box
 {
 	protected:
 		Texture		*_texture;
+		Uint32		*_pixels;
 		int			_format;
 		int			_access;
 
@@ -42,8 +44,12 @@ class Container : public Box
 			int access = TEXTURE_DEFAULT_ACCESS);
 		void		destroy(void);
 
-		Texture		*getTexture(void) const;
 		void		setTexture(Texture *texture);
+		void		setAccess(int access_type);
+
+		Texture		*getTexture(void) const;
+		int			getAccess(void) const;
+		Uint32		*getPixels(void) const;
 
 		bool		addAt(
 			cRect *__restrict__ src = NULL,

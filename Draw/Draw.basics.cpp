@@ -1,6 +1,8 @@
 #include "Draw.hpp"
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_stdinc.h>
+#include <cstddef>
+#include "../Container/Container.hpp"
 
 void	Draw::point(int x, int y, _COLOR_)
 {
@@ -44,4 +46,24 @@ void	Draw::fillRect(cRect *rect, _COLOR_)
 void	Draw::fillRects(cRect *r, Uint32 nb)
 {
 	SDL_RenderFillRects(Data::getRenderer(), r, nb);
+}
+
+void	Draw::pixels(Uint32 (*func)(int, int), cRect *rect)
+{
+	Container	*container(Data::getContainerTarget());
+	Uint32		*pixels(NULL);
+	int			width(0);
+	int			height(0);
+
+	if (container == NULL || (*func) == NULL)
+		return ;
+	width = container->getW();
+	height = container->getH();
+	pixels = container->getPixels();
+	for (int i(0); i < height; i++)
+	{
+		for (int j(0); j < width; j++)
+			pixels[i * width + j] = (*func)(i, j);
+	}
+	SDL_UpdateTexture(container->getTexture(), rect, pixels, width * sizeof(Uint32));
 }

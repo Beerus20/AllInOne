@@ -1,0 +1,7 @@
+{
+   Ignorer les erreurs de la SDL
+   Memcheck:Leak
+   ...
+   obj:*/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so*
+   ...
+}

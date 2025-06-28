@@ -3,6 +3,7 @@
 
 # include <SDL2/SDL_render.h>
 # include <SDL2/SDL_stdinc.h>
+#include <cstddef>
 # include "../Utilities/Utilities.typedef.hpp"
 # include "../Data/Data.hpp"
 
@@ -39,6 +40,7 @@ class Draw
 		static void			rects(cRect *rect, Uint32 nb);
 		static void			fillRect(cRect *rect, _DEFAULT_COLOR_);
 		static void			fillRects(cRect *rect, Uint32 nb);
+		static void			pixels(Uint32 (*func)(int w, int h), cRect * = NULL);
 
 		static bool			texture(
 			Texture *__restrict__ texture,

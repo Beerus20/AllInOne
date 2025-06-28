@@ -6,6 +6,7 @@
 Container::Container(void) :
 	Box(0, 0, TEXTURE_DEFAULT_SIZE),
 	_texture(NULL),
+	_pixels(NULL),
 	_format(TEXTURE_DEFAULT_FORMAT),
 	_access(TEXTURE_DEFAULT_ACCESS)
 {}
@@ -13,6 +14,7 @@ Container::Container(void) :
 Container::Container(Container const &copy) :
 	Box(0, 0, TEXTURE_DEFAULT_SIZE),
 	_texture(NULL),
+	_pixels(NULL),
 	_format(TEXTURE_DEFAULT_FORMAT),
 	_access(TEXTURE_DEFAULT_ACCESS)
 {
@@ -27,6 +29,7 @@ Container::Container(Container const &copy) :
 Container::Container(int w, int h, Uint32 format, int access) :
 	Box(0, 0, w, h),
 	_texture(NULL),
+	_pixels(NULL),
 	_format(format),
 	_access(access)
 {
@@ -69,6 +72,17 @@ void	Container::init(Renderer *renderer, int w, int h, Uint32 format, int access
 	this->_texture = SDL_CreateTexture(renderer, format, access, w, h);
 	if (this->_texture == NULL)
 		std::cerr << "Failed initialisation of container" << std::endl;
+	if (this->_pixels && this->getW() == w && this->getH() == h)
+	{
+		free(this->_pixels);
+		this->_pixels = NULL;
+	}
+	if (this->_pixels == NULL)
+	{
+		this->_pixels = new Uint32[w * h];
+		if (this->_pixels == NULL)
+			std::cerr << "Pixel Initialisation error" << std::endl;
+	}
 }
 
 
@@ -76,6 +90,8 @@ bool	Container::addAt(
 	cRect *__restrict__ src,
 	cRect *__restrict__ dst)
 {
+	(void)src;
+	(void)dst;
 	cTexture	*render_target(Draw::target());
 
 	if (render_target)

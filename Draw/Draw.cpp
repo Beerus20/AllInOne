@@ -12,6 +12,7 @@ Draw	&Draw::operator=(Draw const &) { return (*this); }
 
 void	Draw::apply(void)
 {
+	Data::setContainerTarget(NULL);
 	Draw::removeTarget();
 	SDL_RenderPresent(Data::getRenderer());
 }
@@ -58,6 +59,7 @@ bool	Draw::in(Texture *texture)
 
 bool	Draw::in(Container *container)
 {
+	Data::setContainerTarget(container);
 	return (Draw::in(container->getTexture()));
 }
 

@@ -40,7 +40,7 @@ Window::Window(Window const &to_copy)
 
 Window::~Window(void)
 {
-	this->delay(DELAY);
+	this->delay(500);
 	std::cout << "Window destroyed" << std::endl;
 	this->destroy();
 }

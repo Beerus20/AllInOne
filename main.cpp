@@ -15,7 +15,7 @@ int	main(int argc, char *argv[])
 	std::cout << "Hello world" << std::endl;
 	Window		window;
 	Container	nav;
-	Rect		rect = {10, 10, 400, 100};
+	// Rect		rect = {10, 10, 400, 100};
 	Rect		test = {10, 10, 20, 10};
 
 	window.setBackgroundColor(WHITESMOKE);
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	Draw::color(BURLYWOOD);
 	Draw::clear();
 	Draw::fillRect(&test, VIOLET);
-	if (!nav.addAt(NULL, &rect))
+	if (!nav.addAt(NULL, NULL))
 		std::cout << "Error adding container" << std::endl;
 	Draw::apply();
 	return (0);

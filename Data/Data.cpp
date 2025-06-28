@@ -1,5 +1,7 @@
 #include "Data.hpp"
 #include <SDL2/SDL_pixels.h>
+#include <cstddef>
+#include "../Container/Container.hpp"
 
 Data::Data(void) {}
 Data::Data(Data const &) {}
@@ -13,6 +15,7 @@ Data	&Data::operator=(Data const &) { return (*this); }
 Renderer	*Data::renderer = NULL;
 bool		Data::status = false;
 PixelFormat	*Data::pixel_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
+Container	*Data::container_target = NULL;
 
 void	Data::lock(void)
 {

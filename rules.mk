@@ -20,7 +20,13 @@ revrun		: re vrun
 revsrun		: re vsrun
 
 vrun		: $(NAME)
-				valgrind ./$(NAME)
+				valgrind \
+					--leak-check=full \
+					--suppressions=sdl.supp \
+					--show-leak-kinds=definite \
+					--errors-for-leak-kinds=none \
+					--child-silent-after-fork=yes \
+				./$(NAME)
 
 vsrun		: $(NAME)
 				valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --log-file=valgrind.log ./$(NAME)

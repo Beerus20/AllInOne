@@ -1,4 +1,5 @@
 #include "Container.hpp"
+#include <SDL2/SDL_stdinc.h>
 #include <iostream>
 
 // SETTERS ===========================================================
@@ -24,8 +25,23 @@ void	Container::setTexture(Texture *texture)
 	}
 }
 
+void	Container::setAccess(int access_type)
+{
+	(void)access_type;
+}
+
 // GETTERS ===========================================================
 Texture	*Container::getTexture(void) const
 {
 	return (this->_texture);
+}
+
+int	Container::getAccess(void) const
+{
+	return (this->_access);
+}
+
+Uint32	*Container::getPixels(void) const
+{
+	return (this->_pixels);
 }
