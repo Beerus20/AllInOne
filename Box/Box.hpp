@@ -3,23 +3,33 @@
 
 # include "../Utilities/Utilities.hpp"
 # include "../Utilities/Utilities.typedef.hpp"
+# include "../Color/Color.hpp"
+# include "../Event/Event.hpp"
 
-class Box
+class Box : public IEvent
 {
 	private:
 		t_coor		_coor;
 		t_dimension	_dimension;
 		Rect		_rect;
-	
+		Color		_color;
+
+	protected:
+
+
+
 	public:
 		Box(void);
 		Box(Box const &);
-		Box(t_coor, t_dimension);
-		Box(int x, int y, int w, int h);
+		Box(t_coor, t_dimension, _DEFAULT_COLOR_);
+		Box(t_coor, t_dimension, Color const &color);
+		Box(int x, int y, int w, int h, _DEFAULT_COLOR_);
+		Box(int x, int y, int w, int h, Color const &color);
 		virtual ~Box(void);
 
 		Box	&operator=(Box const &);
 
+		// Setters ----------------------------------------------------------
 		void				setX(int);
 		void				setY(int);
 		void				setW(int);
@@ -28,6 +38,10 @@ class Box
 		void				setCoor(t_coor);
 		void				setDimension(int w, int h);
 		void				setDimension(t_dimension);
+		void				setColor(int, int, int, int = 255);
+		void				setColor(Color &);
+
+		// Getters ----------------------------------------------------------
 		int const			&getX(void) const;
 		int const			&getY(void) const;
 		int const			&getW(void) const;
@@ -35,10 +49,17 @@ class Box
 		t_coor const		&getCoor(void) const;
 		t_dimension const	&getDimension(void) const;
 		cRect				*toRect(void);
-};
+		Color const			&getColor(void) const;
 
-# define _BOX(box) (box.getX()), (box.getY()), (box.getW()), (box.getH())
-# define _COOR(coor) (coor.x), (coor.y)
-# define _DIM(dim) (dim.w), (dim.h)
+		// Event ----------------------------------------------------------
+		virtual void		onQuit(Event) = 0;
+		virtual void		onKeyUp(Event) = 0;
+		virtual void		onKeyDown(Event) = 0;
+		virtual void		onMouseHover(Event) = 0;
+		virtual void		onMouseLeftClick(Event) = 0;
+		virtual void		onMouseRightClick(Event) = 0;
+		virtual void		onMouseMiddleClick(Event) = 0;
+		virtual void		onMouseWheel(Event) = 0;
+};
 
 #endif

@@ -6,18 +6,33 @@ Box::Box(void) :
 {}
 
 Box::Box(Box const &copy) :
+	IEvent(),
 	_coor(copy._coor),
 	_dimension(copy._dimension)
 {}
 
-Box::Box(t_coor coor, t_dimension dimension) :
+Box::Box(t_coor coor, t_dimension dimension, _COLOR_) :
 	_coor(coor),
-	_dimension(dimension)
+	_dimension(dimension),
+	_color(r, g, b, a)
 {}
 
-Box::Box(int x, int y, int w, int h) :
+Box::Box(t_coor coor, t_dimension dimension, Color const &color) :
+	_coor(coor),
+	_dimension(dimension),
+	_color(color)
+{}
+
+Box::Box(int x, int y, int w, int h, _COLOR_) :
 	_coor(x, y),
-	_dimension(w, h)
+	_dimension(w, h),
+	_color(r, g, b, a)
+{}
+
+Box::Box(int x, int y, int w, int h, Color const &color) :
+	_coor(x, y),
+	_dimension(w, h),
+	_color(color)
 {}
 
 Box::~Box() {}

@@ -32,6 +32,12 @@ void	Draw::rect(cRect *rect, _COLOR_)
 	SDL_RenderDrawRect(Data::getRenderer(), rect);
 }
 
+void	Draw::rect(cRect *rect, Color const &color)
+{
+	Draw::color(color);
+	SDL_RenderDrawRect(Data::getRenderer(), rect);
+}
+
 void	Draw::rects(cRect *r, Uint32 nb)
 {
 	SDL_RenderDrawRects(Data::getRenderer(), r, nb);
@@ -43,9 +49,23 @@ void	Draw::fillRect(cRect *rect, _COLOR_)
 	SDL_RenderFillRect(Data::getRenderer(), rect);
 }
 
+void	Draw::fillRect(cRect *rect, Color const &color)
+{
+	Draw::color(color);
+	SDL_RenderFillRect(Data::getRenderer(), rect);
+}
+
 void	Draw::fillRects(cRect *r, Uint32 nb)
 {
 	SDL_RenderFillRects(Data::getRenderer(), r, nb);
+}
+
+void	Draw::box(Box *box, bool fill)
+{
+	if (fill)
+		Draw::fillRect(box->toRect(), box->getColor());
+	else
+		Draw::rect(box->toRect(), box->getColor());
 }
 
 void	Draw::pixels(Uint32 (*func)(int, int), cRect *rect)

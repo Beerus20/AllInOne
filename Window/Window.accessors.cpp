@@ -11,25 +11,25 @@ void	Window::setTitle(cstring &title)
 
 void	Window::setPosition(int x, int y)
 {
-	this->_box.setCoor(x, y);
+	this->setCoor(x, y);
 	SDL_SetWindowPosition(this->_addr, x, y);
 }
 
 void	Window::setPosition(t_coor const &coor)
 {
-	this->_box.setCoor(coor);
+	this->setCoor(coor);
 	SDL_SetWindowPosition(this->_addr, _COOR(coor));
 }
 
 void	Window::setSize(int w, int h)
 {
-	this->_box.setDimension(w, h);
+	this->setDimension(w, h);
 	SDL_SetWindowSize(this->_addr, w, h);
 }
 
 void	Window::setSize(t_dimension const &dimension)
 {
-	this->_box.setDimension(dimension);
+	this->setDimension(dimension);
 	SDL_SetWindowSize(this->_addr, _DIM(dimension));
 }
 
@@ -42,12 +42,12 @@ cstring	&Window::getTitle(void) const
 
 t_coor const	&Window::getPosition(void) const
 {
-	return (this->_box.getCoor());
+	return (this->getCoor());
 }
 
 t_dimension const	&Window::getSize(void) const
 {
-	return (this->_box.getDimension());
+	return (this->getDimension());
 }
 
 int const	&Window::getWFlags(void) const

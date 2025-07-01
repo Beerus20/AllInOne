@@ -34,6 +34,12 @@ void	Draw::color(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 			<< a << ")." << std::endl;
 }
 
+void	Draw::color(Color const &color)
+{
+	if (SDL_SetRenderDrawColor(Data::getRenderer(), _GET_COLOR_(color)) != 0)
+		std::cerr << "Can't apply" << std::endl << color;
+}
+
 cTexture	*Draw::target(void)
 {
 	return (SDL_GetRenderTarget(Data::getRenderer()));

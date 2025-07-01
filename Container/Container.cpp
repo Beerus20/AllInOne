@@ -90,8 +90,6 @@ bool	Container::addAt(
 	cRect *__restrict__ src,
 	cRect *__restrict__ dst)
 {
-	(void)src;
-	(void)dst;
 	cTexture	*render_target(Draw::target());
 
 	if (render_target)

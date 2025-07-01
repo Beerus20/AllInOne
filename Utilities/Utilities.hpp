@@ -1,8 +1,17 @@
 #ifndef UTILITIES_HPP
 # define UTILITIES_HPP
 
-#include <SDL2/SDL_stdinc.h>
-#include <sys/types.h>
+# include <SDL2/SDL_stdinc.h>
+# include <sys/types.h>
+# include <SDL2/SDL_error.h>
+# include <SDL2/SDL_pixels.h>
+# include <SDL2/SDL_render.h>
+# include <SDL2/SDL_stdinc.h>
+# include <SDL2/SDL_timer.h>
+# include <SDL2/SDL_video.h>
+# include <SDL2/SDL.h>
+# include "Utilities.typedef.hpp"
+
 # define CREATE_STRUCT_2D(name, a, b) \
 	typedef struct s_##name { \
 		int	a, b; \
@@ -31,16 +40,16 @@ class Utilities
 		Utilities	&operator=(Utilities const &);
 
 	public:
-		~Utilities(void);
+		virtual ~Utilities(void);
 
-		Uint32	RGBToInt(Uint8, Uint8, Uint8);
-		Uint32	RGBAToInt(Uint8, Uint8, Uint8, Uint8);
-		void	intToRGB(
+		static Uint32	RGBToInt(Uint8, Uint8, Uint8);
+		static Uint32	RGBAToInt(Uint8, Uint8, Uint8, Uint8);
+		static void	intToRGB(
 			Uint32,
 			Uint8 *__restrict__,
 			Uint8 *__restrict__,
 			Uint8 *__restrict__);
-		void	intToRGBA(
+		static void	intToRGBA(
 			Uint32,
 			Uint8 *__restrict__,
 			Uint8 *__restrict__,
