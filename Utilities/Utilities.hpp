@@ -11,6 +11,8 @@
 # include <SDL2/SDL_video.h>
 # include <SDL2/SDL.h>
 # include "Utilities.typedef.hpp"
+# include "Utilities.defines.hpp"
+
 
 # define CREATE_STRUCT_2D(name, a, b) \
 	typedef struct s_##name { \

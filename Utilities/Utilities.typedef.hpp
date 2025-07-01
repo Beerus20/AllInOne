@@ -6,7 +6,7 @@
 # include <SDL2/SDL_render.h>
 # include <SDL2/SDL_surface.h>
 # include <string>
-# include "Utilities.defines.hpp"
+#include <vector>
 
 typedef std::string					string;
 typedef string const 				cstring;
@@ -47,6 +47,5 @@ typedef SDL_Event					Event;
 typedef Event const					cEvent;
 typedef Event *__restrict__			rEvent;
 typedef cEvent *__restrict__		crEvent;
-
 
 #endif

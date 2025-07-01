@@ -77,12 +77,12 @@ void	Container::init(Renderer *renderer, int w, int h, Uint32 format, int access
 		free(this->_pixels);
 		this->_pixels = NULL;
 	}
-	if (this->_pixels == NULL)
-	{
-		this->_pixels = new Uint32[w * h];
-		if (this->_pixels == NULL)
-			std::cerr << "Pixel Initialisation error" << std::endl;
-	}
+	// if (this->_pixels == NULL)
+	// {
+	// 	this->_pixels = new Uint32[w * h];
+	// 	if (this->_pixels == NULL)
+	// 		std::cerr << "Pixel Initialisation error" << std::endl;
+	// }
 }
 
 

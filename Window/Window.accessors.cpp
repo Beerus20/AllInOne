@@ -1,6 +1,4 @@
 #include "Window.hpp"
-#include <SDL2/SDL_stdinc.h>
-#include <SDL2/SDL_video.h>
 
 // SETTERS =================================================================
 void	Window::setTitle(cstring &title)
@@ -33,6 +31,25 @@ void	Window::setSize(t_dimension const &dimension)
 	SDL_SetWindowSize(this->_addr, _DIM(dimension));
 }
 
+void	Window::setBackgroundColor(int r, int g, int b, int a)
+{
+	Draw::removeTarget();
+	Draw::color(r, g, b, a);
+	Draw::clear();
+}
+
+void	Window::setBackgroundColor(Color const &color)
+{
+	Draw::removeTarget();
+	Draw::color(color);
+	Draw::clear();
+}
+
+void	Window::setFullScreen(Uint32 mode)
+{
+	if (SDL_SetWindowFullscreen(this->_addr, mode) != 0)
+		this->Error("FullScreen mode error", false);
+}
 
 // GETTERS =================================================================
 cstring	&Window::getTitle(void) const

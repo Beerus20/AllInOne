@@ -31,7 +31,7 @@ Window::Window(Window const &to_copy) :
 
 Window::~Window(void)
 {
-	this->delay(500);
+	this->delay(DELAY);
 	std::cout << "Window destroyed" << std::endl;
 	this->destroy();
 }
@@ -59,13 +59,3 @@ void	Window::create(cstring &title, int x, int y, int w, int h, Uint32 wflags)
 	if (Data::isNull())
 		this->Error("Draw initialisation error");
 }
-
-void	Window::destroy(void)
-{
-	Data::destroyPixelFormat();
-	Data::destroy();
-	if (this->_addr)
-		SDL_DestroyWindow(this->_addr);
-	SDL_Quit();
-}
-
