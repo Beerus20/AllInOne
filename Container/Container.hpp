@@ -4,16 +4,20 @@
 # include "../Utilities/Utilities.hpp"
 # include "../Box/Box.hpp"
 # include "../Draw/Draw.hpp"
+# include <vector>
 
 class Container : public Box
 {
-	protected:
-		Texture			*_texture;
-		Uint32			*_pixels;
-		int				_format;
-		int				_access;
-
 	public:
+		struct	ContentList
+		{
+			Box		*box;
+			Rect	src;
+			Rect	dst;
+		};
+		typedef std::vector<ContentList>	List;
+
+		// Constructors ------------------------------------------------------------------------------------
 		Container(void);
 		Container(Container const &);
 		Container(Texture *texture);
@@ -24,6 +28,7 @@ class Container : public Box
 
 		void			init(Renderer *renderer, TEXTURE_DEFAULT_CONFIG);
 		void			destroy(void);
+		void			addContent(Box *, cRect *src, cRect *dst);
 
 		// Utils ------------------------------------------------------------------------------------
 		bool			addAt(crRect src = NULL, crRect dst = NULL);
@@ -47,6 +52,14 @@ class Container : public Box
 		virtual void	onMouseRightClick(Event);
 		virtual void	onMouseMiddleClick(Event);
 		virtual void	onMouseWheel(Event);
+
+	protected:
+		Texture			*_texture;
+		Uint32			*_pixels;
+		int				_format;
+		int				_access;
+		List			_content;
+
 };
 
 #endif

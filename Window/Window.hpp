@@ -13,6 +13,7 @@ class Window : private Box
 		int					_iflags;
 		int					_wflags;
 		SDL_Window			*_addr;
+		Event				_event;
 
 		void				Error(string const &, bool = true, int = EXIT_FAILURE);
 
@@ -25,7 +26,7 @@ class Window : private Box
 		Window				&operator=(Window const &);
 
 		void				create(cstring &title, int x, int y, int w, int h, Uint32 wflags);
-		void				loop();
+		void				loop(void);
 
 		// Utils -------------------------------------------------------------------------------------
 		void				delay(Uint32);

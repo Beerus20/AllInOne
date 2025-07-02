@@ -1,4 +1,6 @@
 #include "Window.hpp"
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_stdinc.h>
 #include <iostream>
 #include "../Data/Data.hpp"
 
@@ -31,7 +33,6 @@ Window::Window(Window const &to_copy) :
 
 Window::~Window(void)
 {
-	this->delay(DELAY);
 	std::cout << "Window destroyed" << std::endl;
 	this->destroy();
 }
@@ -58,4 +59,17 @@ void	Window::create(cstring &title, int x, int y, int w, int h, Uint32 wflags)
 	Data::setRenderer(SDL_CreateRenderer(this->_addr, -1, SDL_RENDERER_ACCELERATED));
 	if (Data::isNull())
 		this->Error("Draw initialisation error");
+}
+
+void	Window::loop(void)
+{
+	SDL_bool	quit(SDL_FALSE);
+
+	while (!quit)
+	{
+		SDL_WaitEvent(&this->_event);
+		if (this->_event.type == SDL_QUIT)
+			quit = SDL_TRUE;
+		std::cout << "called" << std::endl;
+	}
 }

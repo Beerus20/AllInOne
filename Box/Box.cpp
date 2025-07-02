@@ -1,5 +1,4 @@
 #include "Box.hpp"
-#include <thread>
 
 Box::Box(void) :
 	_coor(0,0),
@@ -48,4 +47,6 @@ Box	&Box::operator=(Box const &assign)
 	return (*this);
 }
 
+void	Box::draw(void) {}
 
+void	Box::reload(void) {}

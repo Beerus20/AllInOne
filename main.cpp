@@ -36,5 +36,6 @@ int	main(int argc, char *argv[])
 	if (!nav.addAt(NULL, &rect))
 		std::cout << "Error adding container" << std::endl;
 	Draw::apply();
+	window.loop();
 	return (0);
 }

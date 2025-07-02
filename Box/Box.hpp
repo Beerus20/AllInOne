@@ -5,21 +5,14 @@
 # include "../Utilities/Utilities.typedef.hpp"
 # include "../Color/Color.hpp"
 # include "../Event/Event.hpp"
-# include <vector>
-# include <map>
 
 class Box : public IEvent
 {
-	typedef std::vector<std::vector<Box *>>	PixelBoxPointer;
-	typedef std::map<Box *, bool>			PixelBoxPointerList;
-
 	private:
 		t_coor				_coor;
 		t_dimension			_dimension;
 		Rect				_rect;
 		Color				_color;
-		PixelBoxPointer		_pixel_box_pointer;
-		PixelBoxPointerList	_pixel_box_pointer_list;
 
 	public:
 		Box(void);
@@ -31,6 +24,9 @@ class Box : public IEvent
 		virtual ~Box(void);
 
 		Box					&operator=(Box const &);
+
+		virtual void		draw(void);
+		virtual void		reload(void);
 
 		// Setters ----------------------------------------------------------
 		void				setX(int);
