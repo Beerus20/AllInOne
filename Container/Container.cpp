@@ -95,19 +95,7 @@ bool	Container::addAt(
 	return (true);
 }
 
-bool	Container::addTo(
-	Container *__restrict__ container,
-	cRect *__restrict__ src,
-	cRect *__restrict__ dst)
+void	Container::addContent(Container *__restrict__ container, crRect src, crRect dst)
 {
-	cTexture	*render_target(Draw::target());
-
-	if (this == container)
-		return (false);
-	if (!Draw::in(container))
-		return (false);
-	if (!Draw::texture(this->_texture, src, dst))
-		return (false);
-	Draw::in(const_cast<Texture *>(render_target));
-	return (true);
+	this->_content.push_back((ContentList){container, *src, *dst});
 }

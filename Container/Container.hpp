@@ -32,7 +32,7 @@ class Container : public Box
 
 		// Utils ------------------------------------------------------------------------------------
 		bool			addAt(crRect src = NULL, crRect dst = NULL);
-		bool			addTo(Container *__restrict__ container, crRect src = NULL, crRect dst = NULL);
+		void			addContent(Container *__restrict__ container, crRect src = NULL, crRect dst = NULL);
 
 		// Setters ------------------------------------------------------------------------------------
 		void			setTexture(Texture *texture);
