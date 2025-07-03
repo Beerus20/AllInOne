@@ -15,14 +15,7 @@ class Window : public Box
 		Uint32			_flags;
 		WindowAddr		_addr;
 
-		void			init(
-			std::string const &title,
-			int x,
-			int y,
-			int w,
-			int h,
-			int flags = WINDOW_DEFAULT_FLAGS
-		);
+		void			init(cstring &, WINDOW_DEFINE_INIT_DEFAULT);
 	public:
 		Window(void);
 		Window(Window const &);

@@ -1,6 +1,8 @@
 #ifndef BOX_HPP
 # define BOX_HPP
 
+# include "defines.hpp"
+
 class Box
 {
 	protected:
@@ -16,15 +18,7 @@ class Box
 	public:
 		Box(void);
 		Box(Box const &);
-		Box(
-			int x,
-			int y,
-			int w,
-			int h,
-			int r,
-			int g,
-			int b,
-			int a);
+		Box(int x, int y, int w, int h, BOX_DEFAULT_COLOR);
 		virtual ~Box(void);
 
 		Box		&operator=(Box const &);
@@ -34,12 +28,16 @@ class Box
 		void	setY(int);
 		void	setW(int);
 		void	setH(int);
+		void	setPosition(int, int);
+		void	setSize(int, int);
+		void	setColor(int, int , int, int = 255);
 
 		// Getters	------------------------------------
 		int		getX(void) const;
 		int		getY(void) const;
 		int		getW(void) const;
 		int		getH(void) const;
+
 
 };
 
