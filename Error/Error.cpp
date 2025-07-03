@@ -1,49 +1,51 @@
-#include "Error.hpp"
-#include "../Utilities/Utilities.color.hpp"
-#include <SDL2/SDL_error.h>
+#include "includes/Error.hpp"
+#include "includes/enums.hpp"
+#include "includes/typedefs.hpp"
+#include <SDL2/SDL.h>
 #include <iostream>
+#include <utility>
 
 Error::Error(void) {}
-Error::Error(Error const &) { }
+Error::Error(Error const &) {}
 Error::~Error(void) {}
+
+unsigned int	Error::nb = 0;
+
 Error	&Error::operator=(Error const &)
 {
 	return (*this);
 }
 
-void	Error::onfail(cstring &message, bool exit_on_fail)
+void	Error::warning(std::string const &message)
 {
-		std::cerr << T_RED + message + T_END << std::endl;
-		if (exit_on_fail) exit(1);
+	std::cout
+		<< "WARNING" << std::endl
+		<< "TYPES : " << message << std::endl;
 }
 
-void	Error::check(bool condition, cstring &error_message, cstring &success_message, bool exit_on_fail)
+void	Error::debug(std::string const &message)
 {
-	if (!condition)
-		Error::onfail(error_message, exit_on_fail);
-	else
-		std::cout << T_GREEN + success_message + T_END << std::endl;
+	std::cout
+		<< "DEBUG" << std::endl
+		<< "TYPES : " << message << std::endl;
 }
 
-void	Error::check(bool condition, cstring &error_message, bool exit_on_fail)
+void	Error::info(std::string const &message)
 {
-	if (!condition)
-		Error::onfail(error_message, exit_on_fail);
+	std::cout
+		<< "INFO" << std::endl
+		<< "TYPES : " << message << std::endl;
 }
 
-void	Error::sdl_check(bool condition, cstring &error_message, cstring &success_message, bool exit_on_fail)
+void	Error::error(std::string const &message)
 {
-	Error::check(
-		condition,
-		error_message + " : " + SDL_GetError(),
-		success_message,
-		exit_on_fail);
+	std::cout
+		<< "ERROR" << std::endl
+		<< "TYPES : " << message << std::endl;
 }
 
-void	Error::sdl_check(bool condition, cstring &error_message, bool exit_on_fail)
+void	Error::add(error_status status, cstring &message)
 {
-	Error::check(
-		condition,
-		error_message + " : " + SDL_GetError(),
-		exit_on_fail);
+	Error::_list.push_back(std::make_pair(status, message));
+	Error::nb = Error::_list.size();
 }
