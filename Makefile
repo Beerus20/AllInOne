@@ -6,8 +6,9 @@ CXXFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 all				: $(NAME)
 
-$(NAME)			: $(OBJS)
-					$(call create_executable, $^, $@)
+$(NAME)			:
+					$(CXX) $(CXXFLAGS) $(FILES) -o $@ `sdl2-config --cflags --libs`
+					# $(call create_executable, **/*.cpp, $@)
 
 clean			:
 					rm -rf $(OBJS)

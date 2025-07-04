@@ -10,6 +10,7 @@ Error::Error(Error const &) {}
 Error::~Error(void) {}
 
 unsigned int	Error::nb = 0;
+error_list		Error::_list;
 
 Error	&Error::operator=(Error const &)
 {
@@ -48,4 +49,17 @@ void	Error::add(error_status status, cstring &message)
 {
 	Error::_list.push_back(std::make_pair(status, message));
 	Error::nb = Error::_list.size();
+}
+
+void	Error::check(bool condition, cstring &error_msg, cstring &succes_msg)
+{
+	if (condition)
+	{
+		if (!error_msg.empty()) std::cout << error_msg << std::endl;
+	}
+	else
+	{
+		if (!succes_msg.empty()) std::cout << succes_msg << std::endl;
+	}
+
 }

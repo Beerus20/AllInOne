@@ -1,0 +1,62 @@
+#include "includes/Draw.hpp"
+#include <SDL2/SDL_error.h>
+#include <SDL2/SDL_render.h>
+
+Draw::Draw(void) {}
+Draw::Draw(Draw const &) {}
+Draw::~Draw(void) {}
+
+Draw	&Draw::operator=(Draw const &)
+{
+	return (*this);
+}
+
+Renderer	Draw::_renderer = NULL;
+
+bool	Draw::verify(cstring &error_msg)
+{
+	if (Draw::_renderer == NULL)
+	{
+		Error::warning(error_msg);
+		return (false);
+	}
+	return (true);
+}
+
+void	Draw::in(Renderer renderer)
+{
+	if (renderer == NULL)
+		Error::warning("NULL renderer setted");
+	else
+		Draw::_renderer = renderer;
+}
+
+void	Draw::apply(void)
+{
+	SDL_RenderPresent(Draw::_renderer);
+}
+
+void	Draw::clear(void)
+{
+	Error::check(
+		SDL_RenderClear(Draw::_renderer) != 0,
+		SDL_GetError());
+}
+
+void	Draw::color(COLOR_DEFAULT_PARAMS)
+{
+	Error::check(
+		SDL_SetRenderDrawColor(Draw::_renderer, r, g, b, a) != 0,
+		SDL_GetError());
+}
+
+void	Draw::color(Color const &color)
+{
+	Draw::color(
+		color.getR(),
+		color.getG(),
+		color.getB(),
+		color.getA());
+}
+
+

@@ -1,5 +1,8 @@
-output		:
-				@if [ ! -d output ]; then mkdir output; fi
+test		:
+				echo $(OUTPUT_DIRECTORIES)
+
+%/output		:
+				@if [ ! -d $@ ]; then mkdir $@; fi
 
 output/%.o	: %.cpp | output
 				$(call create_object, $<, $@)

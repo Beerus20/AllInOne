@@ -26,6 +26,7 @@ class Error
 		static void				info(cstring &);
 		static void				error(cstring &);
 		static void				add(error_status, cstring & = "");
+		static void				check(bool condition, cstring &error_msg = "", cstring &succes_msg = "");
 };
 
 #endif

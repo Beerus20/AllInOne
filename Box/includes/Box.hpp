@@ -2,22 +2,19 @@
 # define BOX_HPP
 
 # include "defines.hpp"
+# include "typedefs.hpp"
+# include "../../Color/includes/Color.hpp"
 
 class Box
 {
 	protected:
-		int		_x;
-		int		_y;
-		int		_w;
-		int		_h;
-		int		_r;
-		int		_g;
-		int		_b;
-		int		_a;
+		Rect	_rect;
+		Color	_color;
 
 	public:
 		Box(void);
 		Box(Box const &);
+		Box(cRect &, Color const &);
 		Box(int x, int y, int w, int h, BOX_DEFAULT_COLOR);
 		virtual ~Box(void);
 
@@ -30,14 +27,15 @@ class Box
 		void	setH(int);
 		void	setPosition(int, int);
 		void	setSize(int, int);
-		void	setColor(int, int , int, int = 255);
+		void	setColor(COLOR_INIT_DEFAULT);
+		void	setColor(Color const &);
 
 		// Getters	------------------------------------
 		int		getX(void) const;
 		int		getY(void) const;
 		int		getW(void) const;
 		int		getH(void) const;
-
+		cRect	*toRect(void) const;
 
 };
 
