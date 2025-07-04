@@ -36,3 +36,8 @@ void	Window::raise(void)
 {
 	SDL_RaiseWindow(this->_addr);
 }
+
+void	Window::add(Container *container)
+{
+	this->_containers.push_back(container);
+}
