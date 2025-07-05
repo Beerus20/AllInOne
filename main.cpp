@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ostream>
 #include "main.hpp"
+#include "Container/includes/Container.hpp"
 
 int	main(int argc, char *argv[])
 {
@@ -9,8 +10,11 @@ int	main(int argc, char *argv[])
 	(void)argv;
 	std::cout << "Hello world" << std::endl;
 	Window		window;
-	// Rect		test = {10, 10, 20, 10};
+	Container	test;
+	Rect		rect = {10, 10, 200, 100};
 
+	window.add(&test, rect, rect);
+	window.loop();
 	(void)window;
 	return (0);
 }

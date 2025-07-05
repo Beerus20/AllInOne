@@ -4,11 +4,12 @@ NAME			= allinone
 CXX				= c++
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98
 
+$(eval $(call create_rule, Box))
+
 all				: $(NAME)
 
-$(NAME)			:
-					$(CXX) $(CXXFLAGS) $(FILES) -o $@ `sdl2-config --cflags --libs`
-					# $(call create_executable, **/*.cpp, $@)
+$(NAME)			: $(OBJS)
+					$(call create_executable, $^, $@)
 
 clean			:
 					rm -rf $(OBJS)

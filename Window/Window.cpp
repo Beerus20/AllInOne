@@ -1,8 +1,10 @@
 #include "includes/Window.hpp"
 #include "includes/defines.hpp"
+#include "includes/typedefs.hpp"
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_stdinc.h>
+#include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
 #include <cstddef>
 #include <iostream>
@@ -35,7 +37,6 @@ Window::Window(cstring &title, WINDOW_INIT_DEFAULT) :
 
 Window::~Window(void)
 {
-	this->destroyTextures();
 	this->destroy();
 	std::cout << "Window destroyed" << std::endl;
 }
@@ -52,15 +53,27 @@ void	Window::init(cstring &title, WINDOW_INIT_DEFAULT)
 		Error::add(ERROR, SDL_GetError());
 }
 
-void	Window::createTexture(int w, int h, Uint32 format, int access)
+bool	Window::draw(rRect)
 {
-	this->_textures.push_back(SDL_CreateTexture(this->_renderer, format, access, w, h));
-	Error::check(
-		this->_textures[this->_textures.size() - 1] != NULL,
-		SDL_GetError());
+	Draw::in(this);
+	for (Containers::iterator it(this->_content.begin()); it != this->_content.end(); it++)
+	{
+		Draw::in(it->first);
+		it->first->draw(&it->second.second);
+		Draw::out();
+		SDL_RenderCopy(
+			this->_renderer,
+			it->first->getTexture(),
+			&it->second.first,
+			&it->second.second
+		);
+	}
+	Draw::apply();
+	return (true);
 }
 
 void	Window::loop(void)
 {
-
+	this->draw(const_cast<Rect *>(this->toRect()));
+	SDL_Delay(5000);
 }

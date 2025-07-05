@@ -6,6 +6,10 @@
 # include "../../Color/includes/Color.hpp"
 # include "../../Box/includes/Box.hpp"
 
+
+class Container;
+class Window;
+
 class Draw
 {
 	private:
@@ -21,6 +25,11 @@ class Draw
 		virtual ~Draw(void);
 
 		static void			in(Renderer);
+		static void			in(Window *);
+		static void			in(Container *);
+		static void			out(void);
+
+
 		static void			apply(void);
 		static void			clear(void);
 		static void			color(COLOR_INIT_DEFAULT);

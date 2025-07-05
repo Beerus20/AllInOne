@@ -2,8 +2,9 @@
 # define WINDOW_TYPEDEFS_HPP
 
 # include "../../Container/includes/Container.hpp"
-# include <vector>
+# include <map>
+#include <utility>
 
-typedef std::vector<Container *>				Containers;
+typedef std::map<Container *, std::pair<Rect, Rect> >	Containers;
 
 #endif

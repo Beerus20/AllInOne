@@ -10,15 +10,23 @@
 class Container : public Box
 {
 	private:
-		Boxs		_content;
+		Texture				_texture;
+		Boxs				_content;
 
 	public:
 		Container(void);
 		Container(Container const &);
 		virtual ~Container(void);
 
-		Container	&operator=(Container const &);
-		bool		draw(rRect);
+		Container			&operator=(Container const &);
+		bool				initTexture(
+								Renderer,
+								Uint32 = TEXTURE_TYPE,
+								int = PIXEL_FORMAT);
+		void				destroy(void);
+		Texture				getTexture(void) const;
+
+		virtual bool		draw(rRect);
 
 };
 

@@ -8,8 +8,8 @@
 class Box
 {
 	protected:
-		Rect	_rect;
-		Color	_color;
+		Rect			_rect;
+		Color			_color;
 
 	public:
 		Box(void);
@@ -18,24 +18,25 @@ class Box
 		Box(int x, int y, int w, int h, BOX_DEFAULT_COLOR);
 		virtual ~Box(void);
 
-		Box		&operator=(Box const &);
+		Box				&operator=(Box const &);
 
 		// Setters	------------------------------------
-		void	setX(int);
-		void	setY(int);
-		void	setW(int);
-		void	setH(int);
-		void	setPosition(int, int);
-		void	setSize(int, int);
-		void	setColor(COLOR_INIT_DEFAULT);
-		void	setColor(Color const &);
+		void			setX(int);
+		void			setY(int);
+		void			setW(int);
+		void			setH(int);
+		void			setPosition(int, int);
+		void			setSize(int, int);
+		void			setColor(COLOR_INIT_DEFAULT);
+		void			setColor(Color const &);
 
 		// Getters	------------------------------------
-		int		getX(void) const;
-		int		getY(void) const;
-		int		getW(void) const;
-		int		getH(void) const;
-		cRect	*toRect(void) const;
+		int				getX(void) const;
+		int				getY(void) const;
+		int				getW(void) const;
+		int				getH(void) const;
+		cRect			*toRect(void) const;
+		virtual bool	draw(rRect) = 0;
 
 };
 

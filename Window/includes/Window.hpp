@@ -15,8 +15,7 @@ class Window : public Box
 		Uint32			_flags;
 		WindowAddr		_addr;
 		Renderer		_renderer;
-		Textures		_textures;
-		Containers		_containers;
+		Containers		_content;
 		Event			_event;
 
 		void			init(cstring &, WINDOW_DEFINE_INIT_DEFAULT);
@@ -31,26 +30,22 @@ class Window : public Box
 
 		void			loop(void);
 
-		void			createTexture(
-							int w,
-							int h,
-							Uint32 format = PIXEL_FORMAT,
-							int access = TEXTURE_TYPE);
 		void			destroy(void);
-		void			destroyTextures(void);
 		void			maximize(void);
 		void			minimize(void);
 		void			restore(void);
 		void			hide(void);
 		void			show(void);
 		void			raise(void);
-		void			add(Container *);
+		void			add(Container *, Rect, Rect);
 
+		virtual bool	draw(rRect);
 		// Setters ---------------------------------------------------------------------
 		void			setTitle(cstring &);
 
 		// Getters ---------------------------------------------------------------------
 		cstring			&getTitle(void) const;
+		Renderer		getRenderer(void) const;
 };
 
 #endif

@@ -13,3 +13,8 @@ cstring	&Window::getTitle(void) const
 {
 	return (this->_title);
 }
+
+Renderer	Window::getRenderer(void) const
+{
+	return (this->_renderer);
+}

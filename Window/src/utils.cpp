@@ -1,6 +1,7 @@
 #include "../includes/Window.hpp"
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_video.h>
+#include <utility>
 
 void	Window::destroy(void)
 {
@@ -38,10 +39,10 @@ void	Window::raise(void)
 	SDL_RaiseWindow(this->_addr);
 }
 
-void	Window::add(Container *container)
+void	Window::add(Container *container, Rect src, Rect dst)
 {
 	if (container != NULL)
-		this->_containers.push_back(container);
+		this->_content[container] = std::make_pair(src, dst);
 	else
 	 	Error::warning("You are trying to set a NULL container");
 }
