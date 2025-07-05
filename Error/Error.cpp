@@ -55,11 +55,11 @@ void	Error::check(bool condition, cstring &error_msg, cstring &succes_msg)
 {
 	if (condition)
 	{
-		if (!error_msg.empty()) std::cout << error_msg << std::endl;
+		if (!succes_msg.empty()) std::cout << succes_msg << std::endl;
 	}
 	else
 	{
-		if (!succes_msg.empty()) std::cout << succes_msg << std::endl;
+		if (!error_msg.empty()) std::cout << error_msg << std::endl;
 	}
 
 }

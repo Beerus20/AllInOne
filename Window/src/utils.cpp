@@ -1,4 +1,5 @@
 #include "../includes/Window.hpp"
+#include <SDL2/SDL_render.h>
 #include <SDL2/SDL_video.h>
 
 void	Window::destroy(void)
@@ -39,5 +40,8 @@ void	Window::raise(void)
 
 void	Window::add(Container *container)
 {
-	this->_containers.push_back(container);
+	if (container != NULL)
+		this->_containers.push_back(container);
+	else
+	 	Error::warning("You are trying to set a NULL container");
 }

@@ -17,9 +17,10 @@ class Window : public Box
 		Renderer		_renderer;
 		Textures		_textures;
 		Containers		_containers;
+		Event			_event;
 
 		void			init(cstring &, WINDOW_DEFINE_INIT_DEFAULT);
-		void			createTexture(void);
+
 	public:
 		Window(void);
 		Window(Window const &);
@@ -28,7 +29,15 @@ class Window : public Box
 
 		Window			&operator=(Window const &);
 
+		void			loop(void);
+
+		void			createTexture(
+							int w,
+							int h,
+							Uint32 format = PIXEL_FORMAT,
+							int access = TEXTURE_TYPE);
 		void			destroy(void);
+		void			destroyTextures(void);
 		void			maximize(void);
 		void			minimize(void);
 		void			restore(void);

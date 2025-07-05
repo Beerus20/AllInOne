@@ -4,11 +4,13 @@
 # include "../../Box/includes/Box.hpp"
 # include "../../includes/typedefs.hpp"
 # include "../../Draw/includes/Draw.hpp"
+# include "defines.hpp"
+#include <cstddef>
 
 class Container : public Box
 {
 	private:
-		Boxs	_content;
+		Boxs		_content;
 
 	public:
 		Container(void);
@@ -16,8 +18,7 @@ class Container : public Box
 		virtual ~Container(void);
 
 		Container	&operator=(Container const &);
-
-		
+		bool		draw(rRect);
 
 };
 
