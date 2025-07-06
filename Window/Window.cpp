@@ -11,6 +11,7 @@
 
 Window::Window(void) :
 	Box(WINDOW_DEFAULT_PARAMS),
+	EventManager(&_event),
 	_title("window"),
 	_flags(WINDOW_DEFAULT_FLAGS),
 	_addr(NULL),
@@ -20,7 +21,8 @@ Window::Window(void) :
 }
 
 Window::Window(Window const &to_copy) :
-	Box()
+	Box(),
+	EventManager(&_event)
 {
 	*this = to_copy;
 }
@@ -53,19 +55,19 @@ void	Window::init(cstring &title, WINDOW_INIT_DEFAULT)
 		Error::add(ERROR, SDL_GetError());
 }
 
-bool	Window::draw(rRect)
+bool	Window::draw(void)
 {
 	Draw::in(this);
 	for (Containers::iterator it(this->_content.begin()); it != this->_content.end(); it++)
 	{
-		Draw::in(it->first);
-		it->first->draw(&it->second.second);
+		Draw::in(*it);
+		(*it)->draw();
 		Draw::out();
 		SDL_RenderCopy(
 			this->_renderer,
-			it->first->getTexture(),
-			&it->second.first,
-			&it->second.second
+			(*it)->getTexture(),
+			(*it)->getSrc(),
+			(*it)->toRect()
 		);
 	}
 	Draw::apply();
@@ -74,6 +76,6 @@ bool	Window::draw(rRect)
 
 void	Window::loop(void)
 {
-	this->draw(const_cast<Rect *>(this->toRect()));
-	SDL_Delay(5000);
+	while (this->wait())
+		this->draw();
 }

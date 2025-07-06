@@ -36,7 +36,7 @@ class Box
 		int				getW(void) const;
 		int				getH(void) const;
 		cRect			*toRect(void) const;
-		virtual bool	draw(rRect) = 0;
+		virtual bool	draw(void) = 0;
 
 };
 

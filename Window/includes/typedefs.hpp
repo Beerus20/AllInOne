@@ -4,7 +4,8 @@
 # include "../../Container/includes/Container.hpp"
 # include <map>
 #include <utility>
+#include <vector>
 
-typedef std::map<Container *, std::pair<Rect, Rect> >	Containers;
+typedef std::vector<Container *>	Containers;
 
 #endif

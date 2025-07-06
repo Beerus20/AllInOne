@@ -6,9 +6,10 @@
 # include "../../includes/typedefs.hpp"
 # include "defines.hpp"
 # include "../../Error/includes/Error.hpp"
-#include "typedefs.hpp"
+# include "typedefs.hpp"
+# include "../../EventManager/includes/EventManager.hpp"
 
-class Window : public Box
+class Window : public Box, public EventManager
 {
 	private:
 		string			_title;
@@ -37,9 +38,9 @@ class Window : public Box
 		void			hide(void);
 		void			show(void);
 		void			raise(void);
-		void			add(Container *, Rect, Rect);
+		void			add(Container *);
 
-		virtual bool	draw(rRect);
+		virtual bool	draw(void);
 		// Setters ---------------------------------------------------------------------
 		void			setTitle(cstring &);
 

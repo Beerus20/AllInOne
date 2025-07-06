@@ -10,7 +10,7 @@ void	Draw::point(int x, int y, COLOR_DEFAULT_PARAMS)
 		SDL_GetError());
 }
 
-void	Draw::rect(crRect rect, COLOR_DEFAULT_PARAMS)
+void	Draw::rect(cRect *rect, COLOR_DEFAULT_PARAMS)
 {
 	Draw::color(r, g, b, a);
 	Error::check(

@@ -8,7 +8,9 @@
 
 Container::Container(void) :
 	Box(CONTAINER_DEFAULT_VALUE)
-{}
+{
+	this->_src = *this->toRect();
+}
 
 Container::Container(Container const &) :
 	Box()
@@ -41,8 +43,8 @@ void	Container::destroy(void)
 		SDL_DestroyTexture(this->_texture);
 }
 
-bool	Container::draw(rRect rect)
+bool	Container::draw(void)
 {
-	Draw::fillRect(rect);
+	Draw::rect(this->toRect());
 	return (true);
 }

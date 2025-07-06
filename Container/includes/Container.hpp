@@ -12,6 +12,7 @@ class Container : public Box
 	private:
 		Texture				_texture;
 		Boxs				_content;
+		Rect				_src;
 
 	public:
 		Container(void);
@@ -25,8 +26,9 @@ class Container : public Box
 								int = PIXEL_FORMAT);
 		void				destroy(void);
 		Texture				getTexture(void) const;
+		cRect				*getSrc(void) const;
 
-		virtual bool		draw(rRect);
+		virtual bool		draw(void);
 
 };
 

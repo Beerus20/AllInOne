@@ -8,22 +8,26 @@
 class EventManager
 {
 	private:
-		// Event			_event;
+		rEvent			_event;
 		EventList		_event_list;
 
+		void			initEventManager(void);
 	public:
 		EventManager(void);
+		EventManager(rEvent event);
 		EventManager(EventManager const &);
 		virtual ~EventManager(void);
 
 		EventManager	&operator=(EventManager const &);
 
-		// bool			wait(void);
-		// bool			poll(void);
-		// bool			waitTimeout(int timeout = 20);
-		// bool			checkEvents(void);
+		bool			wait(void);
+		bool			poll(void);
+		bool			waitTimeout(int timeout = 20);
+		bool			checkEvents(void);
 
 		bool			add(event_type, onEvent);
+
+		void			setEvent(rEvent);
 
 };
 

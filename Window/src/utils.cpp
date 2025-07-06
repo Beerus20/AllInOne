@@ -39,10 +39,10 @@ void	Window::raise(void)
 	SDL_RaiseWindow(this->_addr);
 }
 
-void	Window::add(Container *container, Rect src, Rect dst)
+void	Window::add(Container *container)
 {
 	if (container != NULL)
-		this->_content[container] = std::make_pair(src, dst);
+		this->_content.push_back(container);
 	else
 	 	Error::warning("You are trying to set a NULL container");
 }

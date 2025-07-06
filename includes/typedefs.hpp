@@ -32,7 +32,8 @@ typedef std::vector<Texture>			Textures;
 typedef std::vector<Box *>				Boxs;
 typedef std::vector<Box *__restrict__>	rBoxs;
 typedef SDL_Event						Event;
-typedef int (*onEvent)(Event *);
-typedef std::map<event_type, onEvent>		EventList;
+typedef Event *__restrict__				rEvent;
+typedef int (*onEvent)(rEvent);
+typedef std::map<event_type, onEvent>	EventList;
 
 #endif
