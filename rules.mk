@@ -11,15 +11,6 @@ output/%.o	: %.cpp | output
 				echo "tests 1"
 				$(call create_object, $<, $@)
 
-output/%.o	: */*.cpp | output
-				echo "tests 2"
-				$(call create_object, $<, $@)
-
-output/%.o	: */src/*.cpp | output
-				echo "tests 3"
-				$(call create_object, $<, $@)
-
-
 run			: $(NAME)
 				./$(NAME)
 

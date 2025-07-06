@@ -8,7 +8,6 @@ DIRECTORIES			= \
 						Utils						\
 						Window
 
-OUTPUT_DIRECTORIES	= $(addsuffix /output,$(DIRECTORIES))
 
 DIRECTORY_BOX		= \
 						accessors.cpp			\
@@ -41,16 +40,10 @@ DIRECTORY_WINDOW	= \
 						Window.cpp
 
 OBJS				= \
-						$(addprefix Box/output/,$(DIRECTORY_BOX:%.cpp=%.o))				\
-						$(addprefix Color/output/,$(DIRECTORY_COLOR:%.cpp=%.o))			\
-						$(addprefix Container/output/,$(DIRECTORY_CONTAINER:%.cpp=%.o))	\
-						$(addprefix Data/output/,$(DIRECTORY_DATA:%.cpp=%.o))			\
-						$(addprefix Draw/output/,$(DIRECTORY_DRAW:%.cpp=%.o))			\
-						$(addprefix Error/output/,$(DIRECTORY_ERROR:%.cpp=%.o))			\
-						$(addprefix Utils/output/,$(DIRECTORY_UTILS:%.cpp=%.o))			\
-						$(addprefix Window/output/,$(DIRECTORY_WINDOW:%.cpp=%.o))		\
+						$(foreach dir, $(DIRECTORIES), \
+							$(addprefix $(dir)/output/, $(DIRECTORY_$(shell echo $(dir) | tr a-z A-Z):%.cpp=%.o) )\
+						) \
 						main.o
-
 
 INCLUDES			= \
 						-I./Window

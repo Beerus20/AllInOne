@@ -4,7 +4,6 @@ NAME			= allinone
 CXX				= c++
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-$(eval $(call create_rule, Box))
 
 all				: $(NAME)
 
