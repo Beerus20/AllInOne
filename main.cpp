@@ -1,19 +1,25 @@
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_rect.h>
 #include <iostream>
 #include <ostream>
 #include "main.hpp"
 #include "Container/includes/Container.hpp"
 #include "includes/typedefs.hpp"
+#include "Data/includes/Data.hpp"
 
-int	clg(rEvent e)
+int	clg(SDL_Event *e, Box *)
 {
-	std::cout
-		<< "Coor : (x : "
-		<< e->motion.x
-		<< ", y : "
-		<< e->motion.y
-		<< ")"
-		<< std::endl;
+	if (Data::map[e->motion.y][e->motion.x])
+	{
+		std::cout << Data::map[e->motion.y][e->motion.x] << std::endl;
+		std::cout
+			<< "Coor : (x : "
+			<< e->motion.x
+			<< ", y : "
+			<< e->motion.y
+			<< ")"
+			<< std::endl;
+	}
 	return (0);
 }
 
@@ -26,7 +32,7 @@ int	main(int argc, char *argv[])
 	Container	test;
 
 	window.add(&test);
-	window.EventManager::add(MOUSE_MOTION, clg);
+	window.listen(MOUSE_MOTION, clg);
 	window.loop();
 	(void)window;
 	return (0);

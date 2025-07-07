@@ -9,7 +9,7 @@
 # include "typedefs.hpp"
 # include "../../EventManager/includes/EventManager.hpp"
 
-class Window : public Box, public EventManager
+class Window : public Box
 {
 	private:
 		string			_title;
@@ -17,7 +17,6 @@ class Window : public Box, public EventManager
 		WindowAddr		_addr;
 		Renderer		_renderer;
 		Containers		_content;
-		Event			_event;
 
 		void			init(cstring &, WINDOW_DEFINE_INIT_DEFAULT);
 

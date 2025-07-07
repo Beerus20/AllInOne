@@ -8,10 +8,11 @@
 #include <SDL2/SDL_video.h>
 #include <cstddef>
 #include <iostream>
+#include "../Event/includes/Event.hpp"
+#include "../Data/includes/Data.hpp"
 
 Window::Window(void) :
 	Box(WINDOW_DEFAULT_PARAMS),
-	EventManager(&_event),
 	_title("window"),
 	_flags(WINDOW_DEFAULT_FLAGS),
 	_addr(NULL),
@@ -21,8 +22,7 @@ Window::Window(void) :
 }
 
 Window::Window(Window const &to_copy) :
-	Box(),
-	EventManager(&_event)
+	Box()
 {
 	*this = to_copy;
 }
@@ -47,6 +47,8 @@ Window	&Window::operator=(Window const &) { return (*this); }
 
 void	Window::init(cstring &title, WINDOW_INIT_DEFAULT)
 {
+	if (!Data::isInited)
+		Data::init(SDL_INIT_VIDEO);
 	this->_addr = SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
 	if (this->_addr == NULL)
 		Error::add(ERROR, SDL_GetError());
@@ -76,6 +78,7 @@ bool	Window::draw(void)
 
 void	Window::loop(void)
 {
-	while (this->wait())
+	Event::setEventList(&this->_event_list);
+	while (Event::wait())
 		this->draw();
 }

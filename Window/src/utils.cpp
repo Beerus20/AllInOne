@@ -2,6 +2,7 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_video.h>
 #include <utility>
+#include "../../Data/includes/Data.hpp"
 
 void	Window::destroy(void)
 {
@@ -42,7 +43,10 @@ void	Window::raise(void)
 void	Window::add(Container *container)
 {
 	if (container != NULL)
+	{
 		this->_content.push_back(container);
+		Data::addContent(container);
+	}
 	else
 	 	Error::warning("You are trying to set a NULL container");
 }

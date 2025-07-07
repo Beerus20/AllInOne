@@ -3,32 +3,24 @@
 
 # include "../../includes/typedefs.hpp"
 # include "defines.hpp"
-#include <SDL2/SDL_stdinc.h>
+# include <SDL2/SDL_events.h>
+# include <SDL2/SDL_stdinc.h>
 
 class EventManager
 {
-	private:
-		rEvent			_event;
-		EventList		_event_list;
+	protected:
+		EventList			_event_list;
 
-		void			initEventManager(void);
+		void				initEventManager(void);
 	public:
 		EventManager(void);
-		EventManager(rEvent event);
 		EventManager(EventManager const &);
 		virtual ~EventManager(void);
 
-		EventManager	&operator=(EventManager const &);
+		EventManager		&operator=(EventManager const &);
 
-		bool			wait(void);
-		bool			poll(void);
-		bool			waitTimeout(int timeout = 20);
-		bool			checkEvents(void);
-
-		bool			add(event_type, onEvent);
-
-		void			setEvent(rEvent);
-
+		bool				listen(event_type, onEvent);
+		EventList 			*getEventList(void);
 };
 
 #endif

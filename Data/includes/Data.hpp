@@ -3,6 +3,10 @@
 
 # include "defines.hpp"
 # include "../../Error/includes/Error.hpp"
+# include "typedefs.hpp"
+
+class Container;
+class Window;
 
 class Data
 {
@@ -10,12 +14,16 @@ class Data
 		Data(void);
 		Data(Data const &);
 
-		Data	&operator=(Data const &);
+		Data			&operator=(Data const &);
 
 	public:
+		static bool		isInited;
+		static Map		map;
+
 		virtual ~Data(void);
 
-		static void	init(int = LAUNCHER_DEFAULT_VALUE);
+		static void		init(int = LAUNCHER_DEFAULT_VALUE);
+		static void		addContent(Box *__restrict__);
 };
 
 #endif

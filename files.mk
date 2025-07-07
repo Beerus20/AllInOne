@@ -6,6 +6,7 @@ DIRECTORIES					= \
 								Draw						\
 								Error						\
 								EventManager				\
+								Event						\
 								Utils						\
 								Window
 
@@ -34,6 +35,9 @@ DIRECTORY_ERROR				= \
 
 DIRECTORY_EVENTMANAGER		= \
 								EventManager.cpp
+
+DIRECTORY_EVENT				= \
+								Event.cpp
 
 DIRECTORY_UTILS				= \
 								Utils.cpp

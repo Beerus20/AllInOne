@@ -8,7 +8,7 @@ Box::Box(void) :
 	this->_rect = (Rect){0, 0, 0, 0};
 }
 
-Box::Box(Box const &) {}
+Box::Box(Box const &) : EventManager() {}
 
 Box::Box(cRect &rect, Color const &color)
 {

@@ -4,8 +4,9 @@
 # include "defines.hpp"
 # include "typedefs.hpp"
 # include "../../Color/includes/Color.hpp"
+# include "../../EventManager/includes/EventManager.hpp"
 
-class Box
+class Box : public EventManager
 {
 	protected:
 		Rect			_rect;

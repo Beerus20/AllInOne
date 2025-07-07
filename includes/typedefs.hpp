@@ -6,7 +6,8 @@
 #include <SDL2/SDL_video.h>
 #include <vector>
 #include <map>
-#include "../Box/includes/Box.hpp"
+
+class Box;
 
 enum event_type
 {
@@ -31,9 +32,7 @@ typedef SDL_Texture *__restrict__		rTexture;
 typedef std::vector<Texture>			Textures;
 typedef std::vector<Box *>				Boxs;
 typedef std::vector<Box *__restrict__>	rBoxs;
-typedef SDL_Event						Event;
-typedef Event *__restrict__				rEvent;
-typedef int (*onEvent)(rEvent);
+typedef int (*onEvent)(SDL_Event *__restrict__, Box *__restrict__);
 typedef std::map<event_type, onEvent>	EventList;
 
 #endif
