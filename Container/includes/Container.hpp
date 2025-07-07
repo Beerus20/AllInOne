@@ -22,8 +22,8 @@ class Container : public Box
 		Container			&operator=(Container const &);
 		bool				initTexture(
 								Renderer,
-								Uint32 = TEXTURE_TYPE,
-								int = PIXEL_FORMAT);
+								Uint32 = PIXEL_FORMAT,
+								int = TEXTURE_TYPE);
 		void				destroy(void);
 		Texture				getTexture(void) const;
 		cRect				*getSrc(void) const;

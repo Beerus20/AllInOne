@@ -3,23 +3,32 @@
 #include <iostream>
 #include <ostream>
 #include "main.hpp"
+#include "Color/includes/defines.hpp"
 #include "Container/includes/Container.hpp"
+#include "Draw/includes/Draw.hpp"
 #include "includes/typedefs.hpp"
 #include "Data/includes/Data.hpp"
+#include "Box/includes/Box.hpp"
 
-int	clg(SDL_Event *e, Box *)
+int	clg(SDL_Event *e, Box *box)
 {
 	if (Data::map[e->motion.y][e->motion.x])
 	{
 		std::cout << Data::map[e->motion.y][e->motion.x] << std::endl;
-		std::cout
-			<< "Coor : (x : "
-			<< e->motion.x
-			<< ", y : "
-			<< e->motion.y
-			<< ")"
-			<< std::endl;
 	}
+	std::cout
+		<< "Coor : (x : "
+		<< e->motion.x
+		<< ", y : "
+		<< e->motion.y
+		<< ")"
+		<< std::endl;
+	Rect	square;
+
+	square = *box->toRect();
+	square.x = 0;
+	square.y = 0;
+	Draw::fillRect(&square, RGBA_AQUAMARINE);
 	return (0);
 }
 
@@ -31,8 +40,9 @@ int	main(int argc, char *argv[])
 	Window		window;
 	Container	test;
 
+	std::cout << "Renderer : " << window.getRenderer() << std::endl; 
 	window.add(&test);
-	window.listen(MOUSE_MOTION, clg);
+	test.listen(MOUSE_MOTION, clg);
 	window.loop();
 	(void)window;
 	return (0);

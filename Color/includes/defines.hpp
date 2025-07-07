@@ -155,5 +155,6 @@
 # define COLOR_DEFAULT_PARAMS			Uint8 r, Uint8 g, Uint8 b, Uint8 a
 # define COLOR_INIT_DEFAULT				Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255
 # define COLOR_DEFAULT					Uint8 = 255 , Uint8 = 255 , Uint8 = 255 , Uint8 a = 255
+# define COLOR_TO_RGBA(c)				c.getR(), c.getG(), c.getB(), c.getA()
 
 #endif

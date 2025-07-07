@@ -38,6 +38,7 @@ class Draw
 		// Form ---------------------------------------------------------
 		static void			point(int, int, COLOR_DEFAULT);
 		static void			rect(cRect *, COLOR_DEFAULT);
+		static void			rect(cRect *, Color const &);
 		static void			fillRect(crRect, COLOR_DEFAULT);
 };
 

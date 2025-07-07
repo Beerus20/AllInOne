@@ -5,6 +5,7 @@
 #include "../Box/includes/Box.hpp"
 #include <cstddef>
 #include <iostream>
+#include "../Draw/includes/Draw.hpp"
 
 Event::Event(void) {}
 Event::Event(Event const &) {}
@@ -60,16 +61,22 @@ bool	Event::checkEvents(void)
 		Event::_fbox = Data::map[Event::_listener.motion.y][Event::_listener.motion.x];
 		Event::_event_list = Event::_fbox ? Event::_fbox->getEventList() : NULL;
 	}
-	if (Event::_fbox != NULL)
+	if (Event::_fbox != NULL && Event::_event_list != NULL)
 	{
+		Draw::in(dynamic_cast<Container *>(Event::_fbox));
 		for (
 			EventList::iterator it(Event::_event_list->begin());
 			it != Event::_event_list->end();
 			it++)
 		{
 			if (Event::_listener.type == it->first && it->second != NULL)
+			{
+				std::cout << "Draw here" << std::endl;
 				it->second(&Event::_listener, Event::_fbox);
+			}
 		}
+		Draw::clear();
+		Draw::out();
 	}
 	return (true);
 }
@@ -77,4 +84,9 @@ bool	Event::checkEvents(void)
 void	Event::setEventList(EventList *event_list)
 {
 	Event::_event_list = event_list;
+}
+
+SDL_Event	*Event::getListener(void)
+{
+	return (&Event::_listener);
 }

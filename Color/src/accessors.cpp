@@ -22,6 +22,14 @@ void	Color::setA(Uint8 a)
 	this->_a = a;
 }
 
+void	Color::setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	this->_r = r;
+	this->_g = g;
+	this->_b = b;
+	this->_a = a;
+}
+
 // Getters ----------------------------------------------------------
 
 Uint8 const	&Color::getR(void) const

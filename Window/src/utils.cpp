@@ -3,6 +3,7 @@
 #include <SDL2/SDL_video.h>
 #include <utility>
 #include "../../Data/includes/Data.hpp"
+#include <iostream>
 
 void	Window::destroy(void)
 {
@@ -44,6 +45,8 @@ void	Window::add(Container *container)
 {
 	if (container != NULL)
 	{
+		if (!container->getTexture())
+			container->initTexture(this->getRenderer());
 		this->_content.push_back(container);
 		Data::addContent(container);
 	}

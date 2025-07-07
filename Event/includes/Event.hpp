@@ -25,6 +25,7 @@ class Event
 		static bool				waitTimeout(int timeout = 20);
 
 		static void				setEventList(EventList *event_list);
+		static SDL_Event		*getListener(void);
 };
 
 #endif

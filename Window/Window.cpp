@@ -78,7 +78,6 @@ bool	Window::draw(void)
 
 void	Window::loop(void)
 {
-	Event::setEventList(&this->_event_list);
 	while (Event::wait())
 		this->draw();
 }

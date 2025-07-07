@@ -7,10 +7,9 @@
 #include "../Draw/includes/Draw.hpp"
 
 Container::Container(void) :
-	Box(CONTAINER_DEFAULT_VALUE)
-{
-	this->_src = *this->toRect();
-}
+	Box(CONTAINER_DEFAULT_VALUE),
+	_texture(NULL)
+{}
 
 Container::Container(Container const &) :
 	Box()
@@ -28,6 +27,8 @@ Container	&Container::operator=(Container const &)
 
 bool	Container::initTexture(Renderer renderer, Uint32 format, int access)
 {
+	(void)access;
+	(void)format;
 	this->_texture = SDL_CreateTexture(renderer, format, access, this->getW(), this->getH());
 	if (this->_texture == NULL)
 	{
@@ -45,6 +46,11 @@ void	Container::destroy(void)
 
 bool	Container::draw(void)
 {
-	Draw::rect(this->toRect());
+	Rect	square;
+
+	square = *this->toRect();
+	square.x = 0;
+	square.y = 0;
+	Draw::rect(&square);
 	return (true);
 }

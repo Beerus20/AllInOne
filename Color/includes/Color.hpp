@@ -25,6 +25,7 @@ class Color
 		void		setG(Uint8);
 		void		setB(Uint8);
 		void		setA(Uint8);
+		void		setColor(Uint8, Uint8, Uint8, Uint8);
 
 		// Getters ----------------------------------------------------------
 		Uint8 const	&getR(void) const;

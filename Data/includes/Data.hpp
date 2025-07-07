@@ -4,8 +4,8 @@
 # include "defines.hpp"
 # include "../../Error/includes/Error.hpp"
 # include "typedefs.hpp"
+# include "../../Container/includes/Container.hpp"
 
-class Container;
 class Window;
 
 class Data

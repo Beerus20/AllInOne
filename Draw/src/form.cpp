@@ -18,6 +18,11 @@ void	Draw::rect(cRect *rect, COLOR_DEFAULT_PARAMS)
 		SDL_GetError());
 }
 
+void	Draw::rect(cRect *rect, Color const &color)
+{
+	Draw::rect(rect, COLOR_TO_RGBA(color));
+}
+
 void	Draw::fillRect(crRect rect, COLOR_DEFAULT_PARAMS)
 {
 	Draw::color(r, g, b, a);
