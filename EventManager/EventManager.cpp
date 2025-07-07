@@ -26,10 +26,10 @@ void	EventManager::initEventManager(void)
 	this->_event_list[KEY_UP] = NULL;
 	this->_event_list[TEXT_EDITING] = NULL;
 	this->_event_list[TEXT_INPUT] = NULL;
-	this->_event_list[MOUSE_MOTION] = NULL;
 	this->_event_list[MOUSE_BUTTON_UP] = NULL;
 	this->_event_list[MOUSE_BUTTON_DOWN] = NULL;
 	this->_event_list[MOUSE_WHEEL] = NULL;
+	this->_event_list[MOUSE_MOTION] = NULL;
 }
 
 bool	EventManager::listen(event_type event, onEvent func)

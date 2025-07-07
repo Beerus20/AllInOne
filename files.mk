@@ -12,22 +12,23 @@ DIRECTORIES					= \
 
 
 DIRECTORY_BOX				= \
-								accessors.cpp			\
+								accessors.cpp				\
 								Box.cpp
 
 DIRECTORY_COLOR				= \
-								accessors.cpp			\
+								accessors.cpp				\
 								Color.cpp
 
 DIRECTORY_CONTAINER			= \
-								accessors.cpp			\
+								accessors.cpp				\
 								Container.cpp
 
 DIRECTORY_DATA				= \
 								Data.cpp
 
 DIRECTORY_DRAW				= \
-								form.cpp				\
+								color.cpp					\
+								form.cpp					\
 								Draw.cpp
 
 DIRECTORY_ERROR				= \
@@ -37,14 +38,15 @@ DIRECTORY_EVENTMANAGER		= \
 								EventManager.cpp
 
 DIRECTORY_EVENT				= \
+								defaultEvent.cpp			\
 								Event.cpp
 
 DIRECTORY_UTILS				= \
 								Utils.cpp
 
 DIRECTORY_WINDOW			= \
-								utils.cpp			\
-								accessors.cpp			\
+								utils.cpp					\
+								accessors.cpp				\
 								Window.cpp
 
 OBJS						= \

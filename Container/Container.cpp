@@ -51,6 +51,7 @@ bool	Container::draw(void)
 	square = *this->toRect();
 	square.x = 0;
 	square.y = 0;
-	Draw::rect(&square);
+	Draw::backgroundColor(RGBA_LIGHTPINK);
+	Draw::rect(&square, RGBA_AQUA);
 	return (true);
 }

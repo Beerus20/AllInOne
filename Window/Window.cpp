@@ -60,6 +60,7 @@ void	Window::init(cstring &title, WINDOW_INIT_DEFAULT)
 bool	Window::draw(void)
 {
 	Draw::in(this);
+	Draw::backgroundColor(RGBA_AZURE);
 	for (Containers::iterator it(this->_content.begin()); it != this->_content.end(); it++)
 	{
 		Draw::in(*it);

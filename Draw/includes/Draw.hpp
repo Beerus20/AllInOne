@@ -34,6 +34,8 @@ class Draw
 		static void			clear(void);
 		static void			color(COLOR_INIT_DEFAULT);
 		static void			color(Color const &);
+		static void			backgroundColor(COLOR_INIT_DEFAULT);
+		static void			backgroundColor(Color const &);
 
 		// Form ---------------------------------------------------------
 		static void			point(int, int, COLOR_DEFAULT);

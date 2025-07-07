@@ -70,21 +70,3 @@ void	Draw::clear(void)
 		SDL_RenderClear(Draw::_renderer) != 0,
 		SDL_GetError());
 }
-
-void	Draw::color(COLOR_DEFAULT_PARAMS)
-{
-	Error::check(
-		SDL_SetRenderDrawColor(Draw::_renderer, r, g, b, a) != 0,
-		SDL_GetError());
-}
-
-void	Draw::color(Color const &color)
-{
-	Draw::color(
-		color.getR(),
-		color.getG(),
-		color.getB(),
-		color.getA());
-}
-
-

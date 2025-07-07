@@ -11,13 +11,23 @@ Event::Event(void) {}
 Event::Event(Event const &) {}
 Event::~Event(void) {}
 
-SDL_Event	Event::_listener;
-EventList	*Event::_event_list = NULL;
-Box			*Event::_fbox = NULL;
+SDL_Event		Event::_listener;
+Box				*Event::_fbox = NULL;
+EventManager	Event::_event_manager;
+Mouse			Event::_mouse;
 
 Event	&Event::operator=(Event const &)
 {
 	return (*this);
+}
+
+void	Event::init(void)
+{
+	Event::_mouse = (Mouse){0, 0, 0, 0};
+	Event::_event_manager.listen(KEY_DOWN, Event::defaultKeyDown);
+	Event::_event_manager.listen(MOUSE_MOTION, Event::defaultMouseMotion);
+	Event::_event_manager.listen(MOUSE_BUTTON_UP, Event::defaultMouseButtonUp);
+	Event::_event_manager.listen(MOUSE_BUTTON_DOWN, Event::defaultMouseButtonDown);
 }
 
 bool	Event::wait(void)
@@ -54,36 +64,18 @@ bool	Event::waitTimeout(int timeout)
 
 bool	Event::checkEvents(void)
 {
-	if (Event::_listener.type == SDL_QUIT)
+	if (
+		Event::_listener.type == SDL_QUIT ||
+		!Event::loopEvent(Event::_event_manager.getEventList())
+	)
 		return (false);
-	if (Event::_listener.type == MOUSE_MOTION)
-	{
-		Event::_fbox = Data::map[Event::_listener.motion.y][Event::_listener.motion.x];
-		Event::_event_list = Event::_fbox ? Event::_fbox->getEventList() : NULL;
-	}
-	if (Event::_fbox != NULL && Event::_event_list != NULL)
+	if (Event::_fbox != NULL)
 	{
 		Draw::in(dynamic_cast<Container *>(Event::_fbox));
-		for (
-			EventList::iterator it(Event::_event_list->begin());
-			it != Event::_event_list->end();
-			it++)
-		{
-			if (Event::_listener.type == it->first && it->second != NULL)
-			{
-				std::cout << "Draw here" << std::endl;
-				it->second(&Event::_listener, Event::_fbox);
-			}
-		}
-		Draw::clear();
+		Event::loopEvent(Event::_fbox->getEventList());
 		Draw::out();
 	}
 	return (true);
-}
-
-void	Event::setEventList(EventList *event_list)
-{
-	Event::_event_list = event_list;
 }
 
 SDL_Event	*Event::getListener(void)

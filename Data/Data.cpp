@@ -4,6 +4,7 @@
 #include "../Window/includes/Window.hpp"
 #include <cstddef>
 #include <iostream>
+#include "../Event/includes/Event.hpp"
 
 bool	Data::isInited = false;
 Map		Data::map;
@@ -26,20 +27,17 @@ void	Data::init(int flags)
 {
 	SDL_DisplayMode		dm;
 
-
 	if (SDL_Init(flags) != 0)
 		Error::add(ERROR, SDL_GetError());
 	SDL_GetDesktopDisplayMode(0, &dm);
-	std::cout << dm.w << ", " << dm.h << std::endl;
 	for (int y(0); y < dm.h; y++)
 	{
 		std::vector<Box *>	row(dm.w, NULL);
 		Data::map.push_back(row);
 	}
-	std::cout << Data::map[0].size() << std::endl;
-	std::cout << Data::map.size() << std::endl;
 	if (Error::nb == 0)
 		Data::isInited = true;
+	Event::init();
 }
 
 void	Data::addContent(Box *__restrict__ container)
