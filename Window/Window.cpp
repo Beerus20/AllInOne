@@ -69,7 +69,7 @@ bool	Window::draw(void)
 		SDL_RenderCopy(
 			this->_renderer,
 			(*it)->getTexture(),
-			(*it)->getSrc(),
+			NULL,
 			(*it)->toRect()
 		);
 	}

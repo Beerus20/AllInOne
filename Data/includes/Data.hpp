@@ -24,6 +24,8 @@ class Data
 
 		static void		init(int = LAUNCHER_DEFAULT_VALUE);
 		static void		addContent(Box *__restrict__);
+
+		static void		updateMap(Box *, int x, int y);
 };
 
 #endif

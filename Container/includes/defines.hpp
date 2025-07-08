@@ -1,7 +1,7 @@
 #ifndef CONTAINER_DEFINES_HPP
 # define CONTAINER_DEFINES_HPP
 
-# define CONTAINER_DEFAULT_VALUE	10, 50, 100, 100
+# define CONTAINER_DEFAULT_VALUE	50, 50, 100, 100
 
 // SDL_TEXTUREACCESS_STATIC			La texture est rarement modifiée
 // SDL_TEXTUREACCESS_STREAMING		La texture est souvent modifiée

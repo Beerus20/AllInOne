@@ -24,7 +24,7 @@ int	clg(SDL_Event *, Box *box)
 	// 	<< e->motion.y
 	// 	<< ")"
 	// 	<< std::endl;
-	
+
 	return (0);
 }
 

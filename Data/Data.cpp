@@ -55,3 +55,14 @@ void	Data::addContent(Box *__restrict__ container)
 		x++;
 	}
 }
+
+void	Data::updateMap(Box *box, int x, int y)
+{
+	if (x < 0 && y < 0)
+		return ;
+	for (int j(y); j < (box->getH() + y); j++)
+	{
+		for (int i(x); i < (box->getW() + x); i++)
+			Data::map[j][i] = box;
+	}
+}

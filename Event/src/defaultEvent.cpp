@@ -18,11 +18,17 @@ bool	Event::loopEvent(EventList *e)
 
 int	Event::defaultMouseMotion(SDL_Event *, Box *)
 {
-	Event::_fbox = Data::map[Event::_listener.motion.y][Event::_listener.motion.x];	
+	int	x(0);
+	int	y(0);
+
+	Event::_fbox = Data::map[Event::_listener.motion.y][Event::_listener.motion.x];
 	if (Event::_fbox && (Event::_listener.motion.state & SDL_BUTTON_LEFT))
 	{
-		Event::_fbox->setX(Event::_listener.motion.x - Event::_mouse.gapX);
-		Event::_fbox->setY(Event::_listener.motion.y - Event::_mouse.gapY);
+		x = Event::_listener.motion.x - Event::_mouse.gapX;
+		y = Event::_listener.motion.y - Event::_mouse.gapY;
+		Data::updateMap(Event::_fbox, x, y);
+		Event::_fbox->setX(x);
+		Event::_fbox->setY(y);
 	}
 	return (0);
 }
