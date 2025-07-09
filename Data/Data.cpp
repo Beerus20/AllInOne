@@ -56,13 +56,37 @@ void	Data::addContent(Box *__restrict__ container)
 	}
 }
 
+void	Data::test(Box *box, int x, int y)
+{
+	int	x1(box->getX());
+	int	y1(box->getY());
+
+	for (int j(y); j < y + box->getH(); j++)
+	{
+		for (int i(box->getW() + x1); i < x + box->getW(); i++)
+			Data::map[j][i] = box;
+	}
+	for (int j(y1); y1 < y1 + box->getH(); j++)
+	{
+		for (int i(x1); i < x; i++)
+			Data::map[j][i] = NULL;
+	}
+}
+
 void	Data::updateMap(Box *box, int x, int y)
 {
-	if (x < 0 && y < 0)
+	if ((x < 0 && y < 0) || box == NULL)
 		return ;
-	for (int j(y); j < (box->getH() + y); j++)
+	int	x1(box->getX());
+	int	y1(box->getY());
+
+	if (x1 < x)
 	{
-		for (int i(x); i < (box->getW() + x); i++)
-			Data::map[j][i] = box;
+		for (int i(x); i < x1 + box->getW(); i++)
+		for (int j(y); j < (box->getH() + y); j++)
+		{
+			for (int i(x); i < (box->getW() + x); i++)
+				Data::map[j][i] = box;
+		}
 	}
 }
