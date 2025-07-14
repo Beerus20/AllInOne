@@ -82,26 +82,47 @@ void	Data::updateMap(Box *box, int x, int y)
 	int	w(box->getW());
 	int	h(box->getH());
 
-	if (x1 < x)
+	for (int i(x1); i < x1 + w; i++)
 	{
-		for (int j(y), k(y1); j < (y + h); j++, k++)
-		{
-			for (int i(x1 + w), l(x1); i < (x + w); i++, l++)
-			{
-				Data::map[j][i] = box;
-				Data::map[k][l] = NULL;
-			}
-		}
-		if (y < y1)
-		{
-			for (int i(x); i < (x1 + w); i++)
-			{
-				for (int j(y); j < y1; j++)
-				{
-					Data::map[j][i] = box;
-					Data::map[j + h][i] = NULL;
-				}
-			}
-		}
+		for (int j(y1); j < y1 + h; j++)
+			Data::map[j][i] = NULL;
 	}
+	for (int i(x); i < x + w; i++)
+	{
+		for (int j(y); j < y + h; j++)
+			Data::map[j][i] = box;
+	}
+	// if (x1 < x)
+	// {
+	// 	for (int j(y), k(y1); j <= (y + h); j++, k++)
+	// 	{
+	// 		for (int i(x1 + w), l(x1); i <= (x + w); i++, l++)
+	// 		{
+	// 			Data::map[j][i] = box;
+	// 			Data::map[k][l] = NULL;
+	// 		}
+	// 	}
+	// 	if (y <= y1)
+	// 	{
+	// 		for (int i(x); i <= (x1 + w); i++)
+	// 		{
+	// 			for (int j(y), k(y + h); j <= y1; j++, k++)
+	// 			{
+	// 				Data::map[j][i] = box;
+	// 				Data::map[k][i] = NULL;
+	// 			}
+	// 		}
+	// 	}
+		// else
+		// {
+		// 	for (int i(x1); i <= (x + w); i++)
+		// 	{
+		// 		for (int j(y1), k(y1 + h); j <= y; j++, k++)
+		// 		{
+		// 			Data::map[j][i] = NULL;
+		// 			Data::map[k][i] = box;
+		// 		}
+		// 	}
+		// }
+	// }
 }

@@ -34,12 +34,15 @@ int	main(int argc, char *argv[])
 	(void)argv;
 	std::cout << "Hello world" << std::endl;
 	Window		window;
-	Container	test;
+	Container	test[10];
 
-	test.setX(200);
-	test.setY(200);
-	window.add(&test);
-	test.listen(MOUSE_MOTION, clg);
+	for (int i(0); i < 10; i++)
+	{
+		test[i].setX(i + 200);
+		test[i].setY(i + 200);
+		window.add(&test[i]);
+	}
+	// test.listen(MOUSE_MOTION, clg);
 	window.loop();
 	(void)window;
 	return (0);

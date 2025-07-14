@@ -61,4 +61,5 @@ void	Draw::showPixel(void)
 	SDL_FreeFormat(format);
 	SDL_RenderCopy(Draw::_renderer, texture, NULL, NULL);
 	// SDL_UnlockTexture(texture);
+	SDL_DestroyTexture(texture);
 }
