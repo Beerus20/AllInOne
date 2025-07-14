@@ -79,14 +79,29 @@ void	Data::updateMap(Box *box, int x, int y)
 		return ;
 	int	x1(box->getX());
 	int	y1(box->getY());
+	int	w(box->getW());
+	int	h(box->getH());
 
 	if (x1 < x)
 	{
-		for (int i(x); i < x1 + box->getW(); i++)
-		for (int j(y); j < (box->getH() + y); j++)
+		for (int j(y), k(y1); j < (y + h); j++, k++)
 		{
-			for (int i(x); i < (box->getW() + x); i++)
+			for (int i(x1 + w), l(x1); i < (x + w); i++, l++)
+			{
 				Data::map[j][i] = box;
+				Data::map[k][l] = NULL;
+			}
+		}
+		if (y < y1)
+		{
+			for (int i(x); i < (x1 + w); i++)
+			{
+				for (int j(y); j < y1; j++)
+				{
+					Data::map[j][i] = box;
+					Data::map[j + h][i] = NULL;
+				}
+			}
 		}
 	}
 }

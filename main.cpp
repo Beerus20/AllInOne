@@ -36,6 +36,8 @@ int	main(int argc, char *argv[])
 	Window		window;
 	Container	test;
 
+	test.setX(200);
+	test.setY(200);
 	window.add(&test);
 	test.listen(MOUSE_MOTION, clg);
 	window.loop();

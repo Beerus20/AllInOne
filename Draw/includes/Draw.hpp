@@ -29,6 +29,7 @@ class Draw
 		static void			in(Container *);
 		static void			out(void);
 
+		static void			showPixel(void);
 
 		static void			apply(void);
 		static void			clear(void);

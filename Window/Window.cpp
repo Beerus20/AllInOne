@@ -61,6 +61,7 @@ bool	Window::draw(void)
 {
 	Draw::in(this);
 	Draw::backgroundColor(RGBA_AZURE);
+	Draw::showPixel();
 	for (Containers::iterator it(this->_content.begin()); it != this->_content.end(); it++)
 	{
 		Draw::in(*it);
