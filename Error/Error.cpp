@@ -1,65 +1,64 @@
-#include "includes/Error.hpp"
-#include "includes/enums.hpp"
-#include "includes/typedefs.hpp"
-#include <SDL2/SDL.h>
-#include <iostream>
-#include <utility>
+#include "./includes/Error.hpp"
+#include <SDL2/SDL_error.h>
 
 Error::Error(void) {}
-Error::Error(Error const &) {}
+Error::Error(const Error &) {}
 Error::~Error(void) {}
+Error &Error::operator=(const Error &) { return (*this); }
 
-unsigned int	Error::nb = 0;
-error_list		Error::_list;
-
-Error	&Error::operator=(Error const &)
+void	Error::error(std::string const &message)
 {
-	return (*this);
+	(void)message;
+	std::cout << "to define" << std::endl;
 }
 
-void	Error::warning(std::string const &message)
+void	Error::error(std::string const &label, std::string const &message)
 {
-	std::cout
-		<< "WARNING" << std::endl
-		<< "TYPES : " << message << std::endl;
+	(void)label;
+	(void)message;
+	std::cout << "to define" << std::endl;
 }
 
 void	Error::debug(std::string const &message)
 {
-	std::cout
-		<< "DEBUG" << std::endl
-		<< "TYPES : " << message << std::endl;
+	(void)message;
+	std::cout << "to define" << std::endl;
+}
+
+void	Error::debug(std::string const &label, std::string const &message)
+{
+	(void)label;
+	(void)message;
+	std::cout << "to define" << std::endl;
 }
 
 void	Error::info(std::string const &message)
 {
-	std::cout
-		<< "INFO" << std::endl
-		<< "TYPES : " << message << std::endl;
+	(void)message;
+	std::cout << "to define" << std::endl;
 }
 
-void	Error::error(std::string const &message)
+void	Error::info(std::string const &label, std::string const &message)
 {
-	std::cout
-		<< "ERROR" << std::endl
-		<< "TYPES : " << message << std::endl;
+	(void)label;
+	(void)message;
+	std::cout << "to define" << std::endl;
 }
 
-void	Error::add(error_status status, cstring &message)
+void	Error::warning(std::string const &message)
 {
-	Error::_list.push_back(std::make_pair(status, message));
-	Error::nb = Error::_list.size();
+	(void)message;
+	std::cout << "to define" << std::endl;
 }
 
-void	Error::check(bool condition, cstring &error_msg, cstring &succes_msg)
+void	Error::warning(std::string const &label, std::string const &message)
 {
-	if (condition)
-	{
-		if (!error_msg.empty()) std::cout << error_msg << std::endl;
-	}
-	else
-	{
-		if (!succes_msg.empty()) std::cout << succes_msg << std::endl;
-	}
+	(void)label;
+	(void)message;
+	std::cout << "to define" << std::endl;
+}
 
+void	Error::sdl(std::string const &label)
+{
+	std::cout << label << " : " << SDL_GetError() << std::endl;
 }

@@ -1,32 +1,30 @@
 #ifndef ERROR_HPP
 # define ERROR_HPP
 
-#include "enums.hpp"
-# include "typedefs.hpp"
+# include <iostream>
 # include <string>
-# include <utility>
-# include <vector>
-
 class Error
 {
-	private:
-		static error_list		_list;
-
-		Error(void);
-		Error(Error const &);
-
-		Error					&operator=(Error const &);
-
 	public:
-		static unsigned int		nb;
-		virtual ~Error(void);
+		~Error (void);
 
-		static void				warning(cstring &);
-		static void				debug(cstring &);
-		static void				info(cstring &);
-		static void				error(cstring &);
-		static void				add(error_status, cstring & = "");
-		static void				check(bool condition, cstring &error_msg = "", cstring &succes_msg = "");
+		static void		error(std::string const &message);
+		static void		error(std::string const &label, std::string const &message);
+		static void		debug(std::string const &message);
+		static void		debug(std::string const &label, std::string const &message);
+		static void		info(std::string const &message);
+		static void		info(std::string const &label, std::string const &message);
+		static void		warning(std::string const &message);
+		static void		warning(std::string const &label, std::string const &message);
+		static void		sdl(std::string const &label);
+
+		static std::string const InvalidWindowConfiguration;
+
+	private:
+		Error (void);
+		Error (const Error&);
+		Error &operator=(const Error&);
+
 };
 
 #endif

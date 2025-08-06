@@ -8,11 +8,10 @@ output		:
 				@if [ ! -d $@ ]; then mkdir $@; fi
 
 output/%.o	: %.cpp | output
-				echo "tests 1"
 				$(call create_object, $<, $@)
 
 run			: $(NAME)
-				./$(NAME)
+				./$(NAME) $(ARGS)
 
 rerun		: re run
 
@@ -27,7 +26,7 @@ vrun		: $(NAME)
 					--show-leak-kinds=definite \
 					--errors-for-leak-kinds=none \
 					--child-silent-after-fork=yes \
-				./$(NAME)
+				./$(NAME) $(ARGS)
 
 vsrun		: $(NAME)
-				valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --log-file=valgrind.log ./$(NAME)
+				valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --log-file=valgrind.log ./$(NAME) $(ARGS)

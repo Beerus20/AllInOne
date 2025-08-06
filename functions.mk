@@ -7,11 +7,12 @@ define create_executable
 endef
 
 define create_rule
-$(1)/output/%.o: $(1)/%.cpp | $(1)/output
+output/%.o: $(1)/%.cpp | output
 	$(call create_object, $$<, $$@)
 
-$(1)/output/%.o: $(1)/src/%.cpp | $(1)/output
+output/%.o: $(1)/src/%.cpp | output
 	$(call create_object, $$<, $$@)
 endef
 
 $(foreach dir, $(DIRECTORIES), $(eval $(call create_rule, $(dir))))
+$(foreach dir, $(COMPONENTS), $(eval $(call create_rule, ./Components/$(dir))))

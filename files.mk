@@ -1,56 +1,40 @@
 DIRECTORIES					= \
-								Box							\
-								Color						\
-								Container					\
-								Data						\
-								Draw						\
-								Error						\
-								EventManager				\
-								Event						\
-								Utils						\
-								Window
+								Utils							\
+								FileParser						\
+								Engine							\
+								Error
 
+COMPONENTS					= \
+								Box
 
 DIRECTORY_BOX				= \
-								accessors.cpp				\
 								Box.cpp
 
-DIRECTORY_COLOR				= \
-								accessors.cpp				\
-								Color.cpp
-
-DIRECTORY_CONTAINER			= \
-								accessors.cpp				\
-								Container.cpp
-
-DIRECTORY_DATA				= \
-								Data.cpp
-
-DIRECTORY_DRAW				= \
-								color.cpp					\
-								form.cpp					\
-								Draw.cpp
-
-DIRECTORY_ERROR				= \
-								Error.cpp
-
-DIRECTORY_EVENTMANAGER		= \
-								EventManager.cpp
-
-DIRECTORY_EVENT				= \
-								defaultEvent.cpp			\
-								Event.cpp
+DIRECTORY_FILEPARSER		= \
+								FileParser.cpp
 
 DIRECTORY_UTILS				= \
+								UtilsColors.cpp					\
+								UtilsOutputs.cpp				\
 								Utils.cpp
 
-DIRECTORY_WINDOW			= \
-								utils.cpp					\
-								accessors.cpp				\
-								Window.cpp
+DIRECTORY_ERROR				= \
+								ErrorStatics.cpp				\
+								Error.cpp
+
+DIRECTORY_ENGINE			= \
+								Data.cpp						\
+								EngineInit.cpp					\
+								Event.cpp						\
+								Render.cpp						\
+								Engine.cpp
+
 
 OBJS						= \
+								$(foreach dir, $(COMPONENTS), \
+									$(addprefix ./output/, $(DIRECTORY_$(shell echo $(dir) | tr a-z A-Z):%.cpp=%.o) )\
+								) \
 								$(foreach dir, $(DIRECTORIES), \
-									$(addprefix $(dir)/output/, $(DIRECTORY_$(shell echo $(dir) | tr a-z A-Z):%.cpp=%.o) )\
+									$(addprefix ./output/, $(DIRECTORY_$(shell echo $(dir) | tr a-z A-Z):%.cpp=%.o) )\
 								) \
 								main.o
