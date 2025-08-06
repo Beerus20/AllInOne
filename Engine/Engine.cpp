@@ -15,7 +15,7 @@ std::ostream& Engine::print(std::ostream& os) const
 	return os;
 }
 
-std::ostream& operator << ( std::ostream& os, const Engine &engine)
+std::ostream& operator<<( std::ostream& os, const Engine &engine)
 {
 	return engine.print(os);
 }

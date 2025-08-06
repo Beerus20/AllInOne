@@ -4,6 +4,7 @@
 # include <SDL2/SDL.h>
 # include <SDL2/SDL_rect.h>
 # include <iostream>
+# include <iomanip>
 # include "../../FileParser/includes/FileParser.hpp"
 # include "../../Utils/includes/Utils.hpp"
 
@@ -31,22 +32,17 @@ typedef enum e_window_flag
 	DEFAULT_WFLAGS = RESIZABLE | SHOWN
 }	t_window_flag;
 
-struct Window
-{
-	Window(std::string const &title, SDL_Rect const &rect, t_window_flag flag) :
-		title(title), rect(rect), flag(flag)
-	{}
-	Window(std::string const &title, int x, int y, int w, int h, t_window_flag flag) :
-		title(title), rect((SDL_Rect){x, y, w, h}), flag(flag)
-	{}
-	std::string		title;
-	SDL_Rect		rect;
-	t_window_flag	flag;
-};
-
 class Data
 {
 	public:
+		struct Window
+		{
+			Window(std::string const &title, SDL_Rect const &rect, t_window_flag flag) : title(title), rect(rect), flag(flag) {}
+			Window(std::string const &title, int x, int y, int w, int h, t_window_flag flag) : title(title), rect((SDL_Rect){x, y, w, h}), flag(flag) {}
+			std::string		title;
+			SDL_Rect		rect;
+			t_window_flag	flag;
+		};
 		static Window		window;
 
 		virtual ~Data(void);
@@ -58,5 +54,6 @@ class Data
 		Data				&operator=(const Data&);
 
 };
+std::ostream& operator<<(std::ostream& os, const Data::Window &window);
 
 #endif

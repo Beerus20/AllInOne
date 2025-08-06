@@ -1,6 +1,7 @@
 #ifndef UTILS_HPP
 # define UTILS_HPP
 
+#include <SDL2/SDL_rect.h>
 # include <fstream>
 # include <sstream>
 # include <iostream>
@@ -27,6 +28,7 @@ class Utils
 
 };
 
+std::ostream& operator<<( std::ostream& os, const SDL_Rect &rect);
 template <typename T>
 std::ostream& operator<<( std::ostream& os, const std::vector<T> &container);
 template <typename K, typename V>

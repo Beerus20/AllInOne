@@ -1,7 +1,7 @@
 #include "../includes/Data.hpp"
 #include <SDL2/SDL_stdinc.h>
 
-Window	Data::window("", 0, 0, 0, 0, DEFAULT_WFLAGS);
+Data::Window	Data::window("", 0, 0, 0, 0, DEFAULT_WFLAGS);
 
 Data::Data(void) {}
 Data::Data(const Data &) {}
@@ -25,4 +25,12 @@ void	Data::loadWindowConfig(const std::string &path)
 		Utils::convert<int>(file_content.at("WIDTH")),
 		Utils::convert<int>(file_content.at("HEIGHT")),
 	};
+}
+
+std::ostream& operator<<(std::ostream& os, const Data::Window &window)
+{
+	os
+		<< "WINDOW title : [ " << Color::blue(window.title) << " ]" << std::endl
+		<< "\trect" << " : " << window.rect << std::endl;
+	return (os);
 }

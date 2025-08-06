@@ -9,6 +9,7 @@ int	main(int argc, char *argv[])
 	(void)argv;
 
 	// std::cout << Utils::split(argv[1], argv[2]);
-	std::cout << FileParser::parse(argv[1]) << std::endl;
+	Data::loadWindowConfig(argv[1]);
+	std::cout << Data::window << std::endl;
 	return (0);
 }
