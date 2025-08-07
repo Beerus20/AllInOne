@@ -31,9 +31,8 @@ vrun			: $(NAME)
 vsrun			: $(NAME)
 					valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --log-file=valgrind.log ./$(NAME) $(ARGS)
 
-component\:%	:
-					@$(eval component_name=$(subst component:,,$@))
-					@mkdir $(component_name)
-					@mkdir $(component_name)/includes $(component_name)/src
-					@touch $(component_name)/includes/$(component_name).hpp
-					@touch ./$(component_name)/$(component_name).cpp
+class\:%		:
+					@$(call create_class,,$(subst class:,,$@))
+
+component\:%		:
+					@$(call create_class,./Components/,$(subst component:,,$@))
