@@ -1,5 +1,5 @@
-#include "../includes/Window.hpp"
-Window::Window(void) : _title("Window"), _rect((SDL_Rect){0, 0, 0, 0}), _flag(DEFAULT_WFLAGS) {}
+#include "./includes/Window.hpp"
+Window::Window(void) : _title("Window"), _rect((SDL_Rect){0, 0, 0, 0}), _flag(Types::DEFAULT_WFLAGS) {}
 Window::Window(const Window &other) { *this = other; }
 Window::~Window(void) {}
 Window &Window::operator=(const Window &other)
@@ -53,14 +53,14 @@ void	Window::init(Map<std::string>::string config)
 	this->initFlag(config.at("FLAGS"));
 }
 
-void	Window::init(std::string const &title, SDL_Rect const &rect, t_window_flag flag)
+void	Window::init(std::string const &title, SDL_Rect const &rect, Types::t_window_flag flag)
 {
 	this->_title = title;
 	this->_rect = rect;
 	this->_flag = flag;
 }
 
-void	Window::init(std::string const &title, int x, int y, int w, int h, t_window_flag flag)
+void	Window::init(std::string const &title, int x, int y, int w, int h, Types::t_window_flag flag)
 {
 	this->_title = title;
 	this->_rect = (SDL_Rect){x, y, w, h};
@@ -74,25 +74,11 @@ void	Window::initFlag(std::string const &str_flag)
 
 	for (Vector::string::const_iterator it(flags.begin()); it != flags.end(); it++)
 	{
-		if (*it == "FULLSCREEN")
-			flag |= FULLSCREEN;
-		else if (*it == "FULLSCREEN_DESKTOP")
-			flag |= FULLSCREEN_DESKTOP;
-		else if (*it == "SHOWN")
-			flag |= SHOWN;
-		else if (*it == "HIDDEN")
-			flag |= HIDDEN;
-		else if (*it == "BORDERLESS")
-			flag |= BORDERLESS;
-		else if (*it == "RESIZABLE")
-			flag |= RESIZABLE;
-		else if (*it == "MINIMIZED")
-			flag |= MINIMIZED;
-		else if (*it == "MAXIMIZED")
-			flag |= MAXIMIZED;
+		if (Types::flags::Window.find(*it) != Types::flags::Window.end())
+			flag |= Types::flags::Window.at(*it);
 		else
 			Error::error(Error::Window::InvalidConfiguration);
 	}
-	this->_flag = (t_window_flag)flag;
+	this->_flag = (Types::t_window_flag)flag;
 }
 

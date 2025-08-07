@@ -9,7 +9,7 @@ int	main(int argc, char *argv[])
 	(void)argv;
 
 	// std::cout << Utils::split(argv[1], argv[2]);
-	Data::loadWindowConfig(argv[1]);
+	Data::init();
 	std::cout << Data::window << std::endl;
 	return (0);
 }

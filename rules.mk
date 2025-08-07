@@ -1,32 +1,39 @@
-test		:
-				echo $(OBJS)
+test			:
+					echo $(OBJS)
 
-output		:
-				@if [ ! -d $@ ]; then mkdir $@; fi
+output			:
+					@if [ ! -d $@ ]; then mkdir $@; fi
 
 %/output		:
-				@if [ ! -d $@ ]; then mkdir $@; fi
+					@if [ ! -d $@ ]; then mkdir $@; fi
 
-output/%.o	: %.cpp | output
-				$(call create_object, $<, $@)
+output/%.o		: %.cpp | output
+					$(call create_object, $<, $@)
 
-run			: $(NAME)
-				./$(NAME) $(ARGS)
+run				: $(NAME)
+					./$(NAME) $(ARGS)
 
-rerun		: re run
+rerun			: re run
 
-revrun		: re vrun
+revrun			: re vrun
 
-revsrun		: re vsrun
+revsrun			: re vsrun
 
-vrun		: $(NAME)
-				valgrind \
-					--leak-check=full \
-					--suppressions=sdl.supp \
-					--show-leak-kinds=definite \
-					--errors-for-leak-kinds=none \
-					--child-silent-after-fork=yes \
-				./$(NAME) $(ARGS)
+vrun			: $(NAME)
+					valgrind \
+						--leak-check=full \
+						--suppressions=sdl.supp \
+						--show-leak-kinds=definite \
+						--errors-for-leak-kinds=none \
+						--child-silent-after-fork=yes \
+					./$(NAME) $(ARGS)
 
-vsrun		: $(NAME)
-				valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --log-file=valgrind.log ./$(NAME) $(ARGS)
+vsrun			: $(NAME)
+					valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --log-file=valgrind.log ./$(NAME) $(ARGS)
+
+component\:%	:
+					@$(eval component_name=$(subst component:,,$@))
+					@mkdir $(component_name)
+					@mkdir $(component_name)/includes $(component_name)/src
+					@touch $(component_name)/includes/$(component_name).hpp
+					@touch ./$(component_name)/$(component_name).cpp

@@ -5,13 +5,14 @@
 # include <SDL2/SDL_stdinc.h>
 # include <iostream>
 # include "../../Data/includes/Data.hpp"
+# include "../../Utils/includes/Utils.hpp"
 
 class Engine {
 	public:		
 		~Engine();
 		std::ostream&		print(std::ostream& os) const;
 
-		static SDL_bool			init(t_system_flag = EVERYTHING, t_window_flag = DEFAULT_WFLAGS);
+		static SDL_bool			init(Types::t_system_flag = Types::EVERYTHING);
 	private:
 		Engine(void);
 		Engine(const Engine&);

@@ -1,5 +1,8 @@
 DIRECTORIES					= \
+								Types							\
 								Utils							\
+								Config							\
+								Window							\
 								Data							\
 								FileParser						\
 								Engine							\
@@ -8,13 +11,21 @@ DIRECTORIES					= \
 COMPONENTS					= \
 								Box
 
+DIRECTORY_TYPES				= \
+								Types.cpp
+
 DIRECTORY_BOX				= \
 								Box.cpp
 
+DIRECTORY_CONFIG			= \
+								Config.cpp
 
 DIRECTORY_DATA				= \
-								Window.cpp						\
 								Data.cpp
+
+DIRECTORY_WINDOW			= \
+								WindowAccessors.cpp						\
+								Window.cpp
 
 DIRECTORY_FILEPARSER		= \
 								FileParser.cpp

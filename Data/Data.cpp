@@ -1,5 +1,4 @@
 #include "./includes/Data.hpp"
-#include "includes/Window.hpp"
 #include <SDL2/SDL_stdinc.h>
 
 Window	Data::window;
@@ -9,7 +8,14 @@ Data::Data(const Data &) {}
 Data::~Data(void) {}
 Data &Data::operator=(const Data &) { return (*this); }
 
-void	Data::loadWindowConfig(const std::string &path)
+void	Data::init(void)
 {
-	Data::window.init(FileParser::parse(path));
+	Config::load();
+	Data::window.init(Config::Window);
+}
+
+
+void	Data::init(std::string const &window_config_path)
+{
+	Data::window.init(Config::load(window_config_path));
 }

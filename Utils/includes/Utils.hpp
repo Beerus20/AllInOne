@@ -9,6 +9,7 @@
 # include <vector>
 # include "UtilsColors.hpp"
 # include "../../includes/types.hpp"
+# include "../../Types/includes/Types.hpp"
 
 class Utils
 {

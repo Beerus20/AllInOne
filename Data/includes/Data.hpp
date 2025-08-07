@@ -7,27 +7,18 @@
 # include <iomanip>
 # include "../../FileParser/includes/FileParser.hpp"
 # include "../../Utils/includes/Utils.hpp"
-# include "Window.hpp"
+# include "../../Window/includes/Window.hpp"
+# include "../../Config/includes/Config.hpp"
 
-typedef enum e_system_flag
-{
-	TIMER = SDL_INIT_TIMER,
-	AUDIO = SDL_INIT_AUDIO,
-	VIDEO = SDL_INIT_VIDEO,
-	JOYSTICK = SDL_INIT_JOYSTICK,
-	GAMECONTROLLER = SDL_INIT_GAMECONTROLLER,
-	EVENTS = SDL_INIT_EVENTS,
-	EVERYTHING = SDL_INIT_EVERYTHING
-}	t_system_flag;
 
 class Data
 {
 	public:
 		virtual ~Data(void);
-
 		static Window		window;
 		
-		static void			loadWindowConfig(std::string const &path);
+		static void			init(void);
+		static void			init(std::string const &window_config_path);
 
 	private:
 		Data(void);
