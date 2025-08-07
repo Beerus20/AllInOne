@@ -4,7 +4,7 @@
 # include <SDL2/SDL.h>
 # include <SDL2/SDL_stdinc.h>
 # include <iostream>
-# include "Data.hpp"
+# include "../../Data/includes/Data.hpp"
 
 class Engine {
 	public:		

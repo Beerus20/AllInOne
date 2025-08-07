@@ -18,7 +18,12 @@ class Error
 		static void		warning(std::string const &label, std::string const &message);
 		static void		sdl(std::string const &label);
 
-		static std::string const InvalidWindowConfiguration;
+		static std::string const	InvalidConfiguration;
+
+		struct Window
+		{
+			static std::string const	InvalidConfiguration;
+		};
 
 	private:
 		Error (void);

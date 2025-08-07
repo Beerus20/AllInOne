@@ -1,5 +1,6 @@
 DIRECTORIES					= \
 								Utils							\
+								Data							\
 								FileParser						\
 								Engine							\
 								Error
@@ -9,6 +10,11 @@ COMPONENTS					= \
 
 DIRECTORY_BOX				= \
 								Box.cpp
+
+
+DIRECTORY_DATA				= \
+								Window.cpp						\
+								Data.cpp
 
 DIRECTORY_FILEPARSER		= \
 								FileParser.cpp

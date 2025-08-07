@@ -6,8 +6,8 @@
 # include "../FileParser/includes/FileParser.hpp"
 # include "../Utils/includes/Utils.hpp"
 # include "../Utils/includes/UtilsColors.hpp"
+# include "../Data/includes/Data.hpp"
 # include "../Engine/includes/Engine.hpp"
-# include "../Engine/includes/Data.hpp"
 # include "../Engine/includes/Event.hpp"
 # include "../Engine/includes/Render.hpp"
 

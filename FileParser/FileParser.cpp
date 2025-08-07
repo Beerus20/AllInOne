@@ -47,7 +47,7 @@ Map<std::string>::string	FileParser::parse(std::string const &path)
 		{
 			tmp = Utils::split(line, " : ");
 			if (tmp.size() != 2)
-				Error::error(Error::InvalidWindowConfiguration + " at line : " + Utils::toString(line_index));
+				Error::error(Error::InvalidConfiguration + " at line : " + Utils::toString(line_index));
 			rvalue[tmp[0]] = tmp[1];
 		}
 	}
