@@ -1,0 +1,33 @@
+{
+  "window": {
+    "title": "AllInOne Application",
+    "width": 1280,
+    "height": 720,
+    "fullscreen": false,
+    "vsync": true
+  },
+  "renderer": {
+    "backend": "SDL",
+    "antialiasing": true,
+    "fps_limit": 60
+  },
+  "plugins": {
+    "auto_load": true,
+    "plugin_directory": "plugins/",
+    "enabled_plugins": [
+      "video-player",
+      "image-viewer",
+      "terminal"
+    ]
+  },
+  "logging": {
+    "level": "info",
+    "file": "logs/application.log",
+    "console": true
+  },
+  "ui": {
+    "theme": "dark",
+    "font": "assets/fonts/default.ttf",
+    "font_size": 14
+  }
+}
