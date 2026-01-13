@@ -1,7 +1,7 @@
 #include "../../include/resources/Texture.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Resources {
 
 Texture::Texture(const std::string& filepath)
@@ -29,4 +29,4 @@ void Texture::unload() {
 }
 
 } // namespace Resources
-} // namespace AllInOne
+} // namespace One

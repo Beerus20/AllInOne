@@ -1,7 +1,7 @@
 #include "../../include/plugins/PluginManager.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 PluginManager::PluginManager() {
@@ -13,12 +13,14 @@ PluginManager::~PluginManager() {
 }
 
 bool PluginManager::loadPlugin(const std::string& filepath) {
+    (void)filepath;
     LOG_INFO("Loading plugin: " + filepath);
     // TODO: Implement dynamic library loading
     return false;
 }
 
 bool PluginManager::unloadPlugin(const std::string& name) {
+    (void)name;
     LOG_INFO("Unloading plugin: " + name);
     // TODO: Find and unload plugin
     return false;
@@ -56,8 +58,9 @@ std::vector<IPlugin*> PluginManager::getLoadedPlugins() {
 }
 
 void PluginManager::setPluginContext(PluginContext* context) {
+    (void)context;
     m_context = context;
 }
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One

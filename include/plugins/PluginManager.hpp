@@ -6,7 +6,7 @@
 #include "IPlugin.hpp"
 #include "PluginContext.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 /**
@@ -35,4 +35,4 @@ private:
 };
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One

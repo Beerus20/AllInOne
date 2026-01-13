@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace AllInOne {
+namespace One {
 namespace Resources {
 
 /**
@@ -32,4 +32,4 @@ private:
 };
 
 } // namespace Resources
-} // namespace AllInOne
+} // namespace One

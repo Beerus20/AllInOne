@@ -5,7 +5,7 @@
 #include <string>
 #include <functional>
 
-namespace AllInOne {
+namespace One {
 namespace UI {
 
 /**
@@ -53,4 +53,4 @@ private:
 };
 
 } // namespace UI
-} // namespace AllInOne
+} // namespace One

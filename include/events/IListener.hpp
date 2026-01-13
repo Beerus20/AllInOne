@@ -2,7 +2,7 @@
 
 #include "Event.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Events {
 
 /**
@@ -16,4 +16,4 @@ public:
 };
 
 } // namespace Events
-} // namespace AllInOne
+} // namespace One

@@ -1,0 +1,168 @@
+<mxfile host="app.diagrams.net" modified="2024-01-13T00:00:00.000Z" agent="Claude" version="22.1.0" etag="allinone-uml" type="device">
+  <diagram name="AllInOne UML" id="allinone-architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Title -->
+        <mxCell id="title" value="AllInOne - Diagramme UML Complet" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- IRenderer Interface -->
+        <mxCell id="irenderer" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&#xa;IRenderer&#xa;&#xa;+ init(w, h: int) : bool&#xa;+ shutdown() : void&#xa;+ clear(color: Color) : void&#xa;+ present() : void&#xa;+ drawPixel(x, y: int, color: Color)&#xa;+ drawLine(x1, y1, x2, y2: int)&#xa;+ drawRect(rect: Rect, color: Color)&#xa;+ getSize() : Vec2" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#E8F4F8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="60" width="300" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- SDLRenderer -->
+        <mxCell id="sdl" value="SDLRenderer&#xa;&#xa;- window: SDL_Window*&#xa;- renderer: SDL_Renderer*&#xa;&#xa;+ init(w, h: int) : bool&#xa;+ drawPixel(...) : void&#xa;+ present() : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#D4EDDA;" vertex="1" parent="1">
+          <mxGeometry x="150" y="300" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- OpenGLRenderer -->
+        <mxCell id="opengl" value="OpenGLRenderer&#xa;&#xa;- context: GLContext*&#xa;- shaderProgram: GLuint&#xa;&#xa;+ init(w, h: int) : bool&#xa;+ compileShader(...) : GLuint" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#D4EDDA;" vertex="1" parent="1">
+          <mxGeometry x="400" y="300" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- MinilibXRenderer -->
+        <mxCell id="mlx" value="MinilibXRenderer&#xa;&#xa;- mlx: void*&#xa;- window: void*&#xa;&#xa;+ init(w, h: int) : bool&#xa;+ mlxPixelPut(...) : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#D4EDDA;" vertex="1" parent="1">
+          <mxGeometry x="650" y="300" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- VulkanRenderer -->
+        <mxCell id="vulkan" value="VulkanRenderer&#xa;&#xa;- instance: VkInstance&#xa;- device: VkDevice&#xa;&#xa;+ init(w, h: int) : bool&#xa;+ createCmdBuffer() : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#D4EDDA;" vertex="1" parent="1">
+          <mxGeometry x="900" y="300" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- Inheritance arrows to IRenderer -->
+        <mxCell id="inh1" edge="1" parent="1" source="sdl" target="irenderer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="300" as="sourcePoint"/>
+            <mxPoint x="710" y="240" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="inh2" edge="1" parent="1" source="opengl" target="irenderer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="inh3" edge="1" parent="1" source="mlx" target="irenderer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="inh4" edge="1" parent="1" source="vulkan" target="irenderer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- IPlugin Interface -->
+        <mxCell id="iplugin" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&#xa;IPlugin&#xa;&#xa;+ onInit(ctx: PluginContext*) : bool&#xa;+ onShutdown() : void&#xa;+ onUpdate(dt: float) : void&#xa;+ onRender(renderer: IRenderer*)&#xa;+ onEvent(event: Event) : bool&#xa;+ getName() : string&#xa;+ getVersion() : string&#xa;+ isEnabled() : bool" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#E8F4F8;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="60" width="320" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- VideoPlayerPlugin -->
+        <mxCell id="video" value="VideoPlayerPlugin&#xa;&#xa;- decoder: FFmpegDecoder*&#xa;- isPlaying: bool&#xa;&#xa;+ loadVideo(path) : bool&#xa;+ play() : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#D4EDDA;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="300" width="180" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- ImageViewerPlugin -->
+        <mxCell id="image" value="ImageViewerPlugin&#xa;&#xa;- image: Texture*&#xa;- zoom: float&#xa;&#xa;+ loadImage(path) : bool&#xa;+ zoomIn/Out() : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#D4EDDA;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="300" width="180" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Plugin inheritance -->
+        <mxCell id="pinh1" edge="1" parent="1" source="video" target="iplugin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="pinh2" edge="1" parent="1" source="image" target="iplugin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PluginManager -->
+        <mxCell id="pluginmgr" value="PluginManager (Singleton)&#xa;&#xa;- plugins: map&amp;lt;string, IPlugin*&amp;gt;&#xa;- loadedLibraries: vector&amp;lt;void*&amp;gt;&#xa;&#xa;+ loadPlugin(path) : bool&#xa;+ unloadPlugin(name) : bool&#xa;+ updateAll(dt: float) : void&#xa;+ renderAll(renderer) : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#FFEAA7;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="480" width="320" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Composition PluginManager to IPlugin -->
+        <mxCell id="comp1" edge="1" parent="1" source="pluginmgr" target="iplugin" style="endArrow=diamondThin;endFill=1;endSize=24;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Application -->
+        <mxCell id="app" value="Application (Singleton)&#xa;&#xa;- renderer: IRenderer*&#xa;- pluginManager: PluginManager*&#xa;- uiSystem: UISystem*&#xa;- resourceManager: ResourceManager*&#xa;- eventManager: EventManager*&#xa;- isRunning: bool&#xa;&#xa;+ getInstance() : Application*&#xa;+ init(config: Config) : bool&#xa;+ run() : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#FFEAA7;" vertex="1" parent="1">
+          <mxGeometry x="600" y="500" width="350" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Application to IRenderer -->
+        <mxCell id="dep1" edge="1" parent="1" source="app" target="irenderer" style="dashed=1;endArrow=open;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Application to PluginManager -->
+        <mxCell id="agg1" edge="1" parent="1" source="app" target="pluginmgr" style="endArrow=diamondThin;endFill=0;endSize=24;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- UISystem -->
+        <mxCell id="ui" value="UISystem&#xa;&#xa;- windows: vector&amp;lt;Window*&amp;gt;&#xa;- widgets: vector&amp;lt;Widget*&amp;gt;&#xa;- activeWindow: Window*&#xa;&#xa;+ createWindow(title, w, h) : Window*&#xa;+ handleEvents(events) : void&#xa;+ render(renderer) : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="500" width="300" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Application to UISystem -->
+        <mxCell id="comp2" edge="1" parent="1" source="app" target="ui" style="endArrow=diamondThin;endFill=1;endSize=24;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- EventManager -->
+        <mxCell id="eventmgr" value="EventManager (Singleton)&#xa;&#xa;- eventQueue: queue&amp;lt;Event&amp;gt;&#xa;- listeners: map&amp;lt;EventType, IListener*&amp;gt;&#xa;&#xa;+ pushEvent(event: Event) : void&#xa;+ subscribe(type, listener) : void&#xa;+ processEvents() : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#FFEAA7;" vertex="1" parent="1">
+          <mxGeometry x="100" y="730" width="280" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- ResourceManager -->
+        <mxCell id="resmgr" value="ResourceManager (Singleton)&#xa;&#xa;- textures: map&amp;lt;string, Texture*&amp;gt;&#xa;- fonts: map&amp;lt;string, Font*&amp;gt;&#xa;&#xa;+ loadTexture(path) : Texture*&#xa;+ loadFont(path, size) : Font*&#xa;+ unloadAll() : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#FFEAA7;" vertex="1" parent="1">
+          <mxGeometry x="450" y="730" width="280" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Application to EventManager -->
+        <mxCell id="agg2" edge="1" parent="1" source="app" target="eventmgr" style="endArrow=diamondThin;endFill=0;endSize=24;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Application to ResourceManager -->
+        <mxCell id="comp3" edge="1" parent="1" source="app" target="resmgr" style="endArrow=diamondThin;endFill=1;endSize=24;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Vec2 -->
+        <mxCell id="vec2" value="Vec2&#xa;&#xa;+ x: float&#xa;+ y: float" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="800" y="730" width="120" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Color -->
+        <mxCell id="color" value="Color&#xa;&#xa;+ r: uint8&#xa;+ g: uint8&#xa;+ b: uint8" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="950" y="730" width="120" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Rect -->
+        <mxCell id="rect" value="Rect&#xa;&#xa;+ x: int&#xa;+ y: int&#xa;+ w, h: int" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="730" width="120" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-title" value="Légende" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1250" y="880" width="200" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="legend-interface" value="Interface" style="swimlane;fontStyle=1;fillColor=#E8F4F8;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="910" width="100" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="legend-concrete" value="Classe concrète" style="swimlane;fontStyle=1;fillColor=#D4EDDA;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="960" width="120" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="legend-singleton" value="Singleton" style="swimlane;fontStyle=1;fillColor=#FFEAA7;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="1010" width="100" height="40" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

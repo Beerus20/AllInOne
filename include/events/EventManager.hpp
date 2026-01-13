@@ -6,7 +6,7 @@
 #include "Event.hpp"
 #include "IListener.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Events {
 
 /**
@@ -32,4 +32,4 @@ private:
 };
 
 } // namespace Events
-} // namespace AllInOne
+} // namespace One

@@ -1,13 +1,13 @@
 #include "VideoPlayerPlugin.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 VideoPlayerPlugin::VideoPlayerPlugin()
     : m_name("Video Player"),
       m_version("1.0.0"),
-      m_author("AllInOne Team"),
+      m_author("One Team"),
       m_context(nullptr) {
 }
 
@@ -27,6 +27,7 @@ const std::string& VideoPlayerPlugin::getAuthor() const {
 }
 
 bool VideoPlayerPlugin::onLoad(PluginContext& context) {
+    (void)context;
     LOG_INFO("Loading Video Player Plugin...");
     m_context = &context;
     
@@ -46,15 +47,16 @@ void VideoPlayerPlugin::onUnload() {
 }
 
 void VideoPlayerPlugin::onUpdate(float deltaTime) {
+    (void)deltaTime;
     // TODO: Update video playback
 }
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One
 
 // Plugin export function
 extern "C" {
-    AllInOne::Plugins::IPlugin* createPlugin() {
-        return new AllInOne::Plugins::VideoPlayerPlugin();
+    One::Plugins::IPlugin* createPlugin() {
+        return new One::Plugins::VideoPlayerPlugin();
     }
 }

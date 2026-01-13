@@ -1,0 +1,297 @@
+<svg viewBox="0 0 1600 1400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .class-box { fill: #fff; stroke: #333; stroke-width: 2; }
+      .interface { fill: #e8f4f8; stroke: #333; stroke-width: 2; }
+      .concrete { fill: #d4edda; stroke: #333; stroke-width: 2; }
+      .singleton { fill: #ffeaa7; stroke: #333; stroke-width: 2; }
+      .header { fill: #f0f0f0; stroke: #333; stroke-width: 1; }
+      .text { font-family: Arial, sans-serif; font-size: 11px; fill: #333; }
+      .text-bold { font-weight: bold; font-size: 12px; }
+      .text-italic { font-style: italic; }
+      .line { stroke: #333; stroke-width: 1.5; fill: none; }
+      .inheritance { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#triangle); }
+      .composition { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#diamond); }
+      .aggregation { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#diamond-open); }
+      .dependency { stroke: #666; stroke-width: 1.5; fill: none; stroke-dasharray: 5,5; marker-end: url(#arrow); }
+    </style>
+    
+    <marker id="triangle" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <polygon points="0 0, 12 6, 0 12" fill="#fff" stroke="#333" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <polygon points="0 6, 6 0, 12 6, 6 12" fill="#000"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <polygon points="0 6, 6 0, 12 6, 6 12" fill="#fff" stroke="#333" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#666"/>
+    </marker>
+  </defs>
+
+  <text x="800" y="25" class="text text-bold" style="font-size: 20px; text-anchor: middle;">AllInOne - Diagramme UML Complet</text>
+
+  <!-- IRenderer Interface -->
+  <g id="irenderer">
+    <rect x="600" y="60" width="300" height="180" class="interface" rx="5"/>
+    <rect x="600" y="60" width="300" height="30" class="header" rx="5"/>
+    <text x="750" y="80" class="text text-bold text-italic" text-anchor="middle">IRenderer (interface)</text>
+    <line x1="600" y1="90" x2="900" y2="90" class="line"/>
+    <text x="610" y="108" class="text text-italic">+ init(w, h: int) : bool</text>
+    <text x="610" y="125" class="text text-italic">+ shutdown() : void</text>
+    <text x="610" y="142" class="text text-italic">+ clear(color: Color) : void</text>
+    <text x="610" y="159" class="text text-italic">+ present() : void</text>
+    <text x="610" y="176" class="text text-italic">+ drawPixel(x, y: int, color: Color) : void</text>
+    <text x="610" y="193" class="text text-italic">+ drawLine(x1, y1, x2, y2: int) : void</text>
+    <text x="610" y="210" class="text text-italic">+ drawRect(rect: Rect, color: Color) : void</text>
+    <text x="610" y="227" class="text text-italic">+ getSize() : Vec2</text>
+  </g>
+
+  <!-- SDL Renderer -->
+  <g id="sdl">
+    <rect x="150" y="300" width="200" height="130" class="concrete" rx="5"/>
+    <rect x="150" y="300" width="200" height="30" class="header" rx="5"/>
+    <text x="250" y="320" class="text text-bold" text-anchor="middle">SDLRenderer</text>
+    <line x1="150" y1="330" x2="350" y2="330" class="line"/>
+    <text x="160" y="348" class="text">- window: SDL_Window*</text>
+    <text x="160" y="365" class="text">- renderer: SDL_Renderer*</text>
+    <line x1="150" y1="375" x2="350" y2="375" class="line"/>
+    <text x="160" y="393" class="text">+ init(w, h: int) : bool</text>
+    <text x="160" y="410" class="text">+ drawPixel(...) : void</text>
+    <text x="160" y="425" class="text">+ present() : void</text>
+  </g>
+
+  <!-- OpenGL Renderer -->
+  <g id="opengl">
+    <rect x="400" y="300" width="200" height="130" class="concrete" rx="5"/>
+    <rect x="400" y="300" width="200" height="30" class="header" rx="5"/>
+    <text x="500" y="320" class="text text-bold" text-anchor="middle">OpenGLRenderer</text>
+    <line x1="400" y1="330" x2="600" y2="330" class="line"/>
+    <text x="410" y="348" class="text">- context: GLContext*</text>
+    <text x="410" y="365" class="text">- shaderProgram: GLuint</text>
+    <line x1="400" y1="375" x2="600" y2="375" class="line"/>
+    <text x="410" y="393" class="text">+ init(w, h: int) : bool</text>
+    <text x="410" y="410" class="text">+ compileShader(...) : GLuint</text>
+  </g>
+
+  <!-- MinilibX Renderer -->
+  <g id="mlx">
+    <rect x="650" y="300" width="200" height="130" class="concrete" rx="5"/>
+    <rect x="650" y="300" width="200" height="30" class="header" rx="5"/>
+    <text x="750" y="320" class="text text-bold" text-anchor="middle">MinilibXRenderer</text>
+    <line x1="650" y1="330" x2="850" y2="330" class="line"/>
+    <text x="660" y="348" class="text">- mlx: void*</text>
+    <text x="660" y="365" class="text">- window: void*</text>
+    <line x1="650" y1="375" x2="850" y2="375" class="line"/>
+    <text x="660" y="393" class="text">+ init(w, h: int) : bool</text>
+    <text x="660" y="410" class="text">+ mlxPixelPut(...) : void</text>
+  </g>
+
+  <!-- Vulkan Renderer -->
+  <g id="vulkan">
+    <rect x="900" y="300" width="200" height="130" class="concrete" rx="5"/>
+    <rect x="900" y="300" width="200" height="30" class="header" rx="5"/>
+    <text x="1000" y="320" class="text text-bold" text-anchor="middle">VulkanRenderer</text>
+    <line x1="900" y1="330" x2="1100" y2="330" class="line"/>
+    <text x="910" y="348" class="text">- instance: VkInstance</text>
+    <text x="910" y="365" class="text">- device: VkDevice</text>
+    <line x1="900" y1="375" x2="1100" y2="375" class="line"/>
+    <text x="910" y="393" class="text">+ init(w, h: int) : bool</text>
+    <text x="910" y="410" class="text">+ createCmdBuffer() : void</text>
+  </g>
+
+  <!-- Inheritance lines -->
+  <path d="M 250 300 L 250 270 L 710 270 L 710 240" class="inheritance"/>
+  <path d="M 500 300 L 500 270 L 730 270 L 730 240" class="inheritance"/>
+  <path d="M 750 300 L 750 240" class="inheritance"/>
+  <path d="M 1000 300 L 1000 270 L 770 270 L 770 240" class="inheritance"/>
+
+  <!-- IPlugin Interface -->
+  <g id="iplugin">
+    <rect x="1150" y="60" width="320" height="180" class="interface" rx="5"/>
+    <rect x="1150" y="60" width="320" height="30" class="header" rx="5"/>
+    <text x="1310" y="80" class="text text-bold text-italic" text-anchor="middle">IPlugin (interface)</text>
+    <line x1="1150" y1="90" x2="1470" y2="90" class="line"/>
+    <text x="1160" y="108" class="text text-italic">+ onInit(ctx: PluginContext*) : bool</text>
+    <text x="1160" y="125" class="text text-italic">+ onShutdown() : void</text>
+    <text x="1160" y="142" class="text text-italic">+ onUpdate(dt: float) : void</text>
+    <text x="1160" y="159" class="text text-italic">+ onRender(renderer: IRenderer*) : void</text>
+    <text x="1160" y="176" class="text text-italic">+ onEvent(event: Event) : bool</text>
+    <text x="1160" y="193" class="text text-italic">+ getName() : string</text>
+    <text x="1160" y="210" class="text text-italic">+ getVersion() : string</text>
+    <text x="1160" y="227" class="text text-italic">+ isEnabled() : bool</text>
+  </g>
+
+  <!-- VideoPlayerPlugin -->
+  <g id="video-plugin">
+    <rect x="1100" y="300" width="180" height="120" class="concrete" rx="5"/>
+    <rect x="1100" y="300" width="180" height="30" class="header" rx="5"/>
+    <text x="1190" y="320" class="text text-bold" text-anchor="middle">VideoPlayerPlugin</text>
+    <line x1="1100" y1="330" x2="1280" y2="330" class="line"/>
+    <text x="1110" y="348" class="text">- decoder: FFmpegDecoder*</text>
+    <text x="1110" y="365" class="text">- isPlaying: bool</text>
+    <line x1="1100" y1="375" x2="1280" y2="375" class="line"/>
+    <text x="1110" y="393" class="text">+ loadVideo(path) : bool</text>
+    <text x="1110" y="410" class="text">+ play() : void</text>
+  </g>
+
+  <!-- ImageViewerPlugin -->
+  <g id="image-plugin">
+    <rect x="1310" y="300" width="180" height="120" class="concrete" rx="5"/>
+    <rect x="1310" y="300" width="180" height="30" class="header" rx="5"/>
+    <text x="1400" y="320" class="text text-bold" text-anchor="middle">ImageViewerPlugin</text>
+    <line x1="1310" y1="330" x2="1490" y2="330" class="line"/>
+    <text x="1320" y="348" class="text">- image: Texture*</text>
+    <text x="1320" y="365" class="text">- zoom: float</text>
+    <line x1="1310" y1="375" x2="1490" y2="375" class="line"/>
+    <text x="1320" y="393" class="text">+ loadImage(path) : bool</text>
+    <text x="1320" y="410" class="text">+ zoomIn/Out() : void</text>
+  </g>
+
+  <!-- Plugin inheritance -->
+  <path d="M 1190 300 L 1190 270 L 1290 270 L 1290 240" class="inheritance"/>
+  <path d="M 1400 300 L 1400 270 L 1330 270 L 1330 240" class="inheritance"/>
+
+  <!-- PluginManager -->
+  <g id="plugin-manager">
+    <rect x="1150" y="480" width="320" height="160" class="singleton" rx="5"/>
+    <rect x="1150" y="480" width="320" height="30" class="header" rx="5"/>
+    <text x="1310" y="500" class="text text-bold" text-anchor="middle">PluginManager (Singleton)</text>
+    <line x1="1150" y1="510" x2="1470" y2="510" class="line"/>
+    <text x="1160" y="528" class="text">- plugins: map&lt;string, IPlugin*&gt;</text>
+    <text x="1160" y="545" class="text">- loadedLibraries: vector&lt;void*&gt;</text>
+    <line x1="1150" y1="555" x2="1470" y2="555" class="line"/>
+    <text x="1160" y="573" class="text">+ loadPlugin(path) : bool</text>
+    <text x="1160" y="590" class="text">+ unloadPlugin(name) : bool</text>
+    <text x="1160" y="607" class="text">+ updateAll(dt: float) : void</text>
+    <text x="1160" y="624" class="text">+ renderAll(renderer) : void</text>
+  </g>
+
+  <!-- Composition PluginManager to IPlugin -->
+  <path d="M 1310 480 L 1310 240" class="composition"/>
+  <text x="1320" y="360" class="text">*</text>
+
+  <!-- Application -->
+  <g id="application">
+    <rect x="600" y="500" width="350" height="200" class="singleton" rx="5"/>
+    <rect x="600" y="500" width="350" height="30" class="header" rx="5"/>
+    <text x="775" y="520" class="text text-bold" text-anchor="middle">Application (Singleton)</text>
+    <line x1="600" y1="530" x2="950" y2="530" class="line"/>
+    <text x="610" y="548" class="text">- renderer: IRenderer*</text>
+    <text x="610" y="565" class="text">- pluginManager: PluginManager*</text>
+    <text x="610" y="582" class="text">- uiSystem: UISystem*</text>
+    <text x="610" y="599" class="text">- resourceManager: ResourceManager*</text>
+    <text x="610" y="616" class="text">- eventManager: EventManager*</text>
+    <text x="610" y="633" class="text">- isRunning: bool</text>
+    <line x1="600" y1="643" x2="950" y2="643" class="line"/>
+    <text x="610" y="661" class="text">+ getInstance() : Application*</text>
+    <text x="610" y="678" class="text">+ init(config: Config) : bool</text>
+    <text x="610" y="695" class="text">+ run() : void</text>
+  </g>
+
+  <!-- Application to IRenderer -->
+  <path d="M 750 500 L 750 430 L 750 240" class="dependency"/>
+
+  <!-- Application to PluginManager -->
+  <path d="M 950 570 L 1150 570" class="aggregation"/>
+  <text x="1050" y="565" class="text">1</text>
+
+  <!-- UISystem -->
+  <g id="ui-system">
+    <rect x="100" y="500" width="300" height="160" class="class-box" rx="5"/>
+    <rect x="100" y="500" width="300" height="30" class="header" rx="5"/>
+    <text x="250" y="520" class="text text-bold" text-anchor="middle">UISystem</text>
+    <line x1="100" y1="530" x2="400" y2="530" class="line"/>
+    <text x="110" y="548" class="text">- windows: vector&lt;Window*&gt;</text>
+    <text x="110" y="565" class="text">- widgets: vector&lt;Widget*&gt;</text>
+    <text x="110" y="582" class="text">- activeWindow: Window*</text>
+    <line x1="100" y1="592" x2="400" y2="592" class="line"/>
+    <text x="110" y="610" class="text">+ createWindow(title, w, h) : Window*</text>
+    <text x="110" y="627" class="text">+ handleEvents(events) : void</text>
+    <text x="110" y="644" class="text">+ render(renderer) : void</text>
+  </g>
+
+  <!-- Application to UISystem -->
+  <path d="M 600 600 L 400 600" class="composition"/>
+  <text x="500" y="595" class="text">1</text>
+
+  <!-- EventManager -->
+  <g id="event-manager">
+    <rect x="100" y="730" width="280" height="140" class="singleton" rx="5"/>
+    <rect x="100" y="730" width="280" height="30" class="header" rx="5"/>
+    <text x="240" y="750" class="text text-bold" text-anchor="middle">EventManager (Singleton)</text>
+    <line x1="100" y1="760" x2="380" y2="760" class="line"/>
+    <text x="110" y="778" class="text">- eventQueue: queue&lt;Event&gt;</text>
+    <text x="110" y="795" class="text">- listeners: map&lt;EventType, IListener*&gt;</text>
+    <line x1="100" y1="805" x2="380" y2="805" class="line"/>
+    <text x="110" y="823" class="text">+ pushEvent(event: Event) : void</text>
+    <text x="110" y="840" class="text">+ subscribe(type, listener) : void</text>
+    <text x="110" y="857" class="text">+ processEvents() : void</text>
+  </g>
+
+  <!-- Application to EventManager -->
+  <path d="M 650 700 L 650 800 L 380 800" class="aggregation"/>
+
+  <!-- ResourceManager -->
+  <g id="resource-manager">
+    <rect x="450" y="730" width="280" height="140" class="singleton" rx="5"/>
+    <rect x="450" y="730" width="280" height="30" class="header" rx="5"/>
+    <text x="590" y="750" class="text text-bold" text-anchor="middle">ResourceManager (Singleton)</text>
+    <line x1="450" y1="760" x2="730" y2="760" class="line"/>
+    <text x="460" y="778" class="text">- textures: map&lt;string, Texture*&gt;</text>
+    <text x="460" y="795" class="text">- fonts: map&lt;string, Font*&gt;</text>
+    <line x1="450" y1="805" x2="730" y2="805" class="line"/>
+    <text x="460" y="823" class="text">+ loadTexture(path) : Texture*</text>
+    <text x="460" y="840" class="text">+ loadFont(path, size) : Font*</text>
+    <text x="460" y="857" class="text">+ unloadAll() : void</text>
+  </g>
+
+  <!-- Application to ResourceManager -->
+  <path d="M 700 700 L 700 730" class="composition"/>
+
+  <!-- Utility classes -->
+  <g id="vec2">
+    <rect x="800" y="730" width="120" height="80" class="class-box" rx="5"/>
+    <rect x="800" y="730" width="120" height="30" class="header" rx="5"/>
+    <text x="860" y="750" class="text text-bold" text-anchor="middle">Vec2</text>
+    <line x1="800" y1="760" x2="920" y2="760" class="line"/>
+    <text x="810" y="778" class="text">+ x: float</text>
+    <text x="810" y="795" class="text">+ y: float</text>
+  </g>
+
+  <g id="color">
+    <rect x="950" y="730" width="120" height="100" class="class-box" rx="5"/>
+    <rect x="950" y="730" width="120" height="30" class="header" rx="5"/>
+    <text x="1010" y="750" class="text text-bold" text-anchor="middle">Color</text>
+    <line x1="950" y1="760" x2="1070" y2="760" class="line"/>
+    <text x="960" y="778" class="text">+ r: uint8</text>
+    <text x="960" y="795" class="text">+ g: uint8</text>
+    <text x="960" y="812" class="text">+ b: uint8</text>
+  </g>
+
+  <g id="rect">
+    <rect x="1100" y="730" width="120" height="100" class="class-box" rx="5"/>
+    <rect x="1100" y="730" width="120" height="30" class="header" rx="5"/>
+    <text x="1160" y="750" class="text text-bold" text-anchor="middle">Rect</text>
+    <line x1="1100" y1="760" x2="1220" y2="760" class="line"/>
+    <text x="1110" y="778" class="text">+ x: int</text>
+    <text x="1110" y="795" class="text">+ y: int</text>
+    <text x="1110" y="812" class="text">+ w, h: int</text>
+  </g>
+
+  <!-- Legend -->
+  <g id="legend">
+    <text x="1300" y="900" class="text text-bold" style="font-size: 14px;">Légende</text>
+    <rect x="1250" y="910" width="70" height="25" class="interface" rx="3"/>
+    <text x="1330" y="927" class="text">Interface</text>
+    <rect x="1250" y="945" width="70" height="25" class="concrete" rx="3"/>
+    <text x="1330" y="962" class="text">Classe concrète</text>
+    <rect x="1250" y="980" width="70" height="25" class="singleton" rx="3"/>
+    <text x="1330" y="997" class="text">Singleton</text>
+    <line x1="1250" y1="1020" x2="1310" y2="1020" class="inheritance"/>
+    <text x="1320" y="1025" class="text">Héritage</text>
+    <line x1="1250" y1="1045" x2="1310" y2="1045" class="composition"/>
+    <text x="1320" y="1050" class="text">Composition</text>
+  </g>
+</svg>

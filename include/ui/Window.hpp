@@ -1,10 +1,12 @@
 #pragma once
 
-#include "IWidget.hpp"
-#include "../utils/Color.hpp"
-#include <string>
+# include "IWidget.hpp"
+# include "../utils/Color.hpp"
+# include <string>
+# include <memory>
+# include <vector>
 
-namespace AllInOne {
+namespace One {
 namespace UI {
 
 /**
@@ -47,4 +49,4 @@ private:
 };
 
 } // namespace UI
-} // namespace AllInOne
+} // namespace One

@@ -9,7 +9,7 @@
 #include "../resources/ResourceManager.hpp"
 #include "../ui/UISystem.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Core {
 
 /**
@@ -46,4 +46,4 @@ private:
 };
 
 } // namespace Core
-} // namespace AllInOne
+} // namespace One

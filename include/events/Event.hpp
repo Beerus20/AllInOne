@@ -2,8 +2,9 @@
 
 #include <string>
 #include <any>
+#include <map>
 
-namespace AllInOne {
+namespace One {
 namespace Events {
 
 /**
@@ -83,4 +84,4 @@ T Event::getData(const std::string& key, const T& defaultValue) const {
 }
 
 } // namespace Events
-} // namespace AllInOne
+} // namespace One

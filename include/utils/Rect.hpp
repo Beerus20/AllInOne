@@ -2,7 +2,7 @@
 
 #include "Vec2.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Utils {
 
 /**
@@ -40,4 +40,4 @@ struct Rect {
 };
 
 } // namespace Utils
-} // namespace AllInOne
+} // namespace One

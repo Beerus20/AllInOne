@@ -3,7 +3,7 @@
 #include "../../include/plugins/IPlugin.hpp"
 #include "../../include/plugins/PluginContext.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 /**
@@ -31,4 +31,4 @@ private:
 };
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One

@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 class PluginContext;
@@ -25,4 +25,4 @@ public:
 };
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One

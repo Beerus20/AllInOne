@@ -1,33 +1,45 @@
 #pragma once
 
-#include <string>
-#include <map>
+# include <ostream>
+# include <string>
+# include "../data/Data.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Core {
 
 /**
  * @brief Configuration management
  * Loads and manages application settings
  */
-class Config {
-public:
-    Config();
-    ~Config() = default;
+class Config
+{
+    public:
+        Config();
+        ~Config() = default;
 
-    bool loadFromFile(const std::string& filepath);
-    bool saveToFile(const std::string& filepath);
+        bool loadFromFile(const std::string& filepath);
+        bool saveToFile(const std::string& filepath);
 
-    std::string getString(const std::string& key, const std::string& defaultValue = "") const;
-    int getInt(const std::string& key, int defaultValue = 0) const;
-    float getFloat(const std::string& key, float defaultValue = 0.0f) const;
-    bool getBool(const std::string& key, bool defaultValue = false) const;
+        template <typename T>
+        T               get(const std::string& key) const
+        {
+            return m_settings.get<T>(key);
+        }
 
-    void set(const std::string& key, const std::string& value);
+        const Data&     getData(void) const;
 
-private:
-    std::map<std::string, std::string> m_settings;
+        template <typename T>
+        void            set(const std::string& key, const T& value)
+        {
+            m_settings.set<T>(key, value);
+        }
+
+        
+    private:
+        Data m_settings;
 };
 
 } // namespace Core
-} // namespace AllInOne
+} // namespace One
+
+std::ostream& operator<<(std::ostream& os, const One::Core::Config& config);

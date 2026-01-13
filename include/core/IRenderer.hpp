@@ -1,10 +1,11 @@
 #pragma once
 
-#include "../utils/Vec2.hpp"
-#include "../utils/Color.hpp"
-#include "../utils/Rect.hpp"
+# include "../utils/Vec2.hpp"
+# include "../utils/Color.hpp"
+# include "../utils/Rect.hpp"
+# include <string>
 
-namespace AllInOne {
+namespace One {
 namespace Core {
 
 /**
@@ -30,4 +31,4 @@ public:
 };
 
 } // namespace Core
-} // namespace AllInOne
+} // namespace One

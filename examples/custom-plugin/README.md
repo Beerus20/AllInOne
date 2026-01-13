@@ -1,6 +1,6 @@
 # Custom Plugin Example
 
-This example shows how to create a custom plugin for the AllInOne framework.
+This example shows how to create a custom plugin for the One framework.
 
 ## Structure
 

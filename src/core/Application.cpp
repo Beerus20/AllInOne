@@ -1,7 +1,7 @@
 #include "../../include/core/Application.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Core {
 
 Application& Application::getInstance() {
@@ -10,6 +10,7 @@ Application& Application::getInstance() {
 }
 
 bool Application::initialize(const Config& config) {
+    (void)config;
     LOG_INFO("Initializing application...");
 
     // TODO: Initialize renderer based on config
@@ -44,4 +45,4 @@ void Application::shutdown() {
 }
 
 } // namespace Core
-} // namespace AllInOne
+} // namespace One

@@ -1,13 +1,13 @@
 #include "ImageViewerPlugin.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 ImageViewerPlugin::ImageViewerPlugin()
     : m_name("Image Viewer"),
       m_version("1.0.0"),
-      m_author("AllInOne Team"),
+      m_author("One Team"),
       m_context(nullptr) {
 }
 
@@ -27,6 +27,7 @@ const std::string& ImageViewerPlugin::getAuthor() const {
 }
 
 bool ImageViewerPlugin::onLoad(PluginContext& context) {
+    (void)context;
     LOG_INFO("Loading Image Viewer Plugin...");
     m_context = &context;
     
@@ -46,15 +47,16 @@ void ImageViewerPlugin::onUnload() {
 }
 
 void ImageViewerPlugin::onUpdate(float deltaTime) {
+    (void)deltaTime;
     // TODO: Update image viewer state
 }
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One
 
 // Plugin export function
 extern "C" {
-    AllInOne::Plugins::IPlugin* createPlugin() {
-        return new AllInOne::Plugins::ImageViewerPlugin();
+    One::Plugins::IPlugin* createPlugin() {
+        return new One::Plugins::ImageViewerPlugin();
     }
 }

@@ -4,7 +4,7 @@
 #include <memory>
 #include "IWidget.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace UI {
 
 /**
@@ -31,4 +31,4 @@ private:
 };
 
 } // namespace UI
-} // namespace AllInOne
+} // namespace One

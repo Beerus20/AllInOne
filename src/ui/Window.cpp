@@ -1,32 +1,38 @@
 #include "../../include/ui/Window.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace UI {
 
-Window::Window(const std::string& title, float x, float y, float width, float height)
-    : m_title(title), m_bounds(x, y, width, height), m_backgroundColor(200, 200, 200, 255) {
+Window::Window(const std::string& title, float x, float y, float width, float height) :
+    m_title(title),
+    m_bounds(x, y, width, height),
+    m_backgroundColor(200, 200, 200, 255)
+{
+    this->m_dragging = false;
 }
 
 void Window::render(Core::IRenderer& renderer) {
+    (void)renderer;
     // Draw window background
-    renderer.drawRect(m_bounds, m_backgroundColor);
+    //renderer.drawRect(m_bounds, m_backgroundColor);
 
     // Draw title bar
-    Utils::Rect titleBar(m_bounds.x, m_bounds.y, m_bounds.width, 30);
-    renderer.drawRect(titleBar, Utils::Color(100, 100, 100, 255));
+    //Utils::Rect titleBar(m_bounds.x, m_bounds.y, m_bounds.width, 30);
+    //renderer.drawRect(titleBar, Utils::Color(100, 100, 100, 255));
 
-    // Draw title text
-    renderer.drawText(m_title, Utils::Vec2(m_bounds.x + 10, m_bounds.y + 5), Utils::Color::White);
+    //// Draw title text
+    //renderer.drawText(m_title, Utils::Vec2(m_bounds.x + 10, m_bounds.y + 5), Utils::Color::White);
 
-    // Render children
-    for (auto& child : m_children) {
-        if (child->isVisible()) {
-            child->render(renderer);
-        }
-    }
+    //// Render children
+    //for (auto& child : m_children) {
+    //    if (child->isVisible()) {
+    //        child->render(renderer);
+    //    }
+    //}
 }
 
 void Window::handleEvent(const Events::Event& event) {
+    (void)event;
     // TODO: Handle window dragging, resizing, etc.
     for (auto& child : m_children) {
         if (child->isEnabled()) {
@@ -62,4 +68,4 @@ void Window::addChild(std::unique_ptr<IWidget> widget) {
 }
 
 } // namespace UI
-} // namespace AllInOne
+} // namespace One

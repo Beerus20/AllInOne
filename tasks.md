@@ -1,4 +1,4 @@
-# AllInOne - Liste des Tâches (TODO)
+# One - Liste des Tâches (TODO)
 
 ## 📊 Vue d'ensemble du projet
 

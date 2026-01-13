@@ -1,6 +1,6 @@
 #pragma once
 
-namespace AllInOne {
+namespace One {
 namespace Core {
     class IRenderer;
 }
@@ -15,7 +15,7 @@ namespace UI {
 }
 }
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 /**
@@ -44,4 +44,4 @@ private:
 };
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One

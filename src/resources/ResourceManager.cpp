@@ -1,7 +1,7 @@
 #include "../../include/resources/ResourceManager.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Resources {
 
 ResourceManager::ResourceManager() {
@@ -77,4 +77,4 @@ void ResourceManager::unloadUnused() {
 }
 
 } // namespace Resources
-} // namespace AllInOne
+} // namespace One

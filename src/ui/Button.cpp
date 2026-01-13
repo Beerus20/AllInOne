@@ -1,6 +1,6 @@
 #include "../../include/ui/Button.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace UI {
 
 Button::Button(const std::string& label, float x, float y, float width, float height)
@@ -12,6 +12,7 @@ Button::Button(const std::string& label, float x, float y, float width, float he
 }
 
 void Button::render(Core::IRenderer& renderer) {
+    (void)renderer;
     Utils::Color currentColor = m_normalColor;
     if (!m_enabled) {
         currentColor = Utils::Color(100, 100, 100, 255);
@@ -21,14 +22,17 @@ void Button::render(Core::IRenderer& renderer) {
         currentColor = m_hoverColor;
     }
 
-    renderer.drawRect(m_bounds, currentColor);
+    //renderer.drawRect(m_bounds, currentColor);
     
     // Draw label centered
     Utils::Vec2 textPos = m_bounds.center();
-    renderer.drawText(m_label, textPos, Utils::Color::Black);
+
+    (void)textPos;
+    //renderer.drawText(m_label, textPos, Utils::Color::Black);
 }
 
 void Button::handleEvent(const Events::Event& event) {
+    (void)event;
     if (!m_enabled) return;
 
     // TODO: Handle mouse events for hover, press, and click
@@ -36,6 +40,7 @@ void Button::handleEvent(const Events::Event& event) {
 }
 
 void Button::update(float deltaTime) {
+    (void)deltaTime;
     // Button updates if needed
 }
 
@@ -54,4 +59,4 @@ Utils::Rect Button::getBounds() const {
 }
 
 } // namespace UI
-} // namespace AllInOne
+} // namespace One

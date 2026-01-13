@@ -1,6 +1,6 @@
 # Basic Window Example
 
-This example demonstrates how to create a simple window using the AllInOne framework.
+This example demonstrates how to create a simple window using the One framework.
 
 ## Building
 

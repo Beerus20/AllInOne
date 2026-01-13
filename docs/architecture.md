@@ -1,7 +1,7 @@
 # Architecture Documentation
 
 ## Overview
-This document describes the architecture of the AllInOne application framework.
+This document describes the architecture of the One application framework.
 
 ## Core Components
 

@@ -1,7 +1,7 @@
 #include "../../include/events/EventManager.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Events {
 
 EventManager::EventManager() {
@@ -57,4 +57,4 @@ void EventManager::processQueue() {
 }
 
 } // namespace Events
-} // namespace AllInOne
+} // namespace One

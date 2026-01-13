@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace AllInOne {
+namespace One {
 namespace Utils {
 
 /**
@@ -38,4 +38,4 @@ struct Color {
 };
 
 } // namespace Utils
-} // namespace AllInOne
+} // namespace One

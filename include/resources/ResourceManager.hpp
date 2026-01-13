@@ -6,7 +6,7 @@
 #include "Texture.hpp"
 #include "Font.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Resources {
 
 /**
@@ -38,4 +38,4 @@ private:
 };
 
 } // namespace Resources
-} // namespace AllInOne
+} // namespace One

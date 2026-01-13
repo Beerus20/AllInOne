@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iostream>
 
-namespace AllInOne {
+namespace One {
 namespace Utils {
 
 /**
@@ -51,11 +51,11 @@ private:
 };
 
 // Convenience macros
-#define LOG_DEBUG(msg) AllInOne::Utils::Logger::getInstance().debug(msg)
-#define LOG_INFO(msg) AllInOne::Utils::Logger::getInstance().info(msg)
-#define LOG_WARNING(msg) AllInOne::Utils::Logger::getInstance().warning(msg)
-#define LOG_ERROR(msg) AllInOne::Utils::Logger::getInstance().error(msg)
-#define LOG_FATAL(msg) AllInOne::Utils::Logger::getInstance().fatal(msg)
+#define LOG_DEBUG(msg) One::Utils::Logger::getInstance().debug(msg)
+#define LOG_INFO(msg) One::Utils::Logger::getInstance().info(msg)
+#define LOG_WARNING(msg) One::Utils::Logger::getInstance().warning(msg)
+#define LOG_ERROR(msg) One::Utils::Logger::getInstance().error(msg)
+#define LOG_FATAL(msg) One::Utils::Logger::getInstance().fatal(msg)
 
 } // namespace Utils
-} // namespace AllInOne
+} // namespace One

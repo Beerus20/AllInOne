@@ -1,6 +1,6 @@
 #pragma once
 
-namespace AllInOne {
+namespace One {
 namespace Utils {
 
 /**
@@ -37,4 +37,4 @@ struct Vec2 {
 };
 
 } // namespace Utils
-} // namespace AllInOne
+} // namespace One

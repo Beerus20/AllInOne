@@ -3,13 +3,13 @@
 #include "../utils/Rect.hpp"
 #include "../events/Event.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Core {
     class IRenderer;
 }
 }
 
-namespace AllInOne {
+namespace One {
 namespace UI {
 
 /**
@@ -36,4 +36,4 @@ public:
 };
 
 } // namespace UI
-} // namespace AllInOne
+} // namespace One

@@ -1,13 +1,13 @@
 #include "TerminalPlugin.hpp"
 #include "../../include/utils/Logger.hpp"
 
-namespace AllInOne {
+namespace One {
 namespace Plugins {
 
 TerminalPlugin::TerminalPlugin()
     : m_name("Terminal"),
       m_version("1.0.0"),
-      m_author("AllInOne Team"),
+      m_author("One Team"),
       m_context(nullptr) {
 }
 
@@ -27,6 +27,7 @@ const std::string& TerminalPlugin::getAuthor() const {
 }
 
 bool TerminalPlugin::onLoad(PluginContext& context) {
+    (void)context;
     LOG_INFO("Loading Terminal Plugin...");
     m_context = &context;
     
@@ -46,16 +47,17 @@ void TerminalPlugin::onUnload() {
 }
 
 void TerminalPlugin::onUpdate(float deltaTime) {
+    (void)deltaTime;
     // TODO: Update terminal state
     // TODO: Process input/output
 }
 
 } // namespace Plugins
-} // namespace AllInOne
+} // namespace One
 
 // Plugin export function
 extern "C" {
-    AllInOne::Plugins::IPlugin* createPlugin() {
-        return new AllInOne::Plugins::TerminalPlugin();
+    One::Plugins::IPlugin* createPlugin() {
+        return new One::Plugins::TerminalPlugin();
     }
 }
