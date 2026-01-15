@@ -26,7 +26,7 @@ class SDLRenderer : public Core::IRenderer
 
 		// Core functionality
 		bool initialize() override;
-		bool initialize(const Core::Data& data) override;
+		bool initialize(const Core::Data&) override {return (false);};
 		void shutdown() override;
 
 		// Frame management

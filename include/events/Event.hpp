@@ -45,23 +45,23 @@ enum class EventType {
  */
 class Event {
 public:
-    Event(EventType type) : m_type(type), m_handled(false) {}
-    virtual ~Event() = default;
+	Event(EventType type) : m_type(type), m_handled(false) {}
+	virtual ~Event() = default;
 
-    EventType getType() const { return m_type; }
-    bool isHandled() const { return m_handled; }
-    void setHandled(bool handled) { m_handled = handled; }
+	EventType	getType() const { return m_type; }
+	bool		isHandled() const { return m_handled; }
+	void		setHandled(bool handled) { m_handled = handled; }
 
-    template<typename T>
-    void setData(const std::string& key, const T& value);
-    
-    template<typename T>
-    T getData(const std::string& key, const T& defaultValue = T()) const;
+	template<typename T>
+	void		setData(const std::string& key, const T& value);
+	
+	template<typename T>
+	T			getData(const std::string& key, const T& defaultValue = T()) const;
 
 private:
-    EventType m_type;
-    bool m_handled;
-    std::map<std::string, std::any> m_data;
+	EventType						m_type;
+	bool							m_handled;
+	std::map<std::string, std::any>	m_data;
 };
 
 // Template implementations

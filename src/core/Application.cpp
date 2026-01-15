@@ -21,6 +21,7 @@ bool Application::initialize(const Config& config) {
     // TODO: Initialize resource manager
     // TODO: Initialize UI system
 
+	m_renderer->initialize();
     LOG_INFO("Application initialized successfully");
     return true;
 }

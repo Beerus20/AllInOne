@@ -1,6 +1,7 @@
 #include "../../include/backends/SDLRenderer.hpp"
 #include "../../include/utils/Logger.hpp"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 
 // This is a placeholder for SDL renderer implementation
 // Uncomment when SDL2 is available:
@@ -21,14 +22,8 @@ SDLRenderer::~SDLRenderer() {
 
 bool SDLRenderer::initialize() {
     LOG_INFO("Initializing SDL Renderer...");
-    // TODO: Initialize SDL
-     if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	 {
-         LOG_ERROR("SDL initialization failed: " + std::string(SDL_GetError()));
-         return (false);
-     }
-    
-    // TODO: Create window
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+		return (LOG_ERROR("SDL initialization failed: " + std::string(SDL_GetError())), false);
     m_window = SDL_CreateWindow(
         "One Engine",
         SDL_WINDOWPOS_CENTERED,
@@ -37,18 +32,10 @@ bool SDLRenderer::initialize() {
         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
     );
 	if (m_window == nullptr)
-	{
-		LOG_ERROR("SDL window creation failed: " + std::string(SDL_GetError()));
-		return (false);
-	}
-    
-    // TODO: Create renderer
+		return (LOG_ERROR("SDL window creation failed: " + std::string(SDL_GetError())), false);
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
     if (m_renderer == nullptr)
-	{
-        LOG_ERROR("SDL renderer creation failed: " + std::string(SDL_GetError()));
-        return (false);
-    }
+        return (LOG_ERROR("SDL renderer creation failed: " + std::string(SDL_GetError())), false);
     LOG_INFO("SDL Renderer initialized successfully");
     return (true);
 }
@@ -57,15 +44,9 @@ void SDLRenderer::shutdown() {
     LOG_INFO("Shutting down SDL Renderer...");
     // TODO: Cleanup SDL resources
 	if (m_renderer)
-	{
-		SDL_DestroyRenderer(m_renderer);
-		m_renderer = nullptr;
-	}
+		m_renderer = (SDL_DestroyRenderer(m_renderer), nullptr);
 	if (m_window)
-	{
-		SDL_DestroyWindow(m_window);
-		m_window = nullptr;
-	}
+		m_window = (SDL_DestroyWindow(m_window), nullptr);
 	SDL_Quit();
 }
 

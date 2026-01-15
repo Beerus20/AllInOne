@@ -214,6 +214,6 @@ run: $(NAME)
 
 vrun: $(NAME)
 	@echo "$(CYAN)$(BOLD)Running $(NAME) with Valgrind...$(RESET)"
-	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
+	@valgrind --leak-check=full --track-origins=yes --suppressions=valgrind-suppress.txt ./$(NAME)
 
 .PHONY: run

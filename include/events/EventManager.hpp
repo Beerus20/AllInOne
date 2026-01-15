@@ -27,8 +27,8 @@ public:
     void processQueue();
 
 private:
-    std::map<EventType, std::vector<IListener*>> m_listeners;
-    std::vector<Event> m_eventQueue;
+    std::map<EventType, std::vector<IListener*>>	m_listeners;
+    std::vector<Event>								m_eventQueue;
 };
 
 } // namespace Events

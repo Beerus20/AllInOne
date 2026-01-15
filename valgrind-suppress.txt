@@ -1,0 +1,30 @@
+{
+   SDL2_dlopen_strncmp_issue
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   fun:_dl_dst_count
+}
+
+{
+   SDL2_dlopen_dst_substitute
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   fun:_dl_dst_substitute
+}
+
+{
+   SDL2_dynamic_linker_rpath
+   Memcheck:Addr8
+   obj:/usr/lib/*/ld-*.so
+   obj:/usr/lib/*/ld-*.so
+}
+
+{
+   SDL2_library_loading_general
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/*/libSDL2-2.0.so.*
+}

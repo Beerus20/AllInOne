@@ -3,6 +3,7 @@
 #include <climits>
 
 namespace One {
+namespace Core {
 Data::Data() : _content(JSON::object()) {}
 Data::~Data() {}
 Data::Data(const JSON& json) : _content(json) {}
@@ -196,10 +197,10 @@ std::string Data::toColoredString() const
 	
 	return result;
 }
+} // namespace Core
+}
 
-} // namespace One
-
-std::ostream& operator<<(std::ostream& os, const One::Data& data)
+std::ostream& operator<<(std::ostream& os, const One::Core::Data& data)
 {
 	os << data.toColoredString();
 	return (os);
