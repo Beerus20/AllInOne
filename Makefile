@@ -212,4 +212,8 @@ run: $(NAME)
 	@echo "$(CYAN)$(BOLD)Running $(NAME)...$(RESET)"
 	@./$(NAME)
 
+vrun: $(NAME)
+	@echo "$(CYAN)$(BOLD)Running $(NAME) with Valgrind...$(RESET)"
+	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
+
 .PHONY: run

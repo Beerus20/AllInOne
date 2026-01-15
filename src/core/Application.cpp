@@ -1,12 +1,13 @@
 #include "../../include/core/Application.hpp"
 #include "../../include/utils/Logger.hpp"
+#include "../../include/backends/SDLRenderer.hpp"
 
 namespace One {
 namespace Core {
 
 Application& Application::getInstance() {
     static Application instance;
-    return instance;
+    return (instance);
 }
 
 bool Application::initialize(const Config& config) {
@@ -14,6 +15,7 @@ bool Application::initialize(const Config& config) {
     LOG_INFO("Initializing application...");
 
     // TODO: Initialize renderer based on config
+	m_renderer = std::make_unique<One::Backends::SDLRenderer>();
     // TODO: Initialize plugin manager
     // TODO: Initialize event manager
     // TODO: Initialize resource manager

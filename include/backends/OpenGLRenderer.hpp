@@ -37,10 +37,10 @@ public:
     const std::string& getName() const override;
 
 private:
-    [[maybe_unused]] void* m_window;  // Platform-specific window handle (GLFW, SDL, etc.)
-    [[maybe_unused]] unsigned int m_shaderProgram;
-    [[maybe_unused]] unsigned int m_vao;
-    [[maybe_unused]] unsigned int m_vbo;
+    void* m_window;  // Platform-specific window handle (GLFW, SDL, etc.)
+    unsigned int m_shaderProgram;
+    unsigned int m_vao;
+    unsigned int m_vbo;
     std::string m_name;
 
     // Helper methods for OpenGL setup

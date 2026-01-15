@@ -6,6 +6,7 @@
 using JSON = nlohmann::json;
 
 namespace One {
+namespace Core {
 /**
  * @brief Data management
  * Functions for loading and saving data
@@ -42,6 +43,7 @@ class Data : public JSON {
 	std::string		toString() const;
 	std::string		toColoredString() const;
 	
-}; // namespace One	
+}; // namespace Core	
 }
-std::ostream&	operator<<(std::ostream& os, const One::Data& data);
+}
+std::ostream&	operator<<(std::ostream& os, const One::Core::Data& data);

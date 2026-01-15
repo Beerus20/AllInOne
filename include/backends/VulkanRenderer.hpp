@@ -57,23 +57,23 @@ public:
 
 private:
     // Vulkan core objects
-    [[maybe_unused]] VkInstance m_instance;
-    [[maybe_unused]] VkPhysicalDevice m_physicalDevice;
-    [[maybe_unused]] VkDevice m_device;
-    [[maybe_unused]] VkQueue m_graphicsQueue;
-    [[maybe_unused]] VkQueue m_presentQueue;
-    [[maybe_unused]] VkSwapchainKHR m_swapchain;
-    [[maybe_unused]] VkCommandPool m_commandPool;
-    [[maybe_unused]] std::vector<VkCommandBuffer> m_commandBuffers;
+    VkInstance m_instance;
+    VkPhysicalDevice m_physicalDevice;
+    VkDevice m_device;
+    VkQueue m_graphicsQueue;
+    VkQueue m_presentQueue;
+    VkSwapchainKHR m_swapchain;
+    VkCommandPool m_commandPool;
+    std::vector<VkCommandBuffer> m_commandBuffers;
 
     // Window and surface
-    [[maybe_unused]] void* m_window;  // Platform-specific window handle
-    [[maybe_unused]] void* m_surface; // VkSurfaceKHR
+    void* m_window;  // Platform-specific window handle
+    void* m_surface; // VkSurfaceKHR
 
     // Helper data
     std::string m_name;
-    [[maybe_unused]] uint32_t m_currentFrame;
-    [[maybe_unused]] uint32_t m_imageIndex;
+    uint32_t m_currentFrame;
+    uint32_t m_imageIndex;
 
     // Initialization helpers
     bool createInstance();

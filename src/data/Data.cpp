@@ -10,7 +10,7 @@ Data::Data(const std::string& file_path)
 {
 	load(file_path, _content);
 }
-Data::Data(const Data& other) : _content(other._content) {}
+Data::Data(const Data& other) : JSON(), _content(other._content) {}
 
 Data& Data::operator=(const Data& other)
 {

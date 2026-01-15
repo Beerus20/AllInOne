@@ -42,15 +42,15 @@ public:
     const std::string& getName() const override;
 
 private:
-    [[maybe_unused]] t_xvar m_mlx;
-    [[maybe_unused]] t_win_list m_window;
-    [[maybe_unused]] void* m_image;
-    [[maybe_unused]] char* m_imageData;
-    [[maybe_unused]] int m_bitsPerPixel;
-    [[maybe_unused]] int m_lineLength;
-    [[maybe_unused]] int m_endian;
-    [[maybe_unused]] int m_width;
-    [[maybe_unused]] int m_height;
+    t_xvar m_mlx;
+    t_win_list m_window;
+    void* m_image;
+    char* m_imageData;
+    int m_bitsPerPixel;
+    int m_lineLength;
+    int m_endian;
+    int m_width;
+    int m_height;
     std::string m_name;
 
     // Helper methods for MinilibX
